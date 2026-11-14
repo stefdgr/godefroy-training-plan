@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road to Godefroy 75</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>%%CSS%%</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Draft v4 · 30 weeks · 9 Nov 2026 → 5 Jun 2027</div>
+  <h1>Road to Godefroy 75</h1>
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <a href="#plan" role="tab" id="tab-plan" aria-controls="view-plan">Overview</a>
+    <a href="#weeks" role="tab" id="tab-weeks" aria-controls="view-weeks">All weeks</a>
+    <a href="#strength" role="tab" id="tab-strength" aria-controls="view-strength">Strength</a>
+  </nav>
+</header>
+
+<!-- ================= PLAN ================= -->
+<div id="view-plan" class="view" role="tabpanel" aria-labelledby="tab-plan">
+  <section class="today-wrap" id="now" aria-label="Today and this week">
+    <div class="today-card" id="today-card"></div>
+    <div class="cw-head"><h3 id="cw-title">This week</h3><a href="#weeks" class="jump-link" id="cw-all">All weeks →</a></div>
+    <div id="cw-slot"></div>
+    <details class="nextwk"><summary id="nw-title">Next week</summary><div id="nw-slot"></div></details>
+  </section>
+  <ol class="milestones">
+    <li><b>28 – 31 Dec</b><span>Ardennes trail camp</span></li>
+    <li><b>Dec – Feb</b><span>Indoor FTP test on a bad-weather Saturday</span></li>
+    <li class="race"><b>Sun 14 Mar</b><span>Dendermonde Loopt 16k · sub 1:10</span></li>
+    <li><b>Sat 17 Apr</b><span>Flemish Ardennes 28 km</span></li>
+    <li><b>Sat 8 May</b><span>Bouillon recon 33–38 km</span></li>
+    <li><b>Sat 15 May</b><span>Race simulation</span></li>
+    <li class="race"><b>Sat 5 Jun</b><span>Godefroy 75 · 2,532 m D+ · 06:00</span></li>
+  </ol>
+
+
+  <section class="panel">
+    <div class="panel-h"><h3>Weekly load</h3>
+      <div class="legend"><span class="lg base">Base run km</span><span class="lg speed">16k block</span><span class="lg trail">Trail block</span><span class="lg bikeL">Bike hours (×10)</span></div></div>
+    <div class="chart">%%CHART%%</div>
+  </section>
+
+  <section class="panel" id="rules">
+    <h3>How a week works</h3>
+    <div class="tmpl">
+      <div><h4>Base · W1–9</h4><ol><li><b>Mon</b> Rest + Strength A</li><li><b>Tue</b> Run quality</li><li><b>Wed</b> Easy ride + Strength B</li><li><b>Thu</b> Easy run + strides</li><li><b>Fri</b> Rest → easy run from W5 · Strength C</li><li><b>Sat</b> Bike quality</li><li><b>Sun</b> Long run</li></ol></div>
+      <div><h4>16k block · W10–18</h4><ol><li><b>Mon</b> Rest + Strength A</li><li><b>Tue</b> Run quality</li><li><b>Wed</b> Easy ride + Strength B</li><li><b>Thu</b> Easy run + hill strides</li><li><b>Fri</b> Easy run + Strength C</li><li><b>Sat</b> Endurance ride or bike quality</li><li><b>Sun</b> Long run, sometimes with race pace</li></ol></div>
+      <div><h4>Trail block · W19–30</h4><ol><li><b>Mon</b> Rest + Strength A</li><li><b>Tue</b> Run quality</li><li><b>Wed</b> Easy ride 75–120′ + Strength B</li><li><b>Thu</b> Hill session or easy run</li><li><b>Fri</b> Easy 6 km + Strength C</li><li><b>Sat</b> Long run</li><li><b>Sun</b> Second long run or long easy ride</li></ol></div>
+    </div>
+    <h3>Rules</h3>
+    <ul class="rules">
+      <li><b>Two hard sessions a week, max</b>, counting both sports. Everything else is easy: runs below 143 bpm, rides below 75% FTP.</li>
+      <li><b>Swaps.</b> Easy run → easy ride at 1.5–2× the time. Sunday's second run → 2–3 h ride (except W24). Quality run → bike version: freely in the base, after that at most once every three weeks.</li>
+      <li><b>★ sessions don't get swapped.</b> A missed session is dropped, not stacked.</li>
+      <li><b>Morning HRV check.</b> <span class="dot g"></span>Balanced: as planned. <span class="dot a"></span>One low night or RHR +3: lower end of the reps. <span class="dot r"></span>LOW status, RHR +5 or sleep under 70: quality becomes easy. The day after a night out is always easy.</li>
+      <li><b>Fuel</b> 60–90 g carbs/h on runs over 90′ and rides over 2 h. From W25, rehearse race fuelling at 90–100 g/h.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="zones">
+    <div class="panel-h"><h3>Zones &amp; paces</h3><span class="now-vals">Now: <b>LTHR 160 bpm</b> · <b>threshold 4:24/km</b> · FTP <b>~250 W</b> (provisional)</span></div>
+    <div class="zgrid">
+      <div>
+        <h4>Running</h4>
+        <table class="z"><thead><tr><th>Zone</th><th>% LTHR</th><th>HR now</th><th>Pace now</th><th>Use</th></tr></thead><tbody>
+          <tr><td><span class="zd z1"></span>Z1</td><td>&lt;81%</td><td>&lt;130</td><td>6:00–6:40</td><td>Easy</td></tr>
+          <tr><td><span class="zd z2"></span>Z2</td><td>81–89%</td><td>130–142</td><td>5:15–6:00</td><td>Aerobic</td></tr>
+          <tr><td><span class="zd z3"></span>Z3</td><td>89–95%</td><td>143–151</td><td>4:45–5:10</td><td>Steady, 50k effort</td></tr>
+          <tr><td><span class="zd z4"></span>Z4</td><td>95–101%</td><td>152–162</td><td>4:18–4:30</td><td>Threshold, 1-hour effort</td></tr>
+          <tr><td><span class="zd z5"></span>Z5</td><td>&gt;101%</td><td>&gt;162</td><td>&lt;4:12</td><td>10k effort and faster</td></tr>
+        </tbody></table>
+        <p class="note">Efforts now: 10k ≈ 4:10 · 5k ≈ 4:00 · 3k ≈ 3:48. 16k race pace stays at 4:20–4:22, because it comes from the goal, not from your threshold.</p>
+      </div>
+      <div>
+        <h4>Bike</h4>
+        <table class="z"><thead><tr><th>Zone</th><th>% FTP</th><th>Watts now</th></tr></thead><tbody>
+          <tr><td><span class="zd z1"></span>Z1 recovery</td><td>&lt;55%</td><td>&lt;138</td></tr>
+          <tr><td><span class="zd z2"></span>Z2 endurance</td><td>56–75%</td><td>140–188</td></tr>
+          <tr><td><span class="zd z3"></span>Z3 tempo</td><td>76–87%</td><td>190–218</td></tr>
+          <tr><td><span class="zd z3b"></span>Sweet spot</td><td>88–93%</td><td>220–233</td></tr>
+          <tr><td><span class="zd z4"></span>Z4 threshold</td><td>94–105%</td><td>235–263</td></tr>
+          <tr><td><span class="zd z5"></span>Z5 VO2</td><td>106–120%</td><td>265–300</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- ================= ALL WEEKS ================= -->
+<div id="view-weeks" class="view" role="tabpanel" aria-labelledby="tab-weeks" hidden>
+  <nav class="jump" aria-label="Phases">
+    <a href="#base">Base</a><a href="#speed">16k block</a><a href="#trail">Trail block</a><button type="button" id="today-btn">Go to this week</button>
+  </nav>
+  <main id="weeklist">
+  %%WEEKS%%
+  </main>
+</div>
+
+<!-- ================= STRENGTH ================= -->
+<div id="view-strength" class="view" role="tabpanel" aria-labelledby="tab-strength" hidden>
+  <section class="panel" id="sessions">
+<div class="panel-h"><h3>Sessions</h3><div class="seg" role="tablist" aria-label="Session">
+<button type="button" role="tab" class="segb" data-s="A" aria-selected="false"><b>A</b><span>Mon</span></button>
+<button type="button" role="tab" class="segb" data-s="B" aria-selected="false"><b>B</b><span>Wed</span></button>
+<button type="button" role="tab" class="segb" data-s="C" aria-selected="false"><b>C</b><span>Fri</span></button>
+</div></div>
+<p class="note" style="margin:0">A and B are the two fixed sessions with everything critical. C is optional extra work for when the week allows it. Supersets: alternate the pair for the rounds listed, then move on.</p>
+<article class="sc" data-s="A"><header class="sch"><span class="sl">A</span><div><b>Monday</b><span>Glute control · core · upper back</span></div><div class="smeta"><span class="tag t-race">Fixed</span><span class="dur">≈23′</span></div></header><div class="rows">
+<div class="blk2 pair"><div class="bl"><b>Superset 1</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Bridge + knee opening</span><small>Right first</small></div><div class="ed">3×10/side</div></li>
+<li><em>b</em><div class="en"><span>Single-arm DB row</span><small>Squeeze the shoulder blade back at the top</small></div><div class="ed">3×10/arm</div></li>
+</ol></div>
+<div class="blk2 pair"><div class="bl"><b>Superset 2</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Quadruped hip extension → abduction</span><small>Slow · one extra set on the right</small></div><div class="ed">3×10/side</div></li>
+<li><em>b</em><div class="en"><span>Push-up plus</span><small>Push the floor away at the top</small></div><div class="ed">3×10</div></li>
+</ol></div>
+<div class="blk2 pair"><div class="bl"><b>Superset 3</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Side plank on knees + clam</span></div><div class="ed">3×10/side</div></li>
+<li><em>b</em><div class="en"><span>Tabletop leg extension</span><small>Lower back stays on the mat</small></div><div class="ed">3×10/side</div></li>
+</ol></div>
+</div><p class="why">No heavy leg work: Tuesday&#x27;s quality run is next. Starts with the bridge you can feel on the right.</p></article>
+<article class="sc" data-s="B"><header class="sch"><span class="sl">B</span><div><b>Wednesday</b><span>Legs · deceleration · adductors</span></div><div class="smeta"><span class="tag t-race">Fixed</span><span class="dur">≈21′</span></div></header><div class="rows">
+<div class="blk2 pair"><div class="bl"><b>Superset 1</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Bulgarian split squat</span><small>3″ lowering · from W19: step-downs every other 3 weeks</small></div><div class="ed">3×8/leg</div></li>
+<li><em>b</em><div class="en"><span>Long-lever forearm plank</span><small>Elbows ahead of shoulders, glutes tight</small></div><div class="ed">3×30″</div></li>
+</ol></div>
+<div class="blk2 pair"><div class="bl"><b>Superset 2</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>KB single-leg deadlift</span><small>Hips back: glutes, not lower back</small></div><div class="ed">3×8/leg</div></li>
+<li><em>b</em><div class="en"><span>Copenhagen plank, short lever</span><small>Top knee on a bench or sofa</small></div><div class="ed">3×20″/side</div></li>
+</ol></div>
+<div class="blk2"><div class="bl"><b>Single</b><span>3 rounds</span></div><ol class="exs">
+<li><div class="en"><span>Single-leg calf raise off a step</span><small>3″ up, 3″ down</small></div><div class="ed">3×10/leg</div></li>
+</ol></div>
+</div><p class="why">The heaviest session, three days before the weekend.</p></article>
+<article class="sc" data-s="C"><header class="sch"><span class="sl">C</span><div><b>Friday</b><span>Accessories · Tough 21 format</span></div><div class="smeta"><span class="tag t-deload">Optional</span><span class="dur">12′ per round</span></div></header><div class="rows">
+<div class="blk2 pair"><div class="bl"><b>Circuit</b><span>1–2 rounds</span></div><ol class="exs">
+<li><em>1</em><div class="en"><span>Crab walks</span></div><div class="ed">40″</div></li>
+<li><em>2</em><div class="en"><span>Standing hip extension, mini band</span><small>20″ per leg</small></div><div class="ed">40″</div></li>
+<li><em>3</em><div class="en"><span>Bridge + leg lift</span><small>Alternating legs</small></div><div class="ed">40″</div></li>
+<li><em>4</em><div class="en"><span>Goblet squat to a box</span><small>20 kg KB, stay centred</small></div><div class="ed">40″</div></li>
+<li><em>5</em><div class="en"><span>Hip flexor march, mini band</span><small>Alternating</small></div><div class="ed">40″</div></li>
+<li><em>6</em><div class="en"><span>Mountain climbers</span></div><div class="ed">40″</div></li>
+<li><em>7</em><div class="en"><span>Lateral bear crawl</span><small>Band at the wrists</small></div><div class="ed">40″</div></li>
+<li><em>8</em><div class="en"><span>DB side bend</span><small>10 kg · 20″ per side</small></div><div class="ed">40″</div></li>
+<li><em>9</em><div class="en"><span>Half-kneeling diagonal DB lift</span><small>5 kg · 20″ per side</small></div><div class="ed">40″</div></li>
+<li><em>10</em><div class="en"><span>Prone Y–T raise</span></div><div class="ed">40″</div></li>
+<li><em>11</em><div class="en"><span>Tibialis raise</span><small>Back against a wall</small></div><div class="ed">40″</div></li>
+<li><em>12</em><div class="en"><span>Pull-up negatives</span><small>As many slow ones as fit</small></div><div class="ed">40″</div></li>
+</ol></div>
+</div><p class="why">Timed: 40″ work, 20″ to switch. Two rounds if you have 24′, one if you&#x27;re short on time. Side-to-side exercises: switch halfway.</p></article>
+</section>
+
+  <section class="panel">
+    <h3>Right-glute rules</h3>
+    <ol class="grules">
+      <li><b>Right side first, always.</b> One extra set on the right for the bridge and hip extension exercises.</li>
+      <li><b>Wake it up with what works.</b> The bridge + knee opening is the one you can feel; do it before the harder ones.</li>
+      <li><b>Hand on the right glute,</b> 2″ squeeze at the top. Hamstring or lower back taking over? Shorten the range, tuck the pelvis under, bring your feet closer to your backside in bridges.</li>
+      <li><b>End the set when you lose the right glute.</b> Good reps over a full count.</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h3>Start simple, progress monthly</h3>
+    <table class="z prog"><thead><tr><th>Exercise</th><th>Month 1</th><th>Then, one step per month</th></tr></thead><tbody>
+      <tr><td>Bulgarian split squat</td><td>Bodyweight</td><td>2×5 kg → 20 kg KB at the chest → slower lowering</td></tr>
+      <tr><td>KB single-leg deadlift</td><td>10 kg, opposite hand</td><td>20 kg KB</td></tr>
+      <tr><td>Single-leg calf raise</td><td>Bodyweight, slow</td><td>10 kg → 20 kg KB</td></tr>
+      <tr><td>Single-arm DB row</td><td>10 kg</td><td>20 kg KB</td></tr>
+      <tr><td>Copenhagen plank</td><td>Knee on the bench, 20″</td><td>30″ → foot on the bench</td></tr>
+      <tr><td>Push-up plus</td><td>On knees if the shoulder blades lift</td><td>Full push-up → feet raised</td></tr>
+      <tr><td>Band exercises</td><td>3×10</td><td>Stronger band or slower lowering, not more sets</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="panel">
+    <h3>Through the season</h3>
+    <table class="z dose"><thead><tr><th>Weeks</th><th>Sessions</th><th>Notes</th></tr></thead><tbody>
+      <tr><td>W1–9 · Base</td><td>A + B (+ C)</td><td>Build loads. C whenever there's time.</td></tr>
+      <tr><td>W10–16 · 16k</td><td>A + B (+ C)</td><td>Hold loads. C optional.</td></tr>
+      <tr><td>W17–18</td><td>A</td><td>Light, race weeks.</td></tr>
+      <tr><td>W19–28 · Trail</td><td>A + B</td><td>Step-downs alternate with split squats every 3 weeks.</td></tr>
+      <tr><td>W29–30 · Taper</td><td>A</td><td>Short, W29 only.</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="panel">
+    <h3>Mobility routine <small>after training, morning or evening</small></h3>
+    <p class="mob">Good mornings · lat stretch · lying lumbar rotation · prone press-up · cat-camel · deep lunge with rotation · kneeling back stretch (hands on a chair) · hamstring/adductor stretch · hip flexor stretch with rotation · seated hip rotation · alternating hamstring/quad stretch · iliopsoas stretch · half-kneeling thoracic rotation · standing side bend · <b>knee-to-wall ankle stretch, 10/side</b> (new: the screening flagged stiff ankles)</p>
+  </section>
+</div>
+
+<footer class="foot">Draft v4 · 14 Nov 2026</footer>
+</div>
+<script>%%JS%%</script>
+</body>
+</html>

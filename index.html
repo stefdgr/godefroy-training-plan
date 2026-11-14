@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road to Godefroy 75</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root{
+  /* Layout: one reading column; week cards hold a 7-column day grid that stacks on phones */
+  --paper:#f4f5f2; --card:#ffffff; --ink:#18221f; --muted:#5c6763; --line:#d9ddd7;
+  --moss:#2f6a4a; --rust:#c2482a; --steel:#2f5d86; --ochre:#b07d16;
+  --base:#7d9a6d; --speed:#c2482a; --trail:#2f6a4a;
+  --easy-bg:#e8f0e7; --q-bg:#f8e3dc; --long-bg:#d6e6db; --bike-bg:#e3ebf3; --bikeq-bg:#d4e0ee; --rest-bg:#eef0ee; --race-bg:#18221f; --race-ink:#f4f5f2;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#111816; --card:#18211e; --ink:#e7ece8; --muted:#9aa7a1; --line:#2b3632;
+  --moss:#6fb08a; --rust:#ec7a5a; --steel:#7fb0dc; --ochre:#e0ae4a;
+  --base:#8fae7e; --speed:#ec7a5a; --trail:#6fb08a;
+  --easy-bg:#1d2b23; --q-bg:#35211b; --long-bg:#1b3326; --bike-bg:#1a2633; --bikeq-bg:#1c2d42; --rest-bg:#1b2220; --race-bg:#e7ece8; --race-ink:#111816;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#111816; --card:#18211e; --ink:#e7ece8; --muted:#9aa7a1; --line:#2b3632;
+  --moss:#6fb08a; --rust:#ec7a5a; --steel:#7fb0dc; --ochre:#e0ae4a;
+  --base:#8fae7e; --speed:#ec7a5a; --trail:#6fb08a;
+  --easy-bg:#1d2b23; --q-bg:#35211b; --long-bg:#1b3326; --bike-bg:#1a2633; --bikeq-bg:#1c2d42; --rest-bg:#1b2220; --race-bg:#e7ece8; --race-ink:#111816;
+  color-scheme:dark;}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--body)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px;display:grid;gap:22px}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(40px,6vw,64px);font-weight:700;line-height:.95;text-transform:uppercase}
+h3{font-size:24px;font-weight:600;text-transform:uppercase}
+h4{font-size:17px;font-weight:600;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.kicker{font:600 13px var(--body);color:var(--moss);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.lede{max-width:68ch;color:var(--muted);margin:10px 0 0}
+.note{color:var(--muted);font-size:13px;margin:8px 0 0;max-width:80ch}
+
+.milestones{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.milestones li{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:grid;gap:2px}
+.milestones b{font:600 18px var(--display);text-transform:uppercase}
+.milestones span{font-size:13px;color:var(--muted)}
+.milestones .race{background:var(--race-bg);border-color:var(--race-bg)}
+.milestones .race b,.milestones .race span{color:var(--race-ink)}
+
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.jump a,.jump button{font:500 14px var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;cursor:pointer}
+.jump button{background:var(--moss);color:var(--paper);border-color:var(--moss)}
+.jump a:hover{border-color:var(--moss)}
+:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:grid;gap:12px}
+.panel-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted)}
+.lg::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.lg.base::before{background:var(--base)}.lg.speed::before{background:var(--speed)}.lg.trail::before{background:var(--trail)}
+.lg.bikeL::before{background:var(--steel);height:3px;vertical-align:3px}
+.chart{overflow-x:auto}.chart svg{width:100%;min-width:640px;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1}
+.ax{fill:var(--muted);font:11px var(--body)}
+.flag{fill:var(--ink);font:13px var(--body)}
+.bar.base{fill:var(--base)}.bar.speed{fill:var(--speed)}.bar.trail{fill:var(--trail)}
+.bikeline{fill:none;stroke:var(--steel);stroke-width:2}.bikedot{fill:var(--steel)}
+
+.tmpl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.tmpl ol{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:14px}
+.tmpl b{display:inline-block;width:38px;font-weight:600}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rule{border-top:3px solid var(--moss);padding-top:8px}
+.rule h4{color:var(--ink)}
+.rule p,.rule ul{margin:0;font-size:14px}
+.rule ul{padding-left:18px;display:grid;gap:4px}
+.gate{list-style:none;padding-left:0!important}
+.gate li{padding-left:12px;border-left:4px solid var(--line)}
+.gate .g{border-color:#3f9a5f}.gate .a{border-color:#d39b1d}.gate .r{border-color:#c8432b}
+
+.zgrid,.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+table.z{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.z th{text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);padding:4px 6px}
+.z td{border-bottom:1px solid var(--line);padding:5px 6px}
+.zd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.zd.z1{background:#9fb8a8}.zd.z2{background:#3f9a5f}.zd.z3{background:#d39b1d}.zd.z3b{background:#d9781f}.zd.z4{background:#c8432b}.zd.z5{background:#7d2a5e}
+.steps,.phases-s,.pgroups{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14px}
+
+.phase-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:36px;font-weight:700;text-transform:uppercase;padding-top:14px;border-top:4px solid}
+.phase-h small{font:500 14px var(--body);color:var(--muted);text-transform:none}
+.phase-h.base{border-color:var(--base)}.phase-h.speed{border-color:var(--speed)}.phase-h.trail{border-color:var(--trail)}
+main{display:grid;gap:14px}
+.week{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:10px;scroll-margin-top:12px}
+.week.base{border-left-color:var(--base)}.week.speed{border-left-color:var(--speed)}.week.trail{border-left-color:var(--trail)}
+.week.current{box-shadow:0 0 0 2px var(--moss)}
+.week header{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.wn{font:700 34px/1 var(--display);min-width:54px}
+.wmeta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.wdates{font-weight:600}
+.tag{font:600 12px var(--body);text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:4px;background:var(--rest-bg);color:var(--muted)}
+.t-deload{background:var(--bike-bg);color:var(--steel)}
+.t-race{background:var(--race-bg);color:var(--race-ink)}
+.t-ardennes,.t-swap{background:var(--long-bg);color:var(--moss)}
+.t-sharpen,.t-intro{background:var(--q-bg);color:var(--rust)}
+.now{display:none;font:600 12px var(--body);text-transform:uppercase;padding:2px 8px;border-radius:4px;background:var(--moss);color:var(--paper)}
+.week.current .now{display:inline-block}
+.stats{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0 0 0 auto;font-variant-numeric:tabular-nums}
+.stats div{display:flex;gap:6px;align-items:baseline}
+.stats dt{font-size:12px;color:var(--muted);text-transform:uppercase}
+.stats dd{margin:0;font-weight:600}
+.focus{margin:0;color:var(--muted);font-size:14px;max-width:90ch}
+
+.days{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.day{border-radius:6px;padding:8px 9px;background:var(--rest-bg);display:flex;flex-direction:column;gap:4px;min-width:0;border-top:3px solid transparent}
+.day.easy,.day.camp{background:var(--easy-bg);border-top-color:#6aa57a}
+.day.q{background:var(--q-bg);border-top-color:var(--rust)}
+.day.long,.day.hill{background:var(--long-bg);border-top-color:var(--moss)}
+.day.bike{background:var(--bike-bg);border-top-color:#7ea6cc}
+.day.bikeq{background:var(--bikeq-bg);border-top-color:var(--steel)}
+.day.race{background:var(--race-bg);color:var(--race-ink)}
+.day.race .dh em,.day.race .dd{color:var(--race-ink);opacity:.8}
+.day.today{outline:2px solid var(--ink);outline-offset:1px}
+.dh{display:flex;flex-wrap:wrap;gap:4px;align-items:baseline;font-size:12px}
+.dh b{font-weight:600}.dh span{color:var(--muted)}.day.race .dh span{color:var(--race-ink)}
+.dh em{font-style:normal;color:var(--muted);margin-left:auto;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+.dt{font-weight:600;font-size:14px;line-height:1.25;overflow-wrap:anywhere}
+.dd{font-size:12.5px;color:var(--muted);line-height:1.4;overflow-wrap:anywhere}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:2px}
+.chip{font:600 11px var(--body);padding:1px 6px;border-radius:999px}
+.chip.str{background:var(--ochre);color:var(--paper)}
+.chip.key{background:var(--ink);color:var(--paper)}
+.day.race .chip.key{background:var(--race-ink);color:var(--race-bg)}
+@media (max-width:980px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:640px){.days{grid-template-columns:1fr}.stats{margin-left:0}.dh em{margin-left:8px}}
+.foot{color:var(--muted);font-size:13px;text-align:center}
+
+/* v2 additions */
+.tabs{display:flex;gap:4px;margin-top:18px;border-bottom:2px solid var(--line)}
+.tabs a{font:600 20px var(--display);text-transform:uppercase;letter-spacing:.03em;color:var(--muted);text-decoration:none;padding:6px 16px;border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs a[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--moss)}
+.tabs a:hover{color:var(--ink)}
+.view{display:grid;gap:22px}
+.view[hidden]{display:none}
+table.wk{border-collapse:collapse;width:100%;font-size:14px}
+.wk th,.wk td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.wk thead th{font-weight:600;color:var(--muted);font-size:13px}
+.wk tbody th{width:44px;font-weight:600}
+.tmpl{display:grid}
+ul.rules{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px;max-width:95ch}
+ul.rules li{padding-left:12px;border-left:3px solid var(--moss)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin:0 4px 0 6px;vertical-align:0}
+.dot.g{background:#3f9a5f}.dot.a{background:#d39b1d}.dot.r{background:#c8432b}
+.now-vals{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.now-vals b{color:var(--ink)}
+.howto{border-top:1px solid var(--line);padding-top:10px}
+.howto p{margin:0;font-size:14px;max-width:95ch}
+.sweek{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.sday{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.sday b{font:700 22px var(--display);text-transform:uppercase}
+.sday p{margin:0;flex-basis:100%;font-size:14px;color:var(--muted)}
+.chip.str{text-decoration:none}
+.fmt{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
+.fmt span{display:inline-block;min-width:44px;font:700 18px var(--display);color:var(--moss)}
+.abc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.slot{border:2px dashed var(--line);border-radius:6px;padding:12px;display:flex;align-items:center;gap:12px}
+.slot b{font:700 34px/1 var(--display);color:var(--ochre)}
+.slot p{margin:0;color:var(--muted);font-size:14px}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.lib ul{margin:0;padding-left:16px;display:grid;gap:3px;font-size:14px}
+.lib i{font-style:normal;color:var(--muted);font-size:12.5px;white-space:nowrap}
+.lib .add h4{color:var(--ochre)}
+h3 small{font:500 13px var(--body);color:var(--muted);text-transform:none;margin-left:8px}
+.mob{margin:0;font-size:14px;max-width:95ch;color:var(--muted)}
+table.wk{table-layout:fixed;min-width:620px}
+.wk thead th:first-child{width:50px}
+.wk td[colspan]{background:var(--paper)}
+ul.rules{grid-template-columns:1fr}
+.wk b{display:inline;width:auto}
+.chart{position:relative}
+.hit{fill:transparent;cursor:pointer}
+.hit:focus{outline:none}
+.bar.on{filter:brightness(1.15)}
+.hit:focus-visible{stroke:var(--steel);stroke-width:2}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);border-radius:6px;padding:8px 10px;font-size:13px;line-height:1.45;min-width:170px;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:5;font-variant-numeric:tabular-nums}
+.tip b{display:block;font:600 15px var(--display);text-transform:uppercase;letter-spacing:.02em}
+.tip .tl{opacity:.75;font-size:12px;margin-bottom:4px}
+.tip dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:1px 10px}
+.tip dt{opacity:.75}.tip dd{margin:0;font-weight:600;text-align:right}
+.sess{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.scard{border:1px solid var(--line);border-top:4px solid var(--ochre);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;background:var(--paper)}
+.scard header{display:flex;gap:10px;align-items:center}
+.scard .sl{font:700 40px/1 var(--display);color:var(--ochre);min-width:28px}
+.scard header b{display:block;font:600 20px var(--display);text-transform:uppercase}
+.scard header span{font-size:13px;color:var(--muted)}
+.blk h5{margin:0 0 4px;font:600 12px var(--body);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.blk ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
+.blk li{display:flex;flex-wrap:wrap;gap:2px 8px;align-items:baseline}
+.blk em{font-style:normal;font:700 12px var(--body);color:var(--ochre);min-width:20px}
+.blk i{font-style:normal;color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right}
+.why{margin:auto 0 0;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.grules{margin:0;padding-left:20px;display:grid;gap:6px;font-size:14px;max-width:95ch}
+.prog td:first-child{font-weight:600}
+/* strength sessions v2 */
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper)}
+.segb{font:inherit;border:0;background:transparent;color:var(--muted);padding:6px 16px;cursor:pointer;display:flex;align-items:baseline;gap:6px;border-left:1px solid var(--line)}
+.segb:first-child{border-left:0}
+.segb b{font:700 20px var(--display);color:inherit}
+.segb span{font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.segb[aria-selected="true"]{background:var(--ochre);color:var(--paper)}
+.sc{display:grid;gap:4px}
+.sc[hidden]{display:none}
+.sch{display:flex;align-items:center;gap:12px;padding-bottom:8px;border-bottom:2px solid var(--ochre)}
+.sch .sl{font:700 44px/1 var(--display);color:var(--ochre)}
+.sch b{display:block;font:600 22px var(--display);text-transform:uppercase}
+.sch span{font-size:13px;color:var(--muted)}
+.rows{display:grid}
+.blk2{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bl b{display:block;font:600 13px var(--body);text-transform:uppercase;letter-spacing:.04em}
+.bl span{font-size:12.5px;color:var(--muted)}
+.exs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.blk2.pair .exs{border-left:3px solid var(--ochre);padding-left:12px}
+.exs li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline}
+.exs li:not(:has(em)){grid-template-columns:1fr auto}
+.exs em{font:700 12px var(--body);font-style:normal;color:var(--ochre);width:14px}
+.en span{font-weight:600;font-size:14.5px}
+.en small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
+.ed{font-variant-numeric:tabular-nums;font-weight:600;font-size:14px;white-space:nowrap;text-align:right}
+.sc .why{border-top:0;margin-top:6px;padding-top:0}
+@media (max-width:560px){.blk2{grid-template-columns:1fr;gap:6px}.ed{white-space:normal}}
+/* rest days: same card as other days, quieter */
+.day.rest{background:var(--card);border:1px solid var(--line);border-top:3px solid #a9b1ac}
+.day.rest .dt{color:var(--muted)}
+.smeta{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.dur{font:600 14px var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.chip.str.opt{background:transparent;color:var(--ochre);border:1px solid var(--ochre)}
+/* overview: today + this week */
+.today-wrap{display:grid;gap:12px}
+.today-card{border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-top-width:4px}
+.today-card .tl-label{font:600 12px var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--moss)}
+.today-card.race .tl-label{color:var(--race-ink)}
+.today-card .dh{font-size:13px}
+.today-card .dt{font:600 26px/1.1 var(--display);text-transform:uppercase}
+.today-card .dd{font-size:14px;max-width:75ch}
+.today-card .chips{margin-top:4px}
+.cw-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.jump-link{color:var(--moss);font-weight:600;text-decoration:none;font-size:14px}
+.jump-link:hover{text-decoration:underline}
+.nextwk summary{cursor:pointer;font:600 18px var(--display);text-transform:uppercase;color:var(--muted);padding:6px 0}
+.nextwk[open] summary{margin-bottom:8px}
+.nextwk .week{opacity:.92}
+.today-card[hidden],.today-wrap[hidden]{display:none}
+.wrap,.view,.panel,.today-wrap{grid-template-columns:minmax(0,1fr)}
+.tabs{overflow-x:auto}
+.tabs a{white-space:nowrap}
+@media (max-width:480px){.tabs a{font-size:16px;padding:6px 8px}}
+/* tabs: no scrollbar */
+.tabs{border-bottom:0;box-shadow:inset 0 -2px 0 var(--line);overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{margin-bottom:0}
+/* lighter page background */
+:root{--paper:#fbfcfa}
+/* always light: override the dark-mode palettes */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#fbfcfa; --card:#ffffff; --ink:#18221f; --muted:#5c6763; --line:#d9ddd7;
+  --moss:#2f6a4a; --rust:#c2482a; --steel:#2f5d86; --ochre:#b07d16;
+  --base:#7d9a6d; --speed:#c2482a; --trail:#2f6a4a;
+  --easy-bg:#e8f0e7; --q-bg:#f8e3dc; --long-bg:#d6e6db; --bike-bg:#e3ebf3; --bikeq-bg:#d4e0ee; --rest-bg:#eef0ee; --race-bg:#18221f; --race-ink:#f4f5f2;
+  color-scheme:light;}}
+:root[data-theme="dark"]{
+  --paper:#fbfcfa; --card:#ffffff; --ink:#18221f; --muted:#5c6763; --line:#d9ddd7;
+  --moss:#2f6a4a; --rust:#c2482a; --steel:#2f5d86; --ochre:#b07d16;
+  --base:#7d9a6d; --speed:#c2482a; --trail:#2f6a4a;
+  --easy-bg:#e8f0e7; --q-bg:#f8e3dc; --long-bg:#d6e6db; --bike-bg:#e3ebf3; --bikeq-bg:#d4e0ee; --rest-bg:#eef0ee; --race-bg:#18221f; --race-ink:#f4f5f2;
+  color-scheme:light;}
+/* softer page background */
+:root{--paper:#eceeea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#eceeea}}
+:root[data-theme="dark"]{--paper:#eceeea}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Draft v4 · 30 weeks · 9 Nov 2026 → 5 Jun 2027</div>
+  <h1>Road to Godefroy 75</h1>
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <a href="#plan" role="tab" id="tab-plan" aria-controls="view-plan">Overview</a>
+    <a href="#weeks" role="tab" id="tab-weeks" aria-controls="view-weeks">All weeks</a>
+    <a href="#strength" role="tab" id="tab-strength" aria-controls="view-strength">Strength</a>
+  </nav>
+</header>
+
+<!-- ================= PLAN ================= -->
+<div id="view-plan" class="view" role="tabpanel" aria-labelledby="tab-plan">
+  <section class="today-wrap" id="now" aria-label="Today and this week">
+    <div class="today-card" id="today-card"></div>
+    <div class="cw-head"><h3 id="cw-title">This week</h3><a href="#weeks" class="jump-link" id="cw-all">All weeks →</a></div>
+    <div id="cw-slot"></div>
+    <details class="nextwk"><summary id="nw-title">Next week</summary><div id="nw-slot"></div></details>
+  </section>
+  <ol class="milestones">
+    <li><b>28 – 31 Dec</b><span>Ardennes trail camp</span></li>
+    <li><b>Dec – Feb</b><span>Indoor FTP test on a bad-weather Saturday</span></li>
+    <li class="race"><b>Sun 14 Mar</b><span>Dendermonde Loopt 16k · sub 1:10</span></li>
+    <li><b>Sat 17 Apr</b><span>Flemish Ardennes 28 km</span></li>
+    <li><b>Sat 8 May</b><span>Bouillon recon 33–38 km</span></li>
+    <li><b>Sat 15 May</b><span>Race simulation</span></li>
+    <li class="race"><b>Sat 5 Jun</b><span>Godefroy 75 · 2,532 m D+ · 06:00</span></li>
+  </ol>
+
+
+  <section class="panel">
+    <div class="panel-h"><h3>Weekly load</h3>
+      <div class="legend"><span class="lg base">Base run km</span><span class="lg speed">16k block</span><span class="lg trail">Trail block</span><span class="lg bikeL">Bike hours (×10)</span></div></div>
+    <div class="chart"><svg viewBox="0 0 900 230" role="img" aria-label="Weekly running km and bike hours across 30 weeks">
+<line x1="34" x2="890" y1="196.0" y2="196.0" class="grid"/><text x="28" y="200.0" class="ax" text-anchor="end">0</text>
+<line x1="34" x2="890" y1="155.6" y2="155.6" class="grid"/><text x="28" y="159.6" class="ax" text-anchor="end">20</text>
+<line x1="34" x2="890" y1="115.1" y2="115.1" class="grid"/><text x="28" y="119.1" class="ax" text-anchor="end">40</text>
+<line x1="34" x2="890" y1="74.7" y2="74.7" class="grid"/><text x="28" y="78.7" class="ax" text-anchor="end">60</text>
+<line x1="34" x2="890" y1="34.2" y2="34.2" class="grid"/><text x="28" y="38.2" class="ax" text-anchor="end">80</text>
+<rect x="36.0" y="131.3" width="24.5" height="64.7" class="bar base" data-w="1"/>
+<text x="48.3" y="212" class="ax" text-anchor="middle">1</text>
+<rect x="64.5" y="123.2" width="24.5" height="72.8" class="bar base" data-w="2"/>
+<rect x="93.1" y="115.1" width="24.5" height="80.9" class="bar base" data-w="3"/>
+<text x="105.3" y="212" class="ax" text-anchor="middle">3</text>
+<rect x="121.6" y="135.3" width="24.5" height="60.7" class="bar base" data-w="4"/>
+<rect x="150.1" y="105.0" width="24.5" height="91.0" class="bar base" data-w="5"/>
+<text x="162.4" y="212" class="ax" text-anchor="middle">5</text>
+<rect x="178.7" y="98.9" width="24.5" height="97.1" class="bar base" data-w="6"/>
+<rect x="207.2" y="127.2" width="24.5" height="68.8" class="bar base" data-w="7"/>
+<text x="219.5" y="212" class="ax" text-anchor="middle">7</text>
+<rect x="235.7" y="92.9" width="24.5" height="103.1" class="bar base" data-w="8"/>
+<rect x="264.3" y="103.0" width="24.5" height="93.0" class="bar base" data-w="9"/>
+<text x="276.5" y="212" class="ax" text-anchor="middle">9</text>
+<rect x="292.8" y="98.9" width="24.5" height="97.1" class="bar speed" data-w="10"/>
+<rect x="321.3" y="94.9" width="24.5" height="101.1" class="bar speed" data-w="11"/>
+<text x="333.6" y="212" class="ax" text-anchor="middle">11</text>
+<rect x="349.9" y="90.8" width="24.5" height="105.2" class="bar speed" data-w="12"/>
+<rect x="378.4" y="127.2" width="24.5" height="68.8" class="bar speed" data-w="13"/>
+<text x="390.7" y="212" class="ax" text-anchor="middle">13</text>
+<rect x="406.9" y="94.9" width="24.5" height="101.1" class="bar speed" data-w="14"/>
+<rect x="435.5" y="88.8" width="24.5" height="107.2" class="bar speed" data-w="15"/>
+<text x="447.7" y="212" class="ax" text-anchor="middle">15</text>
+<rect x="464.0" y="82.8" width="24.5" height="113.2" class="bar speed" data-w="16"/>
+<rect x="492.5" y="103.0" width="24.5" height="93.0" class="bar speed" data-w="17"/>
+<text x="504.8" y="212" class="ax" text-anchor="middle">17</text>
+<rect x="521.1" y="113.1" width="24.5" height="82.9" class="bar speed" data-w="18"/>
+<text x="533.3" y="107.1" class="flag" text-anchor="middle">★</text>
+<rect x="549.6" y="135.3" width="24.5" height="60.7" class="bar trail" data-w="19"/>
+<text x="561.9" y="212" class="ax" text-anchor="middle">19</text>
+<rect x="578.1" y="90.8" width="24.5" height="105.2" class="bar trail" data-w="20"/>
+<rect x="606.7" y="58.5" width="24.5" height="137.5" class="bar trail" data-w="21"/>
+<text x="618.9" y="212" class="ax" text-anchor="middle">21</text>
+<rect x="635.2" y="66.6" width="24.5" height="129.4" class="bar trail" data-w="22"/>
+<rect x="663.7" y="50.4" width="24.5" height="145.6" class="bar trail" data-w="23"/>
+<text x="676.0" y="212" class="ax" text-anchor="middle">23</text>
+<rect x="692.3" y="42.3" width="24.5" height="153.7" class="bar trail" data-w="24"/>
+<rect x="720.8" y="56.5" width="24.5" height="139.5" class="bar trail" data-w="25"/>
+<text x="733.1" y="212" class="ax" text-anchor="middle">25</text>
+<rect x="749.3" y="28.2" width="24.5" height="167.8" class="bar trail" data-w="26"/>
+<rect x="777.9" y="82.8" width="24.5" height="113.2" class="bar trail" data-w="27"/>
+<text x="790.1" y="212" class="ax" text-anchor="middle">27</text>
+<rect x="806.4" y="56.5" width="24.5" height="139.5" class="bar trail" data-w="28"/>
+<rect x="834.9" y="78.7" width="24.5" height="117.3" class="bar trail" data-w="29"/>
+<text x="847.2" y="212" class="ax" text-anchor="middle">29</text>
+<rect x="863.5" y="139.4" width="24.5" height="56.6" class="bar trail" data-w="30"/>
+<text x="875.7" y="133.4" class="flag" text-anchor="middle">★</text>
+<text x="875.7" y="212" class="ax" text-anchor="middle">30</text>
+<polyline class="bikeline" points="48.3,125.2 76.8,125.2 105.3,120.2 133.9,130.3 162.4,120.2 190.9,106.7 219.5,135.3 248.0,150.5 276.5,120.2 305.1,130.3 333.6,125.2 362.1,125.2 390.7,132.0 419.2,125.2 447.7,121.9 476.3,130.3 504.8,137.0 533.3,179.1 561.9,125.2 590.4,111.7 618.9,162.3 647.5,162.3 676.0,162.3 704.5,162.3 733.1,162.3 761.6,162.3 790.1,125.2 818.7,165.7 847.2,172.4 875.7,196.0"/>
+<circle cx="48.3" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="76.8" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="105.3" cy="120.2" r="2.4" class="bikedot"/>
+<circle cx="133.9" cy="130.3" r="2.4" class="bikedot"/>
+<circle cx="162.4" cy="120.2" r="2.4" class="bikedot"/>
+<circle cx="190.9" cy="106.7" r="2.4" class="bikedot"/>
+<circle cx="219.5" cy="135.3" r="2.4" class="bikedot"/>
+<circle cx="248.0" cy="150.5" r="2.4" class="bikedot"/>
+<circle cx="276.5" cy="120.2" r="2.4" class="bikedot"/>
+<circle cx="305.1" cy="130.3" r="2.4" class="bikedot"/>
+<circle cx="333.6" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="362.1" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="390.7" cy="132.0" r="2.4" class="bikedot"/>
+<circle cx="419.2" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="447.7" cy="121.9" r="2.4" class="bikedot"/>
+<circle cx="476.3" cy="130.3" r="2.4" class="bikedot"/>
+<circle cx="504.8" cy="137.0" r="2.4" class="bikedot"/>
+<circle cx="533.3" cy="179.1" r="2.4" class="bikedot"/>
+<circle cx="561.9" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="590.4" cy="111.7" r="2.4" class="bikedot"/>
+<circle cx="618.9" cy="162.3" r="2.4" class="bikedot"/>
+<circle cx="647.5" cy="162.3" r="2.4" class="bikedot"/>
+<circle cx="676.0" cy="162.3" r="2.4" class="bikedot"/>
+<circle cx="704.5" cy="162.3" r="2.4" class="bikedot"/>
+<circle cx="733.1" cy="162.3" r="2.4" class="bikedot"/>
+<circle cx="761.6" cy="162.3" r="2.4" class="bikedot"/>
+<circle cx="790.1" cy="125.2" r="2.4" class="bikedot"/>
+<circle cx="818.7" cy="165.7" r="2.4" class="bikedot"/>
+<circle cx="847.2" cy="172.4" r="2.4" class="bikedot"/>
+<circle cx="875.7" cy="196.0" r="2.4" class="bikedot"/>
+<rect class="hit" x="34.0" y="14" width="28.5" height="182.0" tabindex="0" data-w="1" data-h="W1 · 9 Nov – 15 Nov" data-l="Intro" data-run="32 km" data-long="15 km" data-bike="3.5 h" data-vert="200–300 m"/>
+<rect class="hit" x="62.5" y="14" width="28.5" height="182.0" tabindex="0" data-w="2" data-h="W2 · 16 Nov – 22 Nov" data-l="Build" data-run="36 km" data-long="17 km" data-bike="3.5 h" data-vert="300–400 m"/>
+<rect class="hit" x="91.1" y="14" width="28.5" height="182.0" tabindex="0" data-w="3" data-h="W3 · 23 Nov – 29 Nov" data-l="Build" data-run="40 km" data-long="19 km" data-bike="3.8 h" data-vert="300–400 m"/>
+<rect class="hit" x="119.6" y="14" width="28.5" height="182.0" tabindex="0" data-w="4" data-h="W4 · 30 Nov – 6 Dec" data-l="Deload" data-run="30 km" data-long="14 km" data-bike="3.2 h" data-vert="200 m"/>
+<rect class="hit" x="148.1" y="14" width="28.5" height="182.0" tabindex="0" data-w="5" data-h="W5 · 7 Dec – 13 Dec" data-l="Build" data-run="45 km" data-long="18 km" data-bike="3.8 h" data-vert="400–500 m"/>
+<rect class="hit" x="176.7" y="14" width="28.5" height="182.0" tabindex="0" data-w="6" data-h="W6 · 14 Dec – 20 Dec" data-l="Build" data-run="48 km" data-long="20 km" data-bike="4.4 h" data-vert="500–600 m"/>
+<rect class="hit" x="205.2" y="14" width="28.5" height="182.0" tabindex="0" data-w="7" data-h="W7 · 21 Dec – 27 Dec" data-l="Deload" data-run="34 km" data-long="16 km" data-bike="3.0 h" data-vert="200 m"/>
+<rect class="hit" x="233.7" y="14" width="28.5" height="182.0" tabindex="0" data-w="8" data-h="W8 · 28 Dec – 3 Jan" data-l="Ardennes camp" data-run="51 km" data-long="19 km" data-bike="2.2 h" data-vert="1,000–1,400 m"/>
+<rect class="hit" x="262.3" y="14" width="28.5" height="182.0" tabindex="0" data-w="9" data-h="W9 · 4 Jan – 10 Jan" data-l="Build" data-run="46 km" data-long="18 km" data-bike="3.8 h" data-vert="400–500 m"/>
+<rect class="hit" x="290.8" y="14" width="28.5" height="182.0" tabindex="0" data-w="10" data-h="W10 · 11 Jan – 17 Jan" data-l="Build" data-run="48 km" data-long="20 km" data-bike="3.2 h" data-vert="300 m"/>
+<rect class="hit" x="319.3" y="14" width="28.5" height="182.0" tabindex="0" data-w="11" data-h="W11 · 18 Jan – 24 Jan" data-l="Build" data-run="50 km" data-long="21 km" data-bike="3.5 h" data-vert="300 m"/>
+<rect class="hit" x="347.9" y="14" width="28.5" height="182.0" tabindex="0" data-w="12" data-h="W12 · 25 Jan – 31 Jan" data-l="Build" data-run="52 km" data-long="22 km" data-bike="3.5 h" data-vert="400 m"/>
+<rect class="hit" x="376.4" y="14" width="28.5" height="182.0" tabindex="0" data-w="13" data-h="W13 · 1 Feb – 7 Feb" data-l="Deload" data-run="34 km" data-long="16 km" data-bike="3.2 h" data-vert="200 m"/>
+<rect class="hit" x="404.9" y="14" width="28.5" height="182.0" tabindex="0" data-w="14" data-h="W14 · 8 Feb – 14 Feb" data-l="Build" data-run="50 km" data-long="20 km" data-bike="3.5 h" data-vert="300 m"/>
+<rect class="hit" x="433.5" y="14" width="28.5" height="182.0" tabindex="0" data-w="15" data-h="W15 · 15 Feb – 21 Feb" data-l="Build" data-run="53 km" data-long="22 km" data-bike="3.7 h" data-vert="300 m"/>
+<rect class="hit" x="462.0" y="14" width="28.5" height="182.0" tabindex="0" data-w="16" data-h="W16 · 22 Feb – 28 Feb" data-l="Build" data-run="56 km" data-long="24 km" data-bike="3.2 h" data-vert="300 m"/>
+<rect class="hit" x="490.5" y="14" width="28.5" height="182.0" tabindex="0" data-w="17" data-h="W17 · 1 Mar – 7 Mar" data-l="Sharpen" data-run="46 km" data-long="18 km" data-bike="2.9 h" data-vert="200 m"/>
+<rect class="hit" x="519.1" y="14" width="28.5" height="182.0" tabindex="0" data-w="18" data-h="W18 · 8 Mar – 14 Mar" data-l="Race week" data-run="41 km incl. race" data-long="19 km" data-bike="0.8 h" data-vert="— m"/>
+<rect class="hit" x="547.6" y="14" width="28.5" height="182.0" tabindex="0" data-w="19" data-h="W19 · 15 Mar – 21 Mar" data-l="Recovery" data-run="30 km" data-long="16 km" data-bike="3.5 h" data-vert="200 m"/>
+<rect class="hit" x="576.1" y="14" width="28.5" height="182.0" tabindex="0" data-w="20" data-h="W20 · 22 Mar – 28 Mar" data-l="SWAP 2" data-run="52 km" data-long="22 km" data-bike="4.2 h" data-vert="600 m"/>
+<rect class="hit" x="604.7" y="14" width="28.5" height="182.0" tabindex="0" data-w="21" data-h="W21 · 29 Mar – 4 Apr" data-l="SWAP 3" data-run="68 km" data-long="24 km" data-bike="1.7 h" data-vert="800 m"/>
+<rect class="hit" x="633.2" y="14" width="28.5" height="182.0" tabindex="0" data-w="22" data-h="W22 · 5 Apr – 11 Apr" data-l="SWAP 4" data-run="64 km" data-long="21 km" data-bike="1.7 h" data-vert="800 m"/>
+<rect class="hit" x="661.7" y="14" width="28.5" height="182.0" tabindex="0" data-w="23" data-h="W23 · 12 Apr – 18 Apr" data-l="SWAP 5" data-run="72 km" data-long="28 km" data-bike="1.7 h" data-vert="1,000–1,200 m"/>
+<rect class="hit" x="690.3" y="14" width="28.5" height="182.0" tabindex="0" data-w="24" data-h="W24 · 19 Apr – 25 Apr" data-l="SWAP 6" data-run="76 km" data-long="28 km" data-bike="1.7 h" data-vert="1,300 m"/>
+<rect class="hit" x="718.8" y="14" width="28.5" height="182.0" tabindex="0" data-w="25" data-h="W25 · 26 Apr – 2 May" data-l="SWAP 7" data-run="69 km" data-long="24 km" data-bike="1.7 h" data-vert="1,000 m"/>
+<rect class="hit" x="747.3" y="14" width="28.5" height="182.0" tabindex="0" data-w="26" data-h="W26 · 3 May – 9 May" data-l="SWAP 8 · Peak" data-run="83 km" data-long="35 km" data-bike="1.7 h" data-vert="1,600–1,800 m"/>
+<rect class="hit" x="775.9" y="14" width="28.5" height="182.0" tabindex="0" data-w="27" data-h="W27 · 10 May – 16 May" data-l="SWAP 9 · Simulation" data-run="56 km" data-long="24 km" data-bike="3.5 h" data-vert="1,000 m"/>
+<rect class="hit" x="804.4" y="14" width="28.5" height="182.0" tabindex="0" data-w="28" data-h="W28 · 17 May – 23 May" data-l="SWAP 10" data-run="69 km" data-long="27 km" data-bike="1.5 h" data-vert="1,200 m"/>
+<rect class="hit" x="832.9" y="14" width="28.5" height="182.0" tabindex="0" data-w="29" data-h="W29 · 24 May – 30 May" data-l="SWAP 11 · Taper" data-run="58 km" data-long="20 km" data-bike="1.2 h" data-vert="500 m"/>
+<rect class="hit" x="861.5" y="14" width="28.5" height="182.0" tabindex="0" data-w="30" data-h="W30 · 31 May – 6 Jun" data-l="Race week" data-run="race week" data-long="75 km" data-bike="0.0 h" data-vert="— m"/>
+<text x="34" y="226" class="ax">week</text></svg><div class="tip" id="tip" role="status" hidden></div></div>
+  </section>
+
+  <section class="panel" id="rules">
+    <h3>How a week works</h3>
+    <div class="tmpl">
+      <div><h4>Base · W1–9</h4><ol><li><b>Mon</b> Rest + Strength A</li><li><b>Tue</b> Run quality</li><li><b>Wed</b> Easy ride + Strength B</li><li><b>Thu</b> Easy run + strides</li><li><b>Fri</b> Rest → easy run from W5 · Strength C</li><li><b>Sat</b> Bike quality</li><li><b>Sun</b> Long run</li></ol></div>
+      <div><h4>16k block · W10–18</h4><ol><li><b>Mon</b> Rest + Strength A</li><li><b>Tue</b> Run quality</li><li><b>Wed</b> Easy ride + Strength B</li><li><b>Thu</b> Easy run + hill strides</li><li><b>Fri</b> Easy run + Strength C</li><li><b>Sat</b> Endurance ride or bike quality</li><li><b>Sun</b> Long run, sometimes with race pace</li></ol></div>
+      <div><h4>Trail block · W19–30</h4><ol><li><b>Mon</b> Rest + Strength A</li><li><b>Tue</b> Run quality</li><li><b>Wed</b> Easy ride 75–120′ + Strength B</li><li><b>Thu</b> Hill session or easy run</li><li><b>Fri</b> Easy 6 km + Strength C</li><li><b>Sat</b> Long run</li><li><b>Sun</b> Second long run or long easy ride</li></ol></div>
+    </div>
+    <h3>Rules</h3>
+    <ul class="rules">
+      <li><b>Two hard sessions a week, max</b>, counting both sports. Everything else is easy: runs below 143 bpm, rides below 75% FTP.</li>
+      <li><b>Swaps.</b> Easy run → easy ride at 1.5–2× the time. Sunday's second run → 2–3 h ride (except W24). Quality run → bike version: freely in the base, after that at most once every three weeks.</li>
+      <li><b>★ sessions don't get swapped.</b> A missed session is dropped, not stacked.</li>
+      <li><b>Morning HRV check.</b> <span class="dot g"></span>Balanced: as planned. <span class="dot a"></span>One low night or RHR +3: lower end of the reps. <span class="dot r"></span>LOW status, RHR +5 or sleep under 70: quality becomes easy. The day after a night out is always easy.</li>
+      <li><b>Fuel</b> 60–90 g carbs/h on runs over 90′ and rides over 2 h. From W25, rehearse race fuelling at 90–100 g/h.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="zones">
+    <div class="panel-h"><h3>Zones &amp; paces</h3><span class="now-vals">Now: <b>LTHR 160 bpm</b> · <b>threshold 4:24/km</b> · FTP <b>~250 W</b> (provisional)</span></div>
+    <div class="zgrid">
+      <div>
+        <h4>Running</h4>
+        <table class="z"><thead><tr><th>Zone</th><th>% LTHR</th><th>HR now</th><th>Pace now</th><th>Use</th></tr></thead><tbody>
+          <tr><td><span class="zd z1"></span>Z1</td><td>&lt;81%</td><td>&lt;130</td><td>6:00–6:40</td><td>Easy</td></tr>
+          <tr><td><span class="zd z2"></span>Z2</td><td>81–89%</td><td>130–142</td><td>5:15–6:00</td><td>Aerobic</td></tr>
+          <tr><td><span class="zd z3"></span>Z3</td><td>89–95%</td><td>143–151</td><td>4:45–5:10</td><td>Steady, 50k effort</td></tr>
+          <tr><td><span class="zd z4"></span>Z4</td><td>95–101%</td><td>152–162</td><td>4:18–4:30</td><td>Threshold, 1-hour effort</td></tr>
+          <tr><td><span class="zd z5"></span>Z5</td><td>&gt;101%</td><td>&gt;162</td><td>&lt;4:12</td><td>10k effort and faster</td></tr>
+        </tbody></table>
+        <p class="note">Efforts now: 10k ≈ 4:10 · 5k ≈ 4:00 · 3k ≈ 3:48. 16k race pace stays at 4:20–4:22, because it comes from the goal, not from your threshold.</p>
+      </div>
+      <div>
+        <h4>Bike</h4>
+        <table class="z"><thead><tr><th>Zone</th><th>% FTP</th><th>Watts now</th></tr></thead><tbody>
+          <tr><td><span class="zd z1"></span>Z1 recovery</td><td>&lt;55%</td><td>&lt;138</td></tr>
+          <tr><td><span class="zd z2"></span>Z2 endurance</td><td>56–75%</td><td>140–188</td></tr>
+          <tr><td><span class="zd z3"></span>Z3 tempo</td><td>76–87%</td><td>190–218</td></tr>
+          <tr><td><span class="zd z3b"></span>Sweet spot</td><td>88–93%</td><td>220–233</td></tr>
+          <tr><td><span class="zd z4"></span>Z4 threshold</td><td>94–105%</td><td>235–263</td></tr>
+          <tr><td><span class="zd z5"></span>Z5 VO2</td><td>106–120%</td><td>265–300</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- ================= ALL WEEKS ================= -->
+<div id="view-weeks" class="view" role="tabpanel" aria-labelledby="tab-weeks" hidden>
+  <nav class="jump" aria-label="Phases">
+    <a href="#base">Base</a><a href="#speed">16k block</a><a href="#trail">Trail block</a><button type="button" id="today-btn">Go to this week</button>
+  </nav>
+  <main id="weeklist">
+  <h2 class="phase-h base" id="base"><span>Base</span><small>W1–W9 · aerobic engine, strength habit, hills</small></h2>
+<article class="week base" id="w1" data-start="2026-11-09" data-end="2026-11-15">
+<header><div class="wn">W1</div><div class="wmeta"><div class="wdates">9 Nov – 15 Nov</div><span class="tag t-intro">Intro</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>32 km</dd></div><div><dt>Longest</dt><dd>15 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>200–300 m</dd></div></dl></header>
+<p class="focus">Settle in. This week is all easy.</p>
+<ol class="days"><li class="day rest" data-date="2026-11-09">
+<div class="dh"><b>Mon</b> <span>9/11</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day easy" data-date="2026-11-10">
+<div class="dh"><b>Tue</b> <span>10/11</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1. Finish with 6×20 s hill strides on your hill, jog down.</div></li><li class="day bike" data-date="2026-11-11">
+<div class="dh"><b>Wed</b> <span>11/11</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-11-12">
+<div class="dh"><b>Thu</b> <span>12/11</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Z1 + 4×20 s flat strides.</div></li><li class="day rest" data-date="2026-11-13">
+<div class="dh"><b>Fri</b> <span>13/11</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">Or 30′ very easy spin.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2026-11-14">
+<div class="dh"><b>Sat</b> <span>14/11</span><em>Easy ride</em></div>
+<div class="dt">Endurance ride 2 h</div><div class="dd">Z2 + 6×20 s seated sprints. Intro week, so nothing structured yet.</div></li><li class="day long" data-date="2026-11-15">
+<div class="dh"><b>Sun</b> <span>15/11</span><em>Long run</em></div>
+<div class="dt">Long run 15 km</div><div class="dd">Easy, trails or gravel if you can.</div></li></ol></article>
+<article class="week base" id="w2" data-start="2026-11-16" data-end="2026-11-22">
+<header><div class="wn">W2</div><div class="wmeta"><div class="wdates">16 Nov – 22 Nov</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>36 km</dd></div><div><dt>Longest</dt><dd>17 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>300–400 m</dd></div></dl></header>
+<p class="focus">First hill session: power without much impact.</p>
+<ol class="days"><li class="day rest" data-date="2026-11-16">
+<div class="dh"><b>Mon</b> <span>16/11</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2026-11-17">
+<div class="dh"><b>Tue</b> <span>17/11</span><em>Quality run</em></div>
+<div class="dt">Hill session</div><div class="dd">2 km warm-up, 6×90 s uphill at 5k effort, then 6×45 s at 3k effort, jog down after each, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2026-11-18">
+<div class="dh"><b>Wed</b> <span>18/11</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90′</div><div class="dd">Z1–Z2, power under 75% FTP.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-11-19">
+<div class="dh"><b>Thu</b> <span>19/11</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 5×20 s strides.</div></li><li class="day rest" data-date="2026-11-20">
+<div class="dh"><b>Fri</b> <span>20/11</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">Or 30′ very easy spin.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2026-11-21">
+<div class="dh"><b>Sat</b> <span>21/11</span><em>Bike quality</em></div>
+<div class="dt">Ride 2 h · VO2</div><div class="dd">Includes 3 × (4×1′ hard / 1′ easy), 3′ between sets. Hard = 110–120% FTP.</div></li><li class="day long" data-date="2026-11-22">
+<div class="dh"><b>Sun</b> <span>22/11</span><em>Long run</em></div>
+<div class="dt">Long run 17 km</div><div class="dd">Easy over rolling terrain.</div></li></ol></article>
+<article class="week base" id="w3" data-start="2026-11-23" data-end="2026-11-29">
+<header><div class="wn">W3</div><div class="wmeta"><div class="wdates">23 Nov – 29 Nov</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>40 km</dd></div><div><dt>Longest</dt><dd>19 km</dd></div><div><dt>Bike</dt><dd>3.8 h</dd></div><div><dt>D+</dt><dd>300–400 m</dd></div></dl></header>
+<p class="focus">Threshold comes in. Stay controlled: smooth, not maximal.</p>
+<ol class="days"><li class="day rest" data-date="2026-11-23">
+<div class="dh"><b>Mon</b> <span>23/11</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2026-11-24">
+<div class="dh"><b>Tue</b> <span>24/11</span><em>Quality run</em></div>
+<div class="dt">Threshold 5×5′</div><div class="dd">3 km warm-up, 5×5′ at threshold (HR 152–158) with 2′ jog, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2026-11-25">
+<div class="dh"><b>Wed</b> <span>25/11</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-11-26">
+<div class="dh"><b>Thu</b> <span>26/11</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day rest" data-date="2026-11-27">
+<div class="dh"><b>Fri</b> <span>27/11</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2026-11-28">
+<div class="dh"><b>Sat</b> <span>28/11</span><em>Bike quality</em></div>
+<div class="dt">Ride 2–2.5 h · sweet spot</div><div class="dd">Includes 3×10′ at 88–93% FTP, 5′ easy between.</div></li><li class="day long" data-date="2026-11-29">
+<div class="dh"><b>Sun</b> <span>29/11</span><em>Long run</em></div>
+<div class="dt">Long run 19 km</div><div class="dd">Easy. Last 3 km steady (Z3) only if you feel great.</div></li></ol></article>
+<article class="week base" id="w4" data-start="2026-11-30" data-end="2026-12-06">
+<header><div class="wn">W4</div><div class="wmeta"><div class="wdates">30 Nov – 6 Dec</div><span class="tag t-deload">Deload</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>30 km</dd></div><div><dt>Longest</dt><dd>14 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></header>
+<p class="focus">Lower load so the first three weeks sink in.</p>
+<ol class="days"><li class="day rest" data-date="2026-11-30">
+<div class="dh"><b>Mon</b> <span>30/11</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day easy" data-date="2026-12-01">
+<div class="dh"><b>Tue</b> <span>1/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 8×30 s hill strides.</div></li><li class="day bike" data-date="2026-12-02">
+<div class="dh"><b>Wed</b> <span>2/12</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75′</div><div class="dd">Z1.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-12-03">
+<div class="dh"><b>Thu</b> <span>3/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div></li><li class="day rest" data-date="2026-12-04">
+<div class="dh"><b>Fri</b> <span>4/12</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2026-12-05">
+<div class="dh"><b>Sat</b> <span>5/12</span><em>Easy ride</em></div>
+<div class="dt">Free ride 2 h</div><div class="dd">No structure. Optional 6×20 s sprints.</div></li><li class="day long" data-date="2026-12-06">
+<div class="dh"><b>Sun</b> <span>6/12</span><em>Long run</em></div>
+<div class="dt">Long run 14 km</div><div class="dd">Easy.</div></li></ol></article>
+<article class="week base" id="w5" data-start="2026-12-07" data-end="2026-12-13">
+<header><div class="wn">W5</div><div class="wmeta"><div class="wdates">7 Dec – 13 Dec</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>45 km</dd></div><div><dt>Longest</dt><dd>18 km</dd></div><div><dt>Bike</dt><dd>3.8 h</dd></div><div><dt>D+</dt><dd>400–500 m</dd></div></dl></header>
+<p class="focus">A fourth run comes in on Friday (or swap it for a spin).</p>
+<ol class="days"><li class="day rest" data-date="2026-12-07">
+<div class="dh"><b>Mon</b> <span>7/12</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2026-12-08">
+<div class="dh"><b>Tue</b> <span>8/12</span><em>Quality run</em></div>
+<div class="dt">16×1′ fast / 1′ easy</div><div class="dd">2–3 km warm-up, 16×1′ at 5k effort / 1′ easy, 2 km steady, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2026-12-09">
+<div class="dh"><b>Wed</b> <span>9/12</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-12-10">
+<div class="dh"><b>Thu</b> <span>10/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2026-12-11">
+<div class="dh"><b>Fri</b> <span>11/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Or 45′ easy spin.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2026-12-12">
+<div class="dh"><b>Sat</b> <span>12/12</span><em>Bike quality</em></div>
+<div class="dt">Ride 2–2.5 h · threshold</div><div class="dd">Includes 4×8′ at 95–100% FTP, 4′ easy between.</div></li><li class="day long" data-date="2026-12-13">
+<div class="dh"><b>Sun</b> <span>13/12</span><em>Long run</em></div>
+<div class="dt">Long run 18 km</div><div class="dd">Easy over hills.</div></li></ol></article>
+<article class="week base" id="w6" data-start="2026-12-14" data-end="2026-12-20">
+<header><div class="wn">W6</div><div class="wmeta"><div class="wdates">14 Dec – 20 Dec</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>48 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>4.4 h</dd></div><div><dt>D+</dt><dd>500–600 m</dd></div></dl></header>
+<p class="focus">Longest week of the base so far. Make Sunday hilly.</p>
+<ol class="days"><li class="day rest" data-date="2026-12-14">
+<div class="dh"><b>Mon</b> <span>14/12</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2026-12-15">
+<div class="dh"><b>Tue</b> <span>15/12</span><em>Quality run</em></div>
+<div class="dt">Threshold 3×10′</div><div class="dd">3 km warm-up, 3×10′ at threshold with 2′ jog, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2026-12-16">
+<div class="dh"><b>Wed</b> <span>16/12</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90–105′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-12-17">
+<div class="dh"><b>Thu</b> <span>17/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2026-12-18">
+<div class="dh"><b>Fri</b> <span>18/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Or 45′ easy spin.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2026-12-19">
+<div class="dh"><b>Sat</b> <span>19/12</span><em>Bike quality</em></div>
+<div class="dt">Ride 2.5–3 h · tempo</div><div class="dd">Includes 3×12′ tempo (76–87% FTP). Climbs welcome.</div></li><li class="day long" data-date="2026-12-20">
+<div class="dh"><b>Sun</b> <span>20/12</span><em>Long run</em></div>
+<div class="dt">Long run 20 km</div><div class="dd">Hilly: Steenberg loops plus your hill.</div></li></ol></article>
+<article class="week base" id="w7" data-start="2026-12-21" data-end="2026-12-27">
+<header><div class="wn">W7</div><div class="wmeta"><div class="wdates">21 Dec – 27 Dec</div><span class="tag t-deload">Deload</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>34 km</dd></div><div><dt>Longest</dt><dd>16 km</dd></div><div><dt>Bike</dt><dd>3.0 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></header>
+<p class="focus">Christmas week. Easy and flexible; move days around freely.</p>
+<ol class="days"><li class="day rest" data-date="2026-12-21">
+<div class="dh"><b>Mon</b> <span>21/12</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day easy" data-date="2026-12-22">
+<div class="dh"><b>Tue</b> <span>22/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">Z1 + 8×20 s strides.</div></li><li class="day bike" data-date="2026-12-23">
+<div class="dh"><b>Wed</b> <span>23/12</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75′</div><div class="dd">Z1.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2026-12-24">
+<div class="dh"><b>Thu</b> <span>24/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Christmas Eve. Z1.</div></li><li class="day rest" data-date="2026-12-25">
+<div class="dh"><b>Fri</b> <span>25/12</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">Christmas Day.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2026-12-26">
+<div class="dh"><b>Sat</b> <span>26/12</span><em>Easy ride</em></div>
+<div class="dt">Free ride 1.5–2 h</div><div class="dd">Easy.</div></li><li class="day long" data-date="2026-12-27">
+<div class="dh"><b>Sun</b> <span>27/12</span><em>Long run</em></div>
+<div class="dt">Long run 16 km</div><div class="dd">Easy.</div></li></ol></article>
+<article class="week base" id="w8" data-start="2026-12-28" data-end="2027-01-03">
+<header><div class="wn">W8</div><div class="wmeta"><div class="wdates">28 Dec – 3 Jan</div><span class="tag t-ardennes">Ardennes camp</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>51 km</dd></div><div><dt>Longest</dt><dd>19 km</dd></div><div><dt>Bike</dt><dd>2.2 h</dd></div><div><dt>D+</dt><dd>1,000–1,400 m</dd></div></dl></header>
+<p class="focus">Trail camp, 28/12–1/1. Real terrain, no pressure: the hills do the work. Hike the steep bits and practise relaxed, quick downhills.</p>
+<ol class="days"><li class="day easy" data-date="2026-12-28">
+<div class="dh"><b>Mon</b> <span>28/12</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">At home in the morning before you leave. If you get the chance after arriving, run it on the trails there instead.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day camp" data-date="2026-12-29">
+<div class="dh"><b>Tue</b> <span>29/12</span><em>Trail</em></div>
+<div class="dt">Hilly trail run 13 km</div><div class="dd">Easy/moderate, no repeats. Explore the area and let the climbs do the work: Z2, drifting into Z3 on the uphills.</div></li><li class="day rest" data-date="2026-12-30">
+<div class="dh"><b>Wed</b> <span>30/12</span><em>Rest</em></div>
+<div class="dt">Rest or hike</div><div class="dd">Or a 1.5–2 h relaxed hike.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day long" data-date="2026-12-31">
+<div class="dh"><b>Thu</b> <span>31/12</span><em>Long run</em></div>
+<div class="dt">Long trail 19 km</div><div class="dd">New Year&#x27;s Eve morning. Easy, power-hike the steep sections, strong downhills. Fuel 60–90 g/h.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day rest" data-date="2027-01-01">
+<div class="dh"><b>Fri</b> <span>1/1</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">New Year&#x27;s Day: travel and party.</div></li><li class="day bike" data-date="2027-01-02">
+<div class="dh"><b>Sat</b> <span>2/1</span><em>Easy ride</em></div>
+<div class="dt">Endurance ride 2–2.5 h</div><div class="dd">Back home. Z2, no structure.</div></li><li class="day easy" data-date="2027-01-03">
+<div class="dh"><b>Sun</b> <span>3/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">Z1. Easy legs after the camp.</div></li></ol></article>
+<article class="week base" id="w9" data-start="2027-01-04" data-end="2027-01-10">
+<header><div class="wn">W9</div><div class="wmeta"><div class="wdates">4 Jan – 10 Jan</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>46 km</dd></div><div><dt>Longest</dt><dd>18 km</dd></div><div><dt>Bike</dt><dd>3.8 h</dd></div><div><dt>D+</dt><dd>400–500 m</dd></div></dl></header>
+<p class="focus">Last base week. Confirm the threshold pace before the 16k block.</p>
+<ol class="days"><li class="day rest" data-date="2027-01-04">
+<div class="dh"><b>Mon</b> <span>4/1</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-01-05">
+<div class="dh"><b>Tue</b> <span>5/1</span><em>Quality run</em></div>
+<div class="dt">Threshold 5×6′</div><div class="dd">2 km warm-up, 5×6′ at threshold with 2′ jog, cool-down. Note your pace at HR 155.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-01-06">
+<div class="dh"><b>Wed</b> <span>6/1</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-01-07">
+<div class="dh"><b>Thu</b> <span>7/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-01-08">
+<div class="dh"><b>Fri</b> <span>8/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Or 45′ easy spin.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2027-01-09">
+<div class="dh"><b>Sat</b> <span>9/1</span><em>Bike quality</em></div>
+<div class="dt">Ride 2–2.5 h · VO2</div><div class="dd">Includes 5×4′ at 110–118% FTP, 4′ easy between.</div></li><li class="day long" data-date="2027-01-10">
+<div class="dh"><b>Sun</b> <span>10/1</span><em>Long run</em></div>
+<div class="dt">Long run 18 km</div><div class="dd">Easy.</div></li></ol></article>
+<h2 class="phase-h speed" id="speed"><span>16k block</span><small>W10–W18 · threshold & speed for Dendermonde</small></h2>
+<article class="week speed" id="w10" data-start="2027-01-11" data-end="2027-01-17">
+<header><div class="wn">W10</div><div class="wmeta"><div class="wdates">11 Jan – 17 Jan</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>48 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></header>
+<p class="focus">Run speed takes priority. The bike gets at most one structured session a week, and only in weeks where Sunday is easy.</p>
+<ol class="days"><li class="day rest" data-date="2027-01-11">
+<div class="dh"><b>Mon</b> <span>11/1</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-01-12">
+<div class="dh"><b>Tue</b> <span>12/1</span><em>Quality run</em></div>
+<div class="dt">6×1 km</div><div class="dd">3 km warm-up, 6×1 km at 10k effort, 2′ jog, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-01-13">
+<div class="dh"><b>Wed</b> <span>13/1</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-01-14">
+<div class="dh"><b>Thu</b> <span>14/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-01-15">
+<div class="dh"><b>Fri</b> <span>15/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2027-01-16">
+<div class="dh"><b>Sat</b> <span>16/1</span><em>Bike quality</em></div>
+<div class="dt">Ride 2 h · sweet spot</div><div class="dd">Includes 3×12′ at 88–93% FTP.</div></li><li class="day long" data-date="2027-01-17">
+<div class="dh"><b>Sun</b> <span>17/1</span><em>Long run</em></div>
+<div class="dt">Long run 20 km</div><div class="dd">Easy.</div></li></ol></article>
+<article class="week speed" id="w11" data-start="2027-01-18" data-end="2027-01-24">
+<header><div class="wn">W11</div><div class="wmeta"><div class="wdates">18 Jan – 24 Jan</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>50 km</dd></div><div><dt>Longest</dt><dd>21 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></header>
+<p class="focus">Threshold plus a steady finish on Sunday. Both are hard days, so Saturday&#x27;s ride stays easy.</p>
+<ol class="days"><li class="day rest" data-date="2027-01-18">
+<div class="dh"><b>Mon</b> <span>18/1</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-01-19">
+<div class="dh"><b>Tue</b> <span>19/1</span><em>Quality run</em></div>
+<div class="dt">Threshold 3×10′</div><div class="dd">3 km warm-up, 3×10′ at threshold, 2′ jog, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-01-20">
+<div class="dh"><b>Wed</b> <span>20/1</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-01-21">
+<div class="dh"><b>Thu</b> <span>21/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-01-22">
+<div class="dh"><b>Fri</b> <span>22/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2027-01-23">
+<div class="dh"><b>Sat</b> <span>23/1</span><em>Easy ride</em></div>
+<div class="dt">Endurance ride 2–2.5 h</div><div class="dd">Z2. Keep it easy.</div></li><li class="day long" data-date="2027-01-24">
+<div class="dh"><b>Sun</b> <span>24/1</span><em>Long run</em></div>
+<div class="dt">Long run 21 km · steady finish</div><div class="dd">17 km easy, last 4 km steady (Z3).</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li></ol></article>
+<article class="week speed" id="w12" data-start="2027-01-25" data-end="2027-01-31">
+<header><div class="wn">W12</div><div class="wmeta"><div class="wdates">25 Jan – 31 Jan</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>52 km</dd></div><div><dt>Longest</dt><dd>22 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>400 m</dd></div></dl></header>
+<p class="focus">Mixed speed on Tuesday, hilly long run on Sunday.</p>
+<ol class="days"><li class="day rest" data-date="2027-01-25">
+<div class="dh"><b>Mon</b> <span>25/1</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-01-26">
+<div class="dh"><b>Tue</b> <span>26/1</span><em>Quality run</em></div>
+<div class="dt">5 × (2′/1′/30″)</div><div class="dd">3 km warm-up, 5 sets of 2′ at 10k effort, 1′ at 5k, 30″ at 3k, with 1′ easy between reps and 2′ between sets, 3 km easy.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-01-27">
+<div class="dh"><b>Wed</b> <span>27/1</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 90′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-01-28">
+<div class="dh"><b>Thu</b> <span>28/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-01-29">
+<div class="dh"><b>Fri</b> <span>29/1</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Z1.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bikeq" data-date="2027-01-30">
+<div class="dh"><b>Sat</b> <span>30/1</span><em>Bike quality</em></div>
+<div class="dt">Ride 2 h · threshold</div><div class="dd">Includes 4×8′ at 95–100% FTP.</div></li><li class="day long" data-date="2027-01-31">
+<div class="dh"><b>Sun</b> <span>31/1</span><em>Long run</em></div>
+<div class="dt">Long run 22 km</div><div class="dd">Easy, hilly (Steenberg).</div></li></ol></article>
+<article class="week speed" id="w13" data-start="2027-02-01" data-end="2027-02-07">
+<header><div class="wn">W13</div><div class="wmeta"><div class="wdates">1 Feb – 7 Feb</div><span class="tag t-deload">Deload</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>34 km</dd></div><div><dt>Longest</dt><dd>16 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></header>
+<p class="focus">Recovery week.</p>
+<ol class="days"><li class="day rest" data-date="2027-02-01">
+<div class="dh"><b>Mon</b> <span>1/2</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day easy" data-date="2027-02-02">
+<div class="dh"><b>Tue</b> <span>2/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">Z1 + 8×30 s hill strides.</div></li><li class="day bike" data-date="2027-02-03">
+<div class="dh"><b>Wed</b> <span>3/2</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 60–75′</div><div class="dd">Z1.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-02-04">
+<div class="dh"><b>Thu</b> <span>4/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Z1.</div></li><li class="day rest" data-date="2027-02-05">
+<div class="dh"><b>Fri</b> <span>5/2</span><em>Rest</em></div>
+<div class="dt">Rest</div></li><li class="day bike" data-date="2027-02-06">
+<div class="dh"><b>Sat</b> <span>6/2</span><em>Easy ride</em></div>
+<div class="dt">Free ride 2 h</div><div class="dd">Easy.</div></li><li class="day long" data-date="2027-02-07">
+<div class="dh"><b>Sun</b> <span>7/2</span><em>Long run</em></div>
+<div class="dt">Long run 16 km</div><div class="dd">Easy + 6×20 s strides.</div></li></ol></article>
+<article class="week speed" id="w14" data-start="2027-02-08" data-end="2027-02-14">
+<header><div class="wn">W14</div><div class="wmeta"><div class="wdates">8 Feb – 14 Feb</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>50 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></header>
+<p class="focus">First session at race pace. Pay attention to how 4:20 feels.</p>
+<ol class="days"><li class="day rest" data-date="2027-02-08">
+<div class="dh"><b>Mon</b> <span>8/2</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-02-09">
+<div class="dh"><b>Tue</b> <span>9/2</span><em>Quality run</em></div>
+<div class="dt">4×2 km at 16k pace</div><div class="dd">3 km warm-up, 4×2 km at 4:18–4:22, 2′ jog, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-02-10">
+<div class="dh"><b>Wed</b> <span>10/2</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-02-11">
+<div class="dh"><b>Thu</b> <span>11/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-02-12">
+<div class="dh"><b>Fri</b> <span>12/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2027-02-13">
+<div class="dh"><b>Sat</b> <span>13/2</span><em>Easy ride</em></div>
+<div class="dt">Endurance ride 2–2.5 h</div><div class="dd">Z2.</div></li><li class="day long" data-date="2027-02-14">
+<div class="dh"><b>Sun</b> <span>14/2</span><em>Long run</em></div>
+<div class="dt">Long run 20 km</div><div class="dd">Easy.</div></li></ol></article>
+<article class="week speed" id="w15" data-start="2027-02-15" data-end="2027-02-21">
+<header><div class="wn">W15</div><div class="wmeta"><div class="wdates">15 Feb – 21 Feb</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>53 km</dd></div><div><dt>Longest</dt><dd>22 km</dd></div><div><dt>Bike</dt><dd>3.7 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></header>
+<p class="focus">Speed on Tuesday, race pace inside the long run on Sunday.</p>
+<ol class="days"><li class="day rest" data-date="2027-02-15">
+<div class="dh"><b>Mon</b> <span>15/2</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-02-16">
+<div class="dh"><b>Tue</b> <span>16/2</span><em>Quality run</em></div>
+<div class="dt">8×800 m</div><div class="dd">3 km warm-up, 8×800 m at 5k effort, 400 m jog, then 2 km steady, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-02-17">
+<div class="dh"><b>Wed</b> <span>17/2</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–90′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-02-18">
+<div class="dh"><b>Thu</b> <span>18/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-02-19">
+<div class="dh"><b>Fri</b> <span>19/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2027-02-20">
+<div class="dh"><b>Sat</b> <span>20/2</span><em>Easy ride</em></div>
+<div class="dt">Endurance ride 2–2.5 h</div><div class="dd">Z2. Keep it easy.</div></li><li class="day long" data-date="2027-02-21">
+<div class="dh"><b>Sun</b> <span>21/2</span><em>Long run</em></div>
+<div class="dt">Long run 22 km · race pace</div><div class="dd">15 km easy, 2×3 km at 4:20 with 3′ jog, 1 km easy.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li></ol></article>
+<article class="week speed" id="w16" data-start="2027-02-22" data-end="2027-02-28">
+<header><div class="wn">W16</div><div class="wmeta"><div class="wdates">22 Feb – 28 Feb</div><span class="tag t-build">Build</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>56 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></header>
+<p class="focus">The key session of the block: 9 km at race pace.</p>
+<ol class="days"><li class="day rest" data-date="2027-02-22">
+<div class="dh"><b>Mon</b> <span>22/2</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-02-23">
+<div class="dh"><b>Tue</b> <span>23/2</span><em>Quality run</em></div>
+<div class="dt">3×3 km at 16k pace</div><div class="dd">3 km warm-up, 3×3 km at 4:18–4:22, 3′ jog, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-02-24">
+<div class="dh"><b>Wed</b> <span>24/2</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-02-25">
+<div class="dh"><b>Thu</b> <span>25/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">Z1 + 6×20 s hill strides.</div></li><li class="day easy" data-date="2027-02-26">
+<div class="dh"><b>Fri</b> <span>26/2</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Z1.</div><div class="chips"><a class="chip str opt" href="#strength">Strength C · optional</a></div></li><li class="day bike" data-date="2027-02-27">
+<div class="dh"><b>Sat</b> <span>27/2</span><em>Easy ride</em></div>
+<div class="dt">Endurance ride 2 h</div><div class="dd">Z2.</div></li><li class="day long" data-date="2027-02-28">
+<div class="dh"><b>Sun</b> <span>28/2</span><em>Long run</em></div>
+<div class="dt">Long run 24 km</div><div class="dd">Easy. This sets up the trail block.</div></li></ol></article>
+<article class="week speed" id="w17" data-start="2027-03-01" data-end="2027-03-07">
+<header><div class="wn">W17</div><div class="wmeta"><div class="wdates">1 Mar – 7 Mar</div><span class="tag t-sharpen">Sharpen</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>46 km</dd></div><div><dt>Longest</dt><dd>18 km</dd></div><div><dt>Bike</dt><dd>2.9 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></header>
+<p class="focus">Less volume, same intensity. Strength drops to two light sessions.</p>
+<ol class="days"><li class="day rest" data-date="2027-03-01">
+<div class="dh"><b>Mon</b> <span>1/3</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-03-02">
+<div class="dh"><b>Tue</b> <span>2/3</span><em>Quality run</em></div>
+<div class="dt">5×1 km + 4×200 m</div><div class="dd">3 km warm-up, 5×1 km at 10k effort with 2′ jog, 4×200 m fast, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-03-03">
+<div class="dh"><b>Wed</b> <span>3/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 60–75′</div><div class="dd">Z1.</div></li><li class="day easy" data-date="2027-03-04">
+<div class="dh"><b>Thu</b> <span>4/3</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">Z1 + 6×20 s strides.</div></li><li class="day easy" data-date="2027-03-05">
+<div class="dh"><b>Fri</b> <span>5/3</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div></li><li class="day bike" data-date="2027-03-06">
+<div class="dh"><b>Sat</b> <span>6/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 1.5–2 h</div><div class="dd">Z1–Z2.</div></li><li class="day long" data-date="2027-03-07">
+<div class="dh"><b>Sun</b> <span>7/3</span><em>Long run</em></div>
+<div class="dt">Long run 18 km · race pace</div><div class="dd">12 km easy, 4 km at 4:20, 2 km easy.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li></ol></article>
+<article class="week speed" id="w18" data-start="2027-03-08" data-end="2027-03-14">
+<header><div class="wn">W18</div><div class="wmeta"><div class="wdates">8 Mar – 14 Mar</div><span class="tag t-race">Race week</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>41 km incl. race</dd></div><div><dt>Longest</dt><dd>19 km</dd></div><div><dt>Bike</dt><dd>0.8 h</dd></div><div><dt>D+</dt><dd>— m</dd></div></dl></header>
+<p class="focus">Dendermonde Loopt, Sunday 14 March. Target sub-1:10, which is 4:22/km.</p>
+<ol class="days"><li class="day rest" data-date="2027-03-08">
+<div class="dh"><b>Mon</b> <span>8/3</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-03-09">
+<div class="dh"><b>Tue</b> <span>9/3</span><em>Quality run</em></div>
+<div class="dt">Race-pace primer</div><div class="dd">3 km warm-up, 3×5′ at 4:20 with 2′ jog, 4×30 s hills, 2 km cool-down.</div></li><li class="day bike" data-date="2027-03-10">
+<div class="dh"><b>Wed</b> <span>10/3</span><em>Easy ride</em></div>
+<div class="dt">Easy spin 45–60′</div><div class="dd">With 4×20 s spin-ups.</div></li><li class="day easy" data-date="2027-03-11">
+<div class="dh"><b>Thu</b> <span>11/3</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1 + 4×20 s strides.</div></li><li class="day rest" data-date="2027-03-12">
+<div class="dh"><b>Fri</b> <span>12/3</span><em>Rest</em></div>
+<div class="dt">Rest</div></li><li class="day easy" data-date="2027-03-13">
+<div class="dh"><b>Sat</b> <span>13/3</span><em>Easy run</em></div>
+<div class="dt">Shakeout 5 km</div><div class="dd">+ 4×20 s strides.</div></li><li class="day race" data-date="2027-03-14">
+<div class="dh"><b>Sun</b> <span>14/3</span><em>Race</em></div>
+<div class="dt">DENDERMONDE LOOPT 16k</div><div class="dd">2–3 km warm-up. First 3 km at 4:24–4:26, settle at 4:20–4:22, last 4 km with whatever is left.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li></ol></article>
+<h2 class="phase-h trail" id="trail"><span>Trail block</span><small>W19–W30 · SWAP 50k–50 mile, built for 75k / 2,532 m D+</small></h2>
+<article class="week trail" id="w19" data-start="2027-03-15" data-end="2027-03-21">
+<header><div class="wn">W19</div><div class="wmeta"><div class="wdates">15 Mar – 21 Mar</div><span class="tag t-recovery">Recovery</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>30 km</dd></div><div><dt>Longest</dt><dd>16 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></header>
+<p class="focus">Recovery from the 16k: no intensity this week. Running comes back on Thursday; the weekend is one easy long run and one ride.</p>
+<ol class="days"><li class="day rest" data-date="2027-03-15">
+<div class="dh"><b>Mon</b> <span>15/3</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">Full rest.</div></li><li class="day rest" data-date="2027-03-16">
+<div class="dh"><b>Tue</b> <span>16/3</span><em>Rest</em></div>
+<div class="dt">Rest or easy spin 45′</div><div class="dd">Very easy, only if your legs ask for it.</div></li><li class="day bike" data-date="2027-03-17">
+<div class="dh"><b>Wed</b> <span>17/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 60–90′</div><div class="dd">Z1. Light strength only.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-03-18">
+<div class="dh"><b>Thu</b> <span>18/3</span><em>Easy run</em></div>
+<div class="dt">Easy run 8 km</div><div class="dd">Z1, no strides.</div></li><li class="day easy" data-date="2027-03-19">
+<div class="dh"><b>Fri</b> <span>19/3</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1 + 4×20 s relaxed strides.</div></li><li class="day long" data-date="2027-03-20">
+<div class="dh"><b>Sat</b> <span>20/3</span><em>Long run</em></div>
+<div class="dt">Long run 16 km</div><div class="dd">Easy on trails. Stop at 12 km if the race is still in your legs.</div></li><li class="day bike" data-date="2027-03-21">
+<div class="dh"><b>Sun</b> <span>21/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 2–2.5 h</div><div class="dd">Z1–Z2.</div></li></ol></article>
+<article class="week trail" id="w20" data-start="2027-03-22" data-end="2027-03-28">
+<header><div class="wn">W20</div><div class="wmeta"><div class="wdates">22 Mar – 28 Mar</div><span class="tag t-swap">SWAP 2</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>52 km</dd></div><div><dt>Longest</dt><dd>22 km</dd></div><div><dt>Bike</dt><dd>4.2 h</dd></div><div><dt>D+</dt><dd>600 m</dd></div></dl></header>
+<p class="focus">From here the pattern is Saturday long run, Sunday second long run or long ride.</p>
+<ol class="days"><li class="day rest" data-date="2027-03-22">
+<div class="dh"><b>Mon</b> <span>22/3</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-03-23">
+<div class="dh"><b>Tue</b> <span>23/3</span><em>Quality run</em></div>
+<div class="dt">16×1′ + steady</div><div class="dd">3 km warm-up, 16×1′ at 5k effort / 1′ easy, 3 km steady (50k effort), 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-03-24">
+<div class="dh"><b>Wed</b> <span>24/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day hill" data-date="2027-03-25">
+<div class="dh"><b>Thu</b> <span>25/3</span><em>Hill / hike</em></div>
+<div class="dt">Hill session 75′</div><div class="dd">Z2 repeats on the Steenberg or your hill. Run the runnable parts, power-hike the steep ones.</div></li><li class="day easy" data-date="2027-03-26">
+<div class="dh"><b>Fri</b> <span>26/3</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">+ 5×20 s strides.</div></li><li class="day long" data-date="2027-03-27">
+<div class="dh"><b>Sat</b> <span>27/3</span><em>Long run</em></div>
+<div class="dt">Long run 22 km</div><div class="dd">Easy, mostly Z1, trails.</div></li><li class="day bike" data-date="2027-03-28">
+<div class="dh"><b>Sun</b> <span>28/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 2–3 h</div><div class="dd">Z1–Z2. Or a very easy 13 km run if your legs feel fresh.</div></li></ol></article>
+<article class="week trail" id="w21" data-start="2027-03-29" data-end="2027-04-04">
+<header><div class="wn">W21</div><div class="wmeta"><div class="wdates">29 Mar – 4 Apr</div><span class="tag t-swap">SWAP 3</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>68 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>800 m</dd></div></dl></header>
+<p class="focus">More structure in the speed work. The long run starts practising quick, relaxed downhills.</p>
+<ol class="days"><li class="day rest" data-date="2027-03-29">
+<div class="dh"><b>Mon</b> <span>29/3</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-03-30">
+<div class="dh"><b>Tue</b> <span>30/3</span><em>Quality run</em></div>
+<div class="dt">5 × (2′/1′/30″)</div><div class="dd">3 km warm-up, 5 sets of 2′ at 10k / 1′ at 5k / 30″ at 3k effort, 1′ easy between reps, 2′ between sets, 3 km easy/moderate.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-03-31">
+<div class="dh"><b>Wed</b> <span>31/3</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Light progression in the last 20′.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day hill" data-date="2027-04-01">
+<div class="dh"><b>Thu</b> <span>1/4</span><em>Hill / hike</em></div>
+<div class="dt">Hill session 75–90′</div><div class="dd">Z2 to low Z3 on the climbs.</div></li><li class="day easy" data-date="2027-04-02">
+<div class="dh"><b>Fri</b> <span>2/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-04-03">
+<div class="dh"><b>Sat</b> <span>3/4</span><em>Long run</em></div>
+<div class="dt">Long run 24 km</div><div class="dd">Easy/moderate, quick relaxed downhills, 5×45 s hills near the end.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day easy" data-date="2027-04-04">
+<div class="dh"><b>Sun</b> <span>4/4</span><em>Easy run</em></div>
+<div class="dt">Run 14 km progressive</div><div class="dd">Easy into steady over rolling terrain. Or a long ride.</div></li></ol></article>
+<article class="week trail" id="w22" data-start="2027-04-05" data-end="2027-04-11">
+<header><div class="wn">W22</div><div class="wmeta"><div class="wdates">5 Apr – 11 Apr</div><span class="tag t-swap">SWAP 4</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>64 km</dd></div><div><dt>Longest</dt><dd>21 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>800 m</dd></div></dl></header>
+<p class="focus">Uphill threshold, then a structured long run.</p>
+<ol class="days"><li class="day rest" data-date="2027-04-05">
+<div class="dh"><b>Mon</b> <span>5/4</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-04-06">
+<div class="dh"><b>Tue</b> <span>6/4</span><em>Quality run</em></div>
+<div class="dt">Uphill threshold</div><div class="dd">2 km warm-up, 6–8×2.5′ uphill at 1-hour effort, jog down, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-04-07">
+<div class="dh"><b>Wed</b> <span>7/4</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-04-08">
+<div class="dh"><b>Thu</b> <span>8/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 12 km</div><div class="dd">+ 8×30 s hill strides.</div></li><li class="day easy" data-date="2027-04-09">
+<div class="dh"><b>Fri</b> <span>9/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-04-10">
+<div class="dh"><b>Sat</b> <span>10/4</span><em>Long run</em></div>
+<div class="dt">Long run 21 km · 1-hour effort</div><div class="dd">3 km easy, 5×1.6 km at 1-hour effort with 1.6 km float, rest easy.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day easy" data-date="2027-04-11">
+<div class="dh"><b>Sun</b> <span>11/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 13 km</div><div class="dd">+ 6×20 s steep hills. Or a long ride.</div></li></ol></article>
+<article class="week trail" id="w23" data-start="2027-04-12" data-end="2027-04-18">
+<header><div class="wn">W23</div><div class="wmeta"><div class="wdates">12 Apr – 18 Apr</div><span class="tag t-swap">SWAP 5</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>72 km</dd></div><div><dt>Longest</dt><dd>28 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>1,000–1,200 m</dd></div></dl></header>
+<p class="focus">Aerobic week. First Flemish Ardennes long run.</p>
+<ol class="days"><li class="day rest" data-date="2027-04-12">
+<div class="dh"><b>Mon</b> <span>12/4</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-04-13">
+<div class="dh"><b>Tue</b> <span>13/4</span><em>Quality run</em></div>
+<div class="dt">6–8×3′ + 4×30″</div><div class="dd">3 km warm-up, 6–8×3′ at 1-hour effort building toward 10k effort, 90 s easy, then 3′ easy, 4×30 s fast / 2′ easy, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-04-14">
+<div class="dh"><b>Wed</b> <span>14/4</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-04-15">
+<div class="dh"><b>Thu</b> <span>15/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 12 km</div><div class="dd">+ 5×20 s hills.</div></li><li class="day easy" data-date="2027-04-16">
+<div class="dh"><b>Fri</b> <span>16/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Very easy.</div></li><li class="day long" data-date="2027-04-17">
+<div class="dh"><b>Sat</b> <span>17/4</span><em>Long run</em></div>
+<div class="dt">Flemish Ardennes 28 km</div><div class="dd">Easy on real climbs, strong downhills, finish feeling good. Race fuelling.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day easy" data-date="2027-04-18">
+<div class="dh"><b>Sun</b> <span>18/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 13 km</div><div class="dd">Pure Z1 + 4×30 s hills. Or an easy ride.</div></li></ol></article>
+<article class="week trail" id="w24" data-start="2027-04-19" data-end="2027-04-25">
+<header><div class="wn">W24</div><div class="wmeta"><div class="wdates">19 Apr – 25 Apr</div><span class="tag t-swap">SWAP 6</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>76 km</dd></div><div><dt>Longest</dt><dd>28 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>1,300 m</dd></div></dl></header>
+<p class="focus">First real back-to-back weekend. Keep Sunday as a run this week.</p>
+<ol class="days"><li class="day rest" data-date="2027-04-19">
+<div class="dh"><b>Mon</b> <span>19/4</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-04-20">
+<div class="dh"><b>Tue</b> <span>20/4</span><em>Quality run</em></div>
+<div class="dt">600s + 200s</div><div class="dd">3 km warm-up, 6–8×600 m at 10k effort building to 5k, 200 m jog, 400 m easy, 4×200 m fast / 200 m slow, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-04-21">
+<div class="dh"><b>Wed</b> <span>21/4</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day hill" data-date="2027-04-22">
+<div class="dh"><b>Thu</b> <span>22/4</span><em>Hill / hike</em></div>
+<div class="dt">Hill session 75–105′</div><div class="dd">Z2, practise power-hiking steep sections.</div></li><li class="day easy" data-date="2027-04-23">
+<div class="dh"><b>Fri</b> <span>23/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-04-24">
+<div class="dh"><b>Sat</b> <span>24/4</span><em>Long run</em></div>
+<div class="dt">Long run 28 km</div><div class="dd">Easy/moderate + 5×45 s hills near the end.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day long" data-date="2027-04-25">
+<div class="dh"><b>Sun</b> <span>25/4</span><em>Long run</em></div>
+<div class="dt">Long run 19 km</div><div class="dd">Easy with hills and strong downhills, on tired legs.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li></ol></article>
+<article class="week trail" id="w25" data-start="2027-04-26" data-end="2027-05-02">
+<header><div class="wn">W25</div><div class="wmeta"><div class="wdates">26 Apr – 2 May</div><span class="tag t-swap">SWAP 7</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>69 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>1,000 m</dd></div></dl></header>
+<p class="focus">The Power Hour: 60′ moderate-hard inside the long run.</p>
+<ol class="days"><li class="day rest" data-date="2027-04-26">
+<div class="dh"><b>Mon</b> <span>26/4</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-04-27">
+<div class="dh"><b>Tue</b> <span>27/4</span><em>Quality run</em></div>
+<div class="dt">Big uphill threshold</div><div class="dd">2 km warm-up, 8–10×2.5–3′ uphill at 1-hour effort, jog down, 2 km cool-down. Fuel it.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-04-28">
+<div class="dh"><b>Wed</b> <span>28/4</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-04-29">
+<div class="dh"><b>Thu</b> <span>29/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 12 km</div><div class="dd">+ 4×20 s hills.</div></li><li class="day easy" data-date="2027-04-30">
+<div class="dh"><b>Fri</b> <span>30/4</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-05-01">
+<div class="dh"><b>Sat</b> <span>1/5</span><em>Long run</em></div>
+<div class="dt">Long run 24 km · Power Hour</div><div class="dd">Includes 60′ moderate/hard on rolling terrain. Treat it as a race rehearsal: focus and race fuelling.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day easy" data-date="2027-05-02">
+<div class="dh"><b>Sun</b> <span>2/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 14 km</div><div class="dd">Rolling. Or a long ride.</div></li></ol></article>
+<article class="week trail" id="w26" data-start="2027-05-03" data-end="2027-05-09">
+<header><div class="wn">W26</div><div class="wmeta"><div class="wdates">3 May – 9 May</div><span class="tag t-swap">SWAP 8 · Peak</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>83 km</dd></div><div><dt>Longest</dt><dd>35 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>1,600–1,800 m</dd></div></dl></header>
+<p class="focus">Biggest week. Saturday is the Bouillon recon on the race course, four weeks out.</p>
+<ol class="days"><li class="day rest" data-date="2027-05-03">
+<div class="dh"><b>Mon</b> <span>3/5</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-05-04">
+<div class="dh"><b>Tue</b> <span>4/5</span><em>Quality run</em></div>
+<div class="dt">800s + 200s</div><div class="dd">3 km warm-up, 6–8×800 m at 10k effort, 400 m jog, 4×200 m fast / 200 m slow, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-05-05">
+<div class="dh"><b>Wed</b> <span>5/5</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–120′</div><div class="dd">Very easy.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day hill" data-date="2027-05-06">
+<div class="dh"><b>Thu</b> <span>6/5</span><em>Hill / hike</em></div>
+<div class="dt">Hill session 90–120′</div><div class="dd">Z2.</div></li><li class="day easy" data-date="2027-05-07">
+<div class="dh"><b>Fri</b> <span>7/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Very easy. Travel to Bouillon.</div></li><li class="day long" data-date="2027-05-08">
+<div class="dh"><b>Sat</b> <span>8/5</span><em>Long run</em></div>
+<div class="dt">BOUILLON RECON 33–38 km</div><div class="dd">On the race course. Easy, strong downhills. Race kit, race breakfast, race fuelling (~90 g/h).</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day easy" data-date="2027-05-09">
+<div class="dh"><b>Sun</b> <span>9/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 16 km</div><div class="dd">+ 6×30 s hills. Or a 2 h easy ride.</div></li></ol></article>
+<article class="week trail" id="w27" data-start="2027-05-10" data-end="2027-05-16">
+<header><div class="wn">W27</div><div class="wmeta"><div class="wdates">10 May – 16 May</div><span class="tag t-swap">SWAP 9 · Simulation</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>56 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>1,000 m</dd></div></dl></header>
+<p class="focus">Race simulation: everything exactly as on race day.</p>
+<ol class="days"><li class="day rest" data-date="2027-05-10">
+<div class="dh"><b>Mon</b> <span>10/5</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-05-11">
+<div class="dh"><b>Tue</b> <span>11/5</span><em>Quality run</em></div>
+<div class="dt">5′ reps + steady</div><div class="dd">3 km warm-up, 4–6×5′ at 1-hour effort / 90 s, 3 km steady (50k effort), 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-05-12">
+<div class="dh"><b>Wed</b> <span>12/5</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 60–90′</div><div class="dd">Z1.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-05-13">
+<div class="dh"><b>Thu</b> <span>13/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 12 km</div><div class="dd">+ 4×30 s hills.</div></li><li class="day easy" data-date="2027-05-14">
+<div class="dh"><b>Fri</b> <span>14/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-05-15">
+<div class="dh"><b>Sat</b> <span>15/5</span><em>Long run</em></div>
+<div class="dt">RACE SIMULATION ~24 km</div><div class="dd">3 km easy, 16–20 km moderate to moderate/hard on hilly trail (Flemish Ardennes), 3 km easy. Race breakfast, kit, gels, poles if allowed.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-05-16">
+<div class="dh"><b>Sun</b> <span>16/5</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 1.5–3 h</div><div class="dd">Z1–Z2. No run today.</div></li></ol></article>
+<article class="week trail" id="w28" data-start="2027-05-17" data-end="2027-05-23">
+<header><div class="wn">W28</div><div class="wmeta"><div class="wdates">17 May – 23 May</div><span class="tag t-swap">SWAP 10</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>69 km</dd></div><div><dt>Longest</dt><dd>27 km</dd></div><div><dt>Bike</dt><dd>1.5 h</dd></div><div><dt>D+</dt><dd>1,200 m</dd></div></dl></header>
+<p class="focus">Last big muscular stimulus before the taper.</p>
+<ol class="days"><li class="day rest" data-date="2027-05-17">
+<div class="dh"><b>Mon</b> <span>17/5</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-05-18">
+<div class="dh"><b>Tue</b> <span>18/5</span><em>Quality run</em></div>
+<div class="dt">Hills + moderate</div><div class="dd">3 km warm-up, 5×3′ uphill at 10k effort, jog down, then 15–20′ moderate (half-marathon effort) on tired legs, 2 km cool-down.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day bike" data-date="2027-05-19">
+<div class="dh"><b>Wed</b> <span>19/5</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 75–105′</div><div class="dd">Z1–Z2.</div><div class="chips"><a class="chip str" href="#strength">Strength B</a></div></li><li class="day easy" data-date="2027-05-20">
+<div class="dh"><b>Thu</b> <span>20/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">+ 5×20 s strides.</div></li><li class="day easy" data-date="2027-05-21">
+<div class="dh"><b>Fri</b> <span>21/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-05-22">
+<div class="dh"><b>Sat</b> <span>22/5</span><em>Long run</em></div>
+<div class="dt">Long run 27 km</div><div class="dd">Easy/moderate with climbing and strong downhills, + 4×1′ hills at 5k effort at the end.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day easy" data-date="2027-05-23">
+<div class="dh"><b>Sun</b> <span>23/5</span><em>Easy run</em></div>
+<div class="dt">Run 12 km progressive</div><div class="dd">Easy into steady over rolling terrain. Or a long ride.</div></li></ol></article>
+<article class="week trail" id="w29" data-start="2027-05-24" data-end="2027-05-30">
+<header><div class="wn">W29</div><div class="wmeta"><div class="wdates">24 May – 30 May</div><span class="tag t-swap">SWAP 11 · Taper</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>58 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>1.2 h</dd></div><div><dt>D+</dt><dd>500 m</dd></div></dl></header>
+<p class="focus">Taper. If you feel flat on Tuesday, do 10 km easy instead of the session.</p>
+<ol class="days"><li class="day rest" data-date="2027-05-24">
+<div class="dh"><b>Mon</b> <span>24/5</span><em>Rest</em></div>
+<div class="dt">Rest + strength</div><div class="dd">No running or riding. 20′ strength session.</div><div class="chips"><a class="chip str" href="#strength">Strength A</a></div></li><li class="day q" data-date="2027-05-25">
+<div class="dh"><b>Tue</b> <span>25/5</span><em>Quality run</em></div>
+<div class="dt">2′ reps + steady</div><div class="dd">3 km warm-up, 6–8×2′ at 1-hour effort toward 10k / 1′ easy, 3 km steady, 2 km cool-down.</div></li><li class="day bike" data-date="2027-05-26">
+<div class="dh"><b>Wed</b> <span>26/5</span><em>Easy ride</em></div>
+<div class="dt">Easy ride 60–75′</div><div class="dd">Z1.</div></li><li class="day easy" data-date="2027-05-27">
+<div class="dh"><b>Thu</b> <span>27/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 9 km</div><div class="dd">+ 5×20 s hills.</div></li><li class="day easy" data-date="2027-05-28">
+<div class="dh"><b>Fri</b> <span>28/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 6 km</div><div class="dd">Z1.</div></li><li class="day long" data-date="2027-05-29">
+<div class="dh"><b>Sat</b> <span>29/5</span><em>Long run</em></div>
+<div class="dt">Long run 20 km</div><div class="dd">Easy Z2, high-carb fuelling.</div></li><li class="day easy" data-date="2027-05-30">
+<div class="dh"><b>Sun</b> <span>30/5</span><em>Easy run</em></div>
+<div class="dt">Easy run 10 km</div><div class="dd">+ 5×20 s hills.</div></li></ol></article>
+<article class="week trail" id="w30" data-start="2027-05-31" data-end="2027-06-06">
+<header><div class="wn">W30</div><div class="wmeta"><div class="wdates">31 May – 6 Jun</div><span class="tag t-race">Race week</span><span class="now">This week</span></div>
+<dl class="stats"><div><dt>Run</dt><dd>28 km + race</dd></div><div><dt>Longest</dt><dd>75 km</dd></div><div><dt>Bike</dt><dd>0.0 h</dd></div><div><dt>D+</dt><dd>— m</dd></div></dl></header>
+<p class="focus">Godefroy 75. Saturday 5 June, 06:00, Esplanade du Château, Bouillon.</p>
+<ol class="days"><li class="day rest" data-date="2027-05-31">
+<div class="dh"><b>Mon</b> <span>31/5</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">Full rest.</div></li><li class="day q" data-date="2027-06-01">
+<div class="dh"><b>Tue</b> <span>1/6</span><em>Quality run</em></div>
+<div class="dt">Race primer</div><div class="dd">3 km warm-up, 3×5′ at 1-hour effort / 1′, 5′ easy, 5×30 s slight hills fast, 2 km cool-down.</div></li><li class="day easy" data-date="2027-06-02">
+<div class="dh"><b>Wed</b> <span>2/6</span><em>Easy run</em></div>
+<div class="dt">Easy run 7 km</div><div class="dd">Z1.</div></li><li class="day rest" data-date="2027-06-03">
+<div class="dh"><b>Thu</b> <span>3/6</span><em>Rest</em></div>
+<div class="dt">Rest</div><div class="dd">Carb up from today.</div></li><li class="day easy" data-date="2027-06-04">
+<div class="dh"><b>Fri</b> <span>4/6</span><em>Easy run</em></div>
+<div class="dt">Easy run 5 km</div><div class="dd">+ 4×30 s hills. Travel, bib pick-up, drop bag.</div></li><li class="day race" data-date="2027-06-05">
+<div class="dh"><b>Sat</b> <span>5/6</span><em>Race</em></div>
+<div class="dt">GODEFROY 75</div><div class="dd">75 km / 2,532 m D+. Finish strong: patient first half, hike the steep climbs, eat early and often.</div><div class="chips"><span class="chip key" title="Key session: don't swap">★ key</span></div></li><li class="day rest" data-date="2027-06-06">
+<div class="dh"><b>Sun</b> <span>6/6</span><em>Rest</em></div>
+<div class="dt">Celebrate</div><div class="dd">Eat, celebrate, walk a bit.</div></li></ol></article>
+  </main>
+</div>
+
+<!-- ================= STRENGTH ================= -->
+<div id="view-strength" class="view" role="tabpanel" aria-labelledby="tab-strength" hidden>
+  <section class="panel" id="sessions">
+<div class="panel-h"><h3>Sessions</h3><div class="seg" role="tablist" aria-label="Session">
+<button type="button" role="tab" class="segb" data-s="A" aria-selected="false"><b>A</b><span>Mon</span></button>
+<button type="button" role="tab" class="segb" data-s="B" aria-selected="false"><b>B</b><span>Wed</span></button>
+<button type="button" role="tab" class="segb" data-s="C" aria-selected="false"><b>C</b><span>Fri</span></button>
+</div></div>
+<p class="note" style="margin:0">A and B are the two fixed sessions with everything critical. C is optional extra work for when the week allows it. Supersets: alternate the pair for the rounds listed, then move on.</p>
+<article class="sc" data-s="A"><header class="sch"><span class="sl">A</span><div><b>Monday</b><span>Glute control · core · upper back</span></div><div class="smeta"><span class="tag t-race">Fixed</span><span class="dur">≈23′</span></div></header><div class="rows">
+<div class="blk2 pair"><div class="bl"><b>Superset 1</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Bridge + knee opening</span><small>Right first</small></div><div class="ed">3×10/side</div></li>
+<li><em>b</em><div class="en"><span>Single-arm DB row</span><small>Squeeze the shoulder blade back at the top</small></div><div class="ed">3×10/arm</div></li>
+</ol></div>
+<div class="blk2 pair"><div class="bl"><b>Superset 2</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Quadruped hip extension → abduction</span><small>Slow · one extra set on the right</small></div><div class="ed">3×10/side</div></li>
+<li><em>b</em><div class="en"><span>Push-up plus</span><small>Push the floor away at the top</small></div><div class="ed">3×10</div></li>
+</ol></div>
+<div class="blk2 pair"><div class="bl"><b>Superset 3</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Side plank on knees + clam</span></div><div class="ed">3×10/side</div></li>
+<li><em>b</em><div class="en"><span>Tabletop leg extension</span><small>Lower back stays on the mat</small></div><div class="ed">3×10/side</div></li>
+</ol></div>
+</div><p class="why">No heavy leg work: Tuesday&#x27;s quality run is next. Starts with the bridge you can feel on the right.</p></article>
+<article class="sc" data-s="B"><header class="sch"><span class="sl">B</span><div><b>Wednesday</b><span>Legs · deceleration · adductors</span></div><div class="smeta"><span class="tag t-race">Fixed</span><span class="dur">≈21′</span></div></header><div class="rows">
+<div class="blk2 pair"><div class="bl"><b>Superset 1</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>Bulgarian split squat</span><small>3″ lowering · from W19: step-downs every other 3 weeks</small></div><div class="ed">3×8/leg</div></li>
+<li><em>b</em><div class="en"><span>Long-lever forearm plank</span><small>Elbows ahead of shoulders, glutes tight</small></div><div class="ed">3×30″</div></li>
+</ol></div>
+<div class="blk2 pair"><div class="bl"><b>Superset 2</b><span>3 rounds</span></div><ol class="exs">
+<li><em>a</em><div class="en"><span>KB single-leg deadlift</span><small>Hips back: glutes, not lower back</small></div><div class="ed">3×8/leg</div></li>
+<li><em>b</em><div class="en"><span>Copenhagen plank, short lever</span><small>Top knee on a bench or sofa</small></div><div class="ed">3×20″/side</div></li>
+</ol></div>
+<div class="blk2"><div class="bl"><b>Single</b><span>3 rounds</span></div><ol class="exs">
+<li><div class="en"><span>Single-leg calf raise off a step</span><small>3″ up, 3″ down</small></div><div class="ed">3×10/leg</div></li>
+</ol></div>
+</div><p class="why">The heaviest session, three days before the weekend.</p></article>
+<article class="sc" data-s="C"><header class="sch"><span class="sl">C</span><div><b>Friday</b><span>Accessories · Tough 21 format</span></div><div class="smeta"><span class="tag t-deload">Optional</span><span class="dur">12′ per round</span></div></header><div class="rows">
+<div class="blk2 pair"><div class="bl"><b>Circuit</b><span>1–2 rounds</span></div><ol class="exs">
+<li><em>1</em><div class="en"><span>Crab walks</span></div><div class="ed">40″</div></li>
+<li><em>2</em><div class="en"><span>Standing hip extension, mini band</span><small>20″ per leg</small></div><div class="ed">40″</div></li>
+<li><em>3</em><div class="en"><span>Bridge + leg lift</span><small>Alternating legs</small></div><div class="ed">40″</div></li>
+<li><em>4</em><div class="en"><span>Goblet squat to a box</span><small>20 kg KB, stay centred</small></div><div class="ed">40″</div></li>
+<li><em>5</em><div class="en"><span>Hip flexor march, mini band</span><small>Alternating</small></div><div class="ed">40″</div></li>
+<li><em>6</em><div class="en"><span>Mountain climbers</span></div><div class="ed">40″</div></li>
+<li><em>7</em><div class="en"><span>Lateral bear crawl</span><small>Band at the wrists</small></div><div class="ed">40″</div></li>
+<li><em>8</em><div class="en"><span>DB side bend</span><small>10 kg · 20″ per side</small></div><div class="ed">40″</div></li>
+<li><em>9</em><div class="en"><span>Half-kneeling diagonal DB lift</span><small>5 kg · 20″ per side</small></div><div class="ed">40″</div></li>
+<li><em>10</em><div class="en"><span>Prone Y–T raise</span></div><div class="ed">40″</div></li>
+<li><em>11</em><div class="en"><span>Tibialis raise</span><small>Back against a wall</small></div><div class="ed">40″</div></li>
+<li><em>12</em><div class="en"><span>Pull-up negatives</span><small>As many slow ones as fit</small></div><div class="ed">40″</div></li>
+</ol></div>
+</div><p class="why">Timed: 40″ work, 20″ to switch. Two rounds if you have 24′, one if you&#x27;re short on time. Side-to-side exercises: switch halfway.</p></article>
+</section>
+
+  <section class="panel">
+    <h3>Right-glute rules</h3>
+    <ol class="grules">
+      <li><b>Right side first, always.</b> One extra set on the right for the bridge and hip extension exercises.</li>
+      <li><b>Wake it up with what works.</b> The bridge + knee opening is the one you can feel; do it before the harder ones.</li>
+      <li><b>Hand on the right glute,</b> 2″ squeeze at the top. Hamstring or lower back taking over? Shorten the range, tuck the pelvis under, bring your feet closer to your backside in bridges.</li>
+      <li><b>End the set when you lose the right glute.</b> Good reps over a full count.</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h3>Start simple, progress monthly</h3>
+    <table class="z prog"><thead><tr><th>Exercise</th><th>Month 1</th><th>Then, one step per month</th></tr></thead><tbody>
+      <tr><td>Bulgarian split squat</td><td>Bodyweight</td><td>2×5 kg → 20 kg KB at the chest → slower lowering</td></tr>
+      <tr><td>KB single-leg deadlift</td><td>10 kg, opposite hand</td><td>20 kg KB</td></tr>
+      <tr><td>Single-leg calf raise</td><td>Bodyweight, slow</td><td>10 kg → 20 kg KB</td></tr>
+      <tr><td>Single-arm DB row</td><td>10 kg</td><td>20 kg KB</td></tr>
+      <tr><td>Copenhagen plank</td><td>Knee on the bench, 20″</td><td>30″ → foot on the bench</td></tr>
+      <tr><td>Push-up plus</td><td>On knees if the shoulder blades lift</td><td>Full push-up → feet raised</td></tr>
+      <tr><td>Band exercises</td><td>3×10</td><td>Stronger band or slower lowering, not more sets</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="panel">
+    <h3>Through the season</h3>
+    <table class="z dose"><thead><tr><th>Weeks</th><th>Sessions</th><th>Notes</th></tr></thead><tbody>
+      <tr><td>W1–9 · Base</td><td>A + B (+ C)</td><td>Build loads. C whenever there's time.</td></tr>
+      <tr><td>W10–16 · 16k</td><td>A + B (+ C)</td><td>Hold loads. C optional.</td></tr>
+      <tr><td>W17–18</td><td>A</td><td>Light, race weeks.</td></tr>
+      <tr><td>W19–28 · Trail</td><td>A + B</td><td>Step-downs alternate with split squats every 3 weeks.</td></tr>
+      <tr><td>W29–30 · Taper</td><td>A</td><td>Short, W29 only.</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="panel">
+    <h3>Mobility routine <small>after training, morning or evening</small></h3>
+    <p class="mob">Good mornings · lat stretch · lying lumbar rotation · prone press-up · cat-camel · deep lunge with rotation · kneeling back stretch (hands on a chair) · hamstring/adductor stretch · hip flexor stretch with rotation · seated hip rotation · alternating hamstring/quad stretch · iliopsoas stretch · half-kneeling thoracic rotation · standing side bend · <b>knee-to-wall ankle stretch, 10/side</b> (new: the screening flagged stiff ankles)</p>
+  </section>
+</div>
+
+<footer class="foot">Draft v4 · 14 Nov 2026</footer>
+</div>
+<script>(function(){
+  var views={plan:document.getElementById("view-plan"),weeks:document.getElementById("view-weeks"),strength:document.getElementById("view-strength")};
+  function route(){
+    var h=location.hash.replace("#","")||"plan", v="plan", el=null;
+    if(views[h]) v=h; else { el=document.getElementById(h); if(el){ for(var k in views){ if(views[k].contains(el)) v=k; } } }
+    Object.keys(views).forEach(function(k){views[k].hidden=(k!==v);
+      var t=document.getElementById("tab-"+k); if(t) t.setAttribute("aria-selected",k===v?"true":"false");});
+    if(el) el.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
+  }
+  window.addEventListener("hashchange",route);
+
+  var d=new Date(), iso=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  var weeks=[].slice.call(document.querySelectorAll("#weeklist .week")), ci=-1;
+  weeks.forEach(function(w,i){ if(iso>=w.dataset.start && iso<=w.dataset.end){ w.classList.add("current"); ci=i; } });
+  if(ci<0 && weeks.length && iso<weeks[0].dataset.start) ci=0;
+  var t=document.querySelector('#weeklist .day[data-date="'+iso+'"]'); if(t) t.classList.add("today");
+
+  function cloneWeek(w){ var c=w.cloneNode(true); c.removeAttribute("id"); c.classList.remove("current");
+    [].forEach.call(c.querySelectorAll("[id]"),function(n){n.removeAttribute("id");}); return c; }
+  var nowSec=document.getElementById("now");
+  if(ci<0){ if(nowSec) nowSec.hidden=true; }
+  else {
+    var cw=weeks[ci], c=cloneWeek(cw);
+    document.getElementById("cw-slot").appendChild(c);
+    document.getElementById("cw-title").textContent="This week · W"+(ci+1);
+    document.getElementById("cw-all").setAttribute("href","#w"+(ci+1));
+    if(weeks[ci+1]){ document.getElementById("nw-slot").appendChild(cloneWeek(weeks[ci+1]));
+      document.getElementById("nw-title").textContent="Next week · W"+(ci+2); }
+    else document.querySelector(".nextwk").hidden=true;
+    var td=c.querySelector('.day[data-date="'+iso+'"]'), tc=document.getElementById("today-card");
+    if(td){ td.classList.add("today");
+      var kind=td.className.replace("day","").replace("today","").trim();
+      tc.className="today-card day "+kind;
+      tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
+    } else tc.hidden=true;
+  }
+  var btn=document.getElementById("today-btn");
+  if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
+  route();
+})();
+(function(){
+  var box=document.querySelector(".chart"), tip=document.getElementById("tip"); if(!box||!tip) return;
+  var on=null;
+  function show(h){
+    var bar=box.querySelector('.bar[data-w="'+h.dataset.w+'"]');
+    if(on) on.classList.remove("on"); if(bar){bar.classList.add("on"); on=bar;}
+    tip.innerHTML='<b>'+h.dataset.h+'</b><div class="tl">'+h.dataset.l+'</div><dl><dt>Run</dt><dd>'+h.dataset.run+'</dd><dt>Longest</dt><dd>'+h.dataset.long+'</dd><dt>Bike</dt><dd>'+h.dataset.bike+'</dd><dt>D+</dt><dd>'+h.dataset.vert+'</dd></dl>';
+    tip.hidden=false;
+    var br=box.getBoundingClientRect(), hr=h.getBoundingClientRect();
+    var x=hr.left-br.left+box.scrollLeft+hr.width/2, tw=tip.offsetWidth;
+    var half=hr.width/2+6, left=(x+half+tw<=box.scrollWidth-4)?x+half:Math.max(4,x-half-tw);
+    tip.style.left=left+"px"; tip.style.top="4px";
+  }
+  function hide(){ tip.hidden=true; if(on){on.classList.remove("on"); on=null;} }
+  [].forEach.call(box.querySelectorAll(".hit"),function(h){
+    h.addEventListener("pointerenter",function(){show(h);});
+    h.addEventListener("focus",function(){show(h);});
+    h.addEventListener("blur",hide);
+    h.addEventListener("click",function(){ location.hash="w"+h.dataset.w; });
+    h.addEventListener("keydown",function(ev){ if(ev.key==="Enter") location.hash="w"+h.dataset.w; });
+  });
+  box.addEventListener("pointerleave",hide);
+})();
+(function(){
+  var btns=[].slice.call(document.querySelectorAll(".segb")), cards=[].slice.call(document.querySelectorAll(".sc"));
+  if(!btns.length) return;
+  function pick(L){ btns.forEach(function(b){b.setAttribute("aria-selected",b.dataset.s===L?"true":"false");});
+    cards.forEach(function(c){c.hidden=(c.dataset.s!==L);}); }
+  btns.forEach(function(b){ b.addEventListener("click",function(){pick(b.dataset.s);}); });
+  var map=["A","A","B","B","C","C","A"]; // Sun..Sat -> next session
+  pick(map[new Date().getDay()]);
+})();
+</script>
+</body>
+</html>
