@@ -17,13 +17,15 @@
 
   var BOXES=function(n){var s="";for(var i=0;i<n;i++)s+='<span class="pbox"></span>';return s;};
   var builders={
-    strength:function(slot){
-      var WK=4, out=[];
-      qa("#view-strength .sc").forEach(function(sc){
+    // data-src: the session cards to read; data-cols: how many sessions per sheet.
+    sessions:function(slot){
+      var WK=+(slot.dataset.cols||4), out=[];
+      qa(slot.dataset.src).forEach(function(sc){
         var rows=[];
         qa(".blk2",sc).forEach(function(b){
-          var lbl=q(".bl b",b), rnd=q(".bl span",b), nums=((rnd&&rnd.textContent)||"").match(/\d+/g)||["3"];
-          var n=Math.max.apply(null,nums.map(Number));
+          var lbl=q(".bl b",b), rnd=q(".bl span",b), rt=(rnd&&rnd.textContent)||"";
+          // "3 rounds" / "1–2 rounds" -> one box per round; a duration ("7′") -> one box
+          var n=/round/i.test(rt)?Math.max.apply(null,(rt.match(/\d+/g)||["1"]).map(Number)):1;
           var wk=""; for(var i=0;i<WK;i++) wk+='<td class="wk"></td>';
           rows.push('<tr class="grp"><td colspan="3">'+esc(lbl&&lbl.textContent)+' · '+esc(rnd&&rnd.textContent)+'</td>'+wk+'</tr>');
           qa(".exs li",b).forEach(function(li){
@@ -34,7 +36,7 @@
         });
         var hd=q(".sch",sc), tag=q(".smeta .tag",sc), dur=q(".dur",sc), why=q(".why",sc), th="";
         for(var i=1;i<=WK;i++) th+='<th class="wk">Session '+i+'</th>';
-        out.push('<div class="pss"><header><span class="sl">'+esc(q(".sl",hd).textContent)+'</span><span class="sn">'+esc(q("div b",hd).textContent)+'</span><span class="sf">'+esc(q(":scope>div:not(.smeta) span",hd).textContent)+'</span><span class="sm">'+esc(tag&&tag.textContent)+' · '+esc(dur&&dur.textContent)+'</span></header>'+
+        out.push('<div class="pss"><header><span class="sl">'+esc(q(".sl",hd).textContent)+'</span><span class="sn">'+esc(q("div b",hd).textContent)+'</span><span class="sf">'+esc(q(":scope>div:not(.smeta) span",hd).textContent)+'</span><span class="sm">'+esc([tag,dur].filter(Boolean).map(function(x){return x.textContent;}).join(" · "))+'</span></header>'+
           '<table><colgroup><col class="c-no"><col><col class="c-do">'+Array(WK+1).join('<col class="c-wk">')+'</colgroup><thead><tr><th></th><th>Exercise</th><th>Dose</th>'+th+'</tr></thead><tbody>'+rows.join("")+'</tbody></table>'+
           (why?'<p class="why">'+esc(why.textContent)+'</p>':'')+'</div>');
       });
@@ -66,7 +68,7 @@
   window.addEventListener("beforeprint",function(){
     if(root.classList.contains("printing")) return;
     var v=qa(".view").filter(function(x){return !x.hidden;})[0], id=v&&v.id;
-    choose(id==="view-strength"?"print-strength":id==="view-weeks"?"print-plan":"current-week");
+    choose({"view-strength":"print-strength","view-weeks":"print-plan","view-foot":"print-foot"}[id]||"current-week");
   });
   window.addEventListener("afterprint",reset);
 })();

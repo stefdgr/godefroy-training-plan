@@ -8,3 +8,4 @@
 - Strength days are assigned in `src/render.py` (`STR_DAY`, `STR_EX`), not in the data: A on Monday, B on Wednesday, optional C on Friday.
 - The page is always light themed; the dark-mode blocks in `style.css` deliberately repeat the light palette.
 - Stef prefers direct, concise wording on the page. No HRV anecdotes or explanatory clutter in the plan itself.
+- Print layouts: `src/print_docs.py` (sections with class `pdoc`), `src/print.js` (buttons with `data-print`, session trackers built from `.sc` cards), `src/print.css`. A new tab gets printing with one `pdoc` section and one button.

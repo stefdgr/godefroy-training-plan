@@ -80,10 +80,18 @@ def strength_doc():
     # Filled by print.js from the Strength tab, so it always matches what's on screen.
     return f'''<section class="pdoc" id="print-strength" aria-hidden="true">
 <div class="ppage">{_head("Strength sessions", "A Monday · B Wednesday (fixed) · C Friday (optional)")}
-<div class="pstr" data-build="strength"></div>{_foot()}</div>
+<div class="pstr" data-build="sessions" data-src="#sessions .sc" data-cols="4"></div>{_foot()}</div>
 <div class="ppage">{_head("Strength · reference", "Rules, progression and mobility")}
 <div class="pclone pref" data-clone-panels="#view-strength .panel:not(#sessions)"></div>{_foot()}</div>
 </section>'''
 
+def foot_doc():
+    return f'''<section class="pdoc" id="print-foot" aria-hidden="true">
+<div class="ppage">{_head("Foot &amp; toes", "Barefoot · 3× a week · evenings, not before the long run")}
+<div class="pstr" data-build="sessions" data-src="#foot-session .sc" data-cols="6"></div>{_foot()}</div>
+<div class="ppage">{_head("Foot &amp; toes · reference", "Objectives, monthly tests and progression")}
+<div class="pclone pref" data-clone-panels="#view-foot .panel:not(#foot-session)"></div>{_foot()}</div>
+</section>'''
+
 def build(rows, PHASES, DAYN, KIND_LABEL, fmt):
-    return "\n".join([plan_doc(rows, PHASES, DAYN, fmt)] + [week_doc(r, DAYN, KIND_LABEL, fmt) for r in rows] + [strength_doc()])
+    return "\n".join([plan_doc(rows, PHASES, DAYN, fmt)] + [week_doc(r, DAYN, KIND_LABEL, fmt) for r in rows] + [strength_doc(), foot_doc()])

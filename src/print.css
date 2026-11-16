@@ -164,3 +164,4 @@
 .pgrid .ct{line-height:1.15}
 .land .ph h1{font-size:17pt}
 .land .ppage{gap:2.5mm}
+.pstr{grid-template-columns:minmax(0,1fr)}.pss .why{white-space:normal;overflow-wrap:anywhere}
