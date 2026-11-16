@@ -2,6 +2,8 @@ import datetime as dt, html, sys, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from plan_data import WEEKS, PHASES
+import print_docs
+PRINT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>'
 
 START = dt.date(2026, 11, 9)
 DAYN = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -86,13 +88,14 @@ for r in rows:
     if r["n"]==18: run_txt = f'{r["run"]} km incl. race'
     cards.append(f'''<article class="week {w["phase"]}" id="w{r["n"]}" data-start="{r["start"].isoformat()}" data-end="{r["end"].isoformat()}">
 <header><div class="wn">W{r["n"]}</div><div class="wmeta"><div class="wdates">{fmt(r["start"])} – {fmt(r["end"])}</div><span class="tag t-{tagcls}">{e(w["tag"])}</span><span class="now">This week</span></div>
-<dl class="stats"><div><dt>Run</dt><dd>{run_txt}</dd></div><div><dt>Longest</dt><dd>{r["long"]} km</dd></div><div><dt>Bike</dt><dd>{r["bike"]/60:.1f} h</dd></div><div><dt>D+</dt><dd>{w["vert"]} m</dd></div></dl></header>
+<dl class="stats"><div><dt>Run</dt><dd>{run_txt}</dd></div><div><dt>Longest</dt><dd>{r["long"]} km</dd></div><div><dt>Bike</dt><dd>{r["bike"]/60:.1f} h</dd></div><div><dt>D+</dt><dd>{w["vert"]} m</dd></div></dl><button type="button" class="pbtn ico" data-print="print-w{r["n"]}" aria-label="Print week {r["n"]}" title="Print week {r["n"]}">{PRINT_ICON}</button></header>
 <p class="focus">{e(w["focus"])}</p>
 <ol class="days">{"".join(days)}</ol></article>''')
 
-css = open(os.path.join(HERE,"style.css")).read()
+css = open(os.path.join(HERE,"style.css")).read() + open(os.path.join(HERE,"print.css")).read()
 body = open(os.path.join(HERE,"body.html")).read()
-js = open(os.path.join(HERE,"app.js")).read()
-page = body.replace("%%CSS%%", css).replace("%%CHART%%", chart).replace("%%WEEKS%%", "\n".join(cards)).replace("%%JS%%", js)
+js = open(os.path.join(HERE,"app.js")).read() + open(os.path.join(HERE,"print.js")).read()
+prints = print_docs.build(rows, PHASES, DAYN, KIND_LABEL, fmt)
+page = body.replace("%%CSS%%", css).replace("%%CHART%%", chart).replace("%%WEEKS%%", "\n".join(cards)).replace("%%JS%%", js).replace("%%PRINT%%", prints).replace("%%PRINT_ICON%%", PRINT_ICON)
 open(os.path.join(HERE,"..","index.html"),"w").write(page)
 for r in rows: print(r["n"], r["start"], r["run"], round(r["bike"]/60,1), r["long"], r["hard"])

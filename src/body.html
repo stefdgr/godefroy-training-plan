@@ -27,7 +27,7 @@
 <div id="view-plan" class="view" role="tabpanel" aria-labelledby="tab-plan">
   <section class="today-wrap" id="now" aria-label="Today and this week">
     <div class="today-card" id="today-card"></div>
-    <div class="cw-head"><h3 id="cw-title">This week</h3><a href="#weeks" class="jump-link" id="cw-all">All weeks →</a></div>
+    <div class="cw-head"><h3 id="cw-title">This week</h3><button type="button" class="pbtn" data-print="current-week">%%PRINT_ICON%%Print this week</button><a href="#weeks" class="jump-link" id="cw-all">All weeks →</a></div>
     <div id="cw-slot"></div>
     <details class="nextwk"><summary id="nw-title">Next week</summary><div id="nw-slot"></div></details>
   </section>
@@ -99,7 +99,7 @@
 <!-- ================= ALL WEEKS ================= -->
 <div id="view-weeks" class="view" role="tabpanel" aria-labelledby="tab-weeks" hidden>
   <nav class="jump" aria-label="Phases">
-    <a href="#base">Base</a><a href="#speed">16k block</a><a href="#trail">Trail block</a><button type="button" id="today-btn">Go to this week</button>
+    <a href="#base">Base</a><a href="#speed">16k block</a><a href="#trail">Trail block</a><button type="button" id="today-btn">Go to this week</button><button type="button" class="pbtn" data-print="print-plan">%%PRINT_ICON%%Print full plan</button>
   </nav>
   <main id="weeklist">
   %%WEEKS%%
@@ -109,7 +109,7 @@
 <!-- ================= STRENGTH ================= -->
 <div id="view-strength" class="view" role="tabpanel" aria-labelledby="tab-strength" hidden>
   <section class="panel" id="sessions">
-<div class="panel-h"><h3>Sessions</h3><div class="seg" role="tablist" aria-label="Session">
+<div class="panel-h"><h3>Sessions</h3><button type="button" class="pbtn" data-print="print-strength">%%PRINT_ICON%%Print strength</button><div class="seg" role="tablist" aria-label="Session">
 <button type="button" role="tab" class="segb" data-s="A" aria-selected="false"><b>A</b><span>Mon</span></button>
 <button type="button" role="tab" class="segb" data-s="B" aria-selected="false"><b>B</b><span>Wed</span></button>
 <button type="button" role="tab" class="segb" data-s="C" aria-selected="false"><b>C</b><span>Fri</span></button>
@@ -202,6 +202,7 @@
 
 <footer class="foot">Draft v4 · 14 Nov 2026</footer>
 </div>
+<div class="pdocs">%%PRINT%%</div>
 <script>%%JS%%</script>
 </body>
 </html>

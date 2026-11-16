@@ -1,0 +1,166 @@
+/* ---------- print buttons (screen) ---------- */
+.pbtn{font:500 14px var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
+.pbtn:hover{border-color:var(--moss);color:var(--moss)}
+.pbtn svg{width:15px;height:15px;flex:none}
+.pbtn.ico{padding:5px;border-radius:6px;color:var(--muted)}
+.pbtn.ico:hover{color:var(--moss)}
+.cw-head .pbtn{margin-left:auto}
+.cw-head{align-items:center}
+.pdoc{display:none}
+
+/* ---------- print layouts ---------- */
+@page{size:A4 portrait;margin:12mm 12mm 11mm}
+@page land{size:A4 landscape;margin:9mm 10mm 8mm}
+@media print{
+  html,body{background:#fff!important}
+  html.printing body>.wrap{display:none!important}
+  .pdoc.on{display:block}
+  .pdoc.land{page:land}
+  .pdoc{color:#18221f;font:8.5pt/1.35 var(--body);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ppage{break-after:page;display:flex;flex-direction:column;gap:3.5mm}
+  .ppage:last-child{break-after:auto}
+}
+.pdoc h1,.pdoc h2{font-family:var(--display);text-transform:uppercase;margin:0;letter-spacing:.01em}
+.pdoc h1{font-size:20pt;font-weight:700;line-height:1}
+.pdoc h2{font-size:11pt;font-weight:600;color:#5c6763;border-bottom:.6pt solid #18221f;padding-bottom:1mm;margin-top:1mm}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;gap:6mm;border-bottom:1.6pt solid #18221f;padding-bottom:2mm}
+.pk{font:600 7pt var(--body);text-transform:uppercase;letter-spacing:.1em;color:#2f6a4a;margin-bottom:.8mm}
+.psub{font-size:8.5pt;color:#5c6763;margin-top:1mm;max-width:150mm}
+.pr{font:600 10pt var(--body);text-align:right;white-space:nowrap}
+.ptag{font:600 6.5pt var(--body);text-transform:uppercase;letter-spacing:.05em;border:.6pt solid #5c6763;border-radius:2pt;padding:0 1.2mm;margin-right:1mm;color:#18221f;vertical-align:1pt}
+.pf{display:flex;justify-content:space-between;font-size:6.5pt;color:#8a938f;border-top:.5pt solid #d9ddd7;padding-top:1mm;margin-top:auto}
+.pbox{display:inline-block;width:3mm;height:3mm;border:.7pt solid #18221f;border-radius:.6pt;vertical-align:-.5mm;flex:none;background:#fff}
+.pdoc b.sA,.pdoc b.sB,.pdoc b.sC{display:inline-block;font:700 6.5pt/1 var(--body);padding:.5mm 1mm;border-radius:1pt;background:#b07d16;color:#fff;margin-left:.6mm}
+.pdoc b.sC{background:#fff;color:#b07d16;box-shadow:inset 0 0 0 .6pt #b07d16}
+.pdoc .kst{font-weight:700;color:#18221f;margin-left:.6mm}
+.pkey{display:flex;flex-wrap:wrap;gap:1mm 6mm;font-size:7pt;color:#5c6763;align-items:center}
+.pkey span{display:inline-flex;align-items:center;gap:1mm}
+
+/* kind colours: a left rule, prints well in grey too */
+.pdoc [class*="k-"]{--kc:#a9b1ac}
+.pdoc .k-easy,.pdoc .k-camp{--kc:#6aa57a}
+.pdoc .k-q{--kc:#c2482a}
+.pdoc .k-long,.pdoc .k-hill{--kc:#2f6a4a}
+.pdoc .k-bike{--kc:#7ea6cc}
+.pdoc .k-bikeq{--kc:#2f5d86}
+.pdoc .k-race{--kc:#18221f}
+
+/* full plan grid (landscape, one phase per page) */
+.pgrid{width:100%;border-collapse:collapse;table-layout:fixed;font-variant-numeric:tabular-nums}
+.pgrid th,.pgrid td{border:.5pt solid #c9cec8;vertical-align:top;text-align:left}
+.pgrid thead th{font:600 7pt var(--body);text-transform:uppercase;letter-spacing:.04em;color:#5c6763;padding:1mm 1.4mm;background:#eef0ee}
+.pgrid thead th:first-child{width:21mm}
+.pgrid thead th.num{width:11mm;text-align:right}
+.pgrid tbody th{padding:1.2mm 1.4mm;border-left:2.2pt solid #7d9a6d}
+.pgrid.ph-speed tbody th{border-left-color:#c2482a}
+.pgrid.ph-trail tbody th{border-left-color:#2f6a4a}
+.pgrid tbody th b{display:block;font:700 12pt/1 var(--display)}
+.pgrid tbody th span{display:block;font-size:6.8pt;color:#5c6763;font-weight:500}
+.pgrid tbody th em{display:block;font:600 6pt var(--body);font-style:normal;text-transform:uppercase;letter-spacing:.04em;color:#5c6763;margin-top:.4mm}
+.pgrid td{padding:1mm 1.2mm 1.2mm;box-shadow:inset 0 1.4pt 0 var(--kc)}
+.pgrid td.k-rest .ct{color:#8a938f}
+.pgrid td.k-race{background:#eef0ee}
+.pgrid .c1{display:flex;align-items:center;gap:1mm;margin-bottom:.5mm}
+.pgrid .cd{font-size:6.3pt;color:#8a938f;margin-right:auto}
+.pgrid .ct{font-size:7.4pt;font-weight:600;line-height:1.22}
+.pgrid td.num{text-align:right;font-weight:600;font-size:8pt;padding-top:1.6mm;box-shadow:none}
+
+/* week sheet (portrait) */
+.pstats{display:flex;gap:5mm;margin:0;font-variant-numeric:tabular-nums}
+.pstats div{display:flex;flex-direction:column;align-items:flex-end}
+.pstats dt{font:600 6.5pt var(--body);text-transform:uppercase;color:#5c6763;letter-spacing:.04em}
+.pstats dd{margin:0;font:600 11pt var(--body)}
+.pweek{width:100%;border-collapse:collapse;table-layout:fixed}
+.pweek thead th{font:600 6.8pt var(--body);text-transform:uppercase;letter-spacing:.04em;color:#5c6763;text-align:left;padding:0 1.5mm 1mm;border-bottom:1pt solid #18221f}
+.pweek thead th:nth-child(1){width:6mm}
+.pweek thead th:nth-child(2){width:13mm}
+.pweek thead th:nth-child(4){width:19mm}
+.pweek thead th:nth-child(5){width:17mm}
+.pweek thead th:nth-child(6){width:44mm}
+.pweek td{padding:2mm 1.5mm;border-bottom:.5pt solid #c9cec8;vertical-align:top}
+.pweek tr{break-inside:avoid}
+.pweek td.tk{border-left:2.4pt solid var(--kc);padding-left:1.6mm}
+.pweek .dy b{display:block;font:700 12pt/1 var(--display);text-transform:uppercase}
+.pweek .dy span{font-size:7pt;color:#5c6763}
+.pweek .sk{font:600 6.5pt var(--body);text-transform:uppercase;letter-spacing:.05em;color:#5c6763}
+.pweek .st{font-weight:600;font-size:9.5pt;line-height:1.25}
+.pweek .sd{font-size:8pt;color:#3a4542;margin-top:.5mm}
+.pweek .vol{font-weight:600;font-variant-numeric:tabular-nums;font-size:8pt}
+.pweek .sx{white-space:nowrap}
+.pweek .sx small{display:block;font-size:6.3pt;color:#8a938f;margin-top:.5mm}
+.pweek .nt{background:repeating-linear-gradient(transparent 0 5.4mm,#d9ddd7 5.4mm 5.6mm)}
+.pweek tr.k-rest .st{color:#5c6763}
+.pcols{display:grid;grid-template-columns:1fr 1.25fr;gap:6mm}
+.pcols li{list-style:none;margin:1.5mm 0 0;font-size:7.8pt}
+
+/* cloned page content, tightened */
+.pclone ul,.pclone ol{margin:0;padding:0}
+.pdoc .now-vals{font-size:8.5pt}
+.pz{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.pz h4{font:600 9pt var(--display);text-transform:uppercase;color:#5c6763;margin:0 0 1mm}
+.pz table.z{font-size:7.8pt;width:100%;border-collapse:collapse}
+.pz .z th,.pz .z td{padding:.8mm 1.2mm;border-bottom:.5pt solid #d9ddd7;text-align:left}
+.pz .note{font-size:7pt;color:#5c6763;margin:1.2mm 0 0}
+.pz.small{grid-template-columns:1fr;gap:2mm}
+.pz.small .zgrid{display:grid;grid-template-columns:1fr;gap:2.5mm}
+.pz .zgrid{display:contents}
+.pz.small .zgrid{display:grid}
+.pz.small table.z{font-size:7.2pt}
+.pz.small .note{display:none}
+.pz .zd{display:inline-block;width:2mm;height:2mm;border-radius:50%;margin-right:1mm}
+.prules ul{display:grid;grid-template-columns:1fr 1fr;gap:2mm 6mm;list-style:none;font-size:8pt}
+.pdoc .dot{display:inline-block;width:2mm;height:2mm;border-radius:50%;margin:0 .8mm 0 1.5mm}
+.pdoc .dot.g{background:#3f9a5f}.pdoc .dot.a{background:#d39b1d}.pdoc .dot.r{background:#c8432b}
+.ptmpl .tmpl{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.ptmpl h4{font:600 9pt var(--display);text-transform:uppercase;margin:0 0 1mm}
+.ptmpl ol{list-style:none;font-size:7.8pt;display:grid;gap:.4mm}
+.ptmpl ol b{display:inline-block;width:8mm}
+
+/* strength tracker */
+.pstr{display:grid;gap:3.5mm}
+.pss{break-inside:avoid}
+.pss>header{display:flex;align-items:baseline;gap:3mm;border-bottom:1.2pt solid #b07d16;padding-bottom:1mm}
+.pss .sl{font:700 20pt/1 var(--display);color:#b07d16}
+.pss .sn{font:600 11pt var(--display);text-transform:uppercase}
+.pss .sf{font-size:7.5pt;color:#5c6763}
+.pss .sm{margin-left:auto;font-size:7.5pt;color:#5c6763;font-weight:600}
+.pss table{width:100%;border-collapse:collapse;table-layout:fixed}
+.pss th{font:600 6.5pt var(--body);text-transform:uppercase;letter-spacing:.04em;color:#5c6763;text-align:left;padding:1mm 1.2mm .6mm}
+.pss th.wk{text-align:center}
+.pss td{padding:1.1mm 1.2mm;border-bottom:.5pt solid #d9ddd7;vertical-align:middle}
+.pss td.no{width:7mm;font-weight:700;color:#b07d16;font-size:7.5pt}
+.pss td.ex b{font-weight:600;font-size:8.3pt}
+.pss td.ex small{display:block;font-size:6.8pt;color:#5c6763;line-height:1.25}
+.pss td.do{width:19mm;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:8pt}
+.pss td.wk{width:20mm;text-align:center;border-left:.5pt solid #d9ddd7}
+.pss td.wk .pbox{margin:0 .4mm}
+.pss tr.grp td{padding:1.4mm 1.2mm .4mm;border-bottom:0;font:600 6.5pt var(--body);text-transform:uppercase;letter-spacing:.05em;color:#5c6763}
+.pss tr.grp td.wk{border-left:.5pt solid #d9ddd7}
+.pss .why{font-size:7pt;color:#5c6763;margin:1mm 0 0}
+.pweeks{font:500 8.5pt var(--body);color:#5c6763}
+.pref{display:grid;grid-template-columns:1fr 1fr;gap:4mm 7mm;align-content:start}
+.pref .panel{display:block;break-inside:avoid}
+.pref .panel:has(.prog),.pref .panel:has(.mob){grid-column:1/-1}
+.pref h3{font:600 11pt var(--display);text-transform:uppercase;border-bottom:.6pt solid #18221f;padding-bottom:1mm;margin:0 0 1.5mm}
+.pref h3 small{font:400 7pt var(--body);text-transform:none;color:#5c6763;margin-left:2mm}
+.pref ol{padding-left:4mm!important;font-size:8pt;display:grid;gap:1mm}
+.pref table.z{width:100%;border-collapse:collapse;font-size:7.8pt}
+.pref .z th,.pref .z td{padding:.9mm 1.2mm;border-bottom:.5pt solid #d9ddd7;text-align:left}
+.pref .mob{font-size:8pt;margin:0}
+.jump .pbtn{background:var(--card);color:var(--ink);border-color:var(--line)}
+.jump .pbtn:hover{border-color:var(--moss);color:var(--moss)}
+.panel-h .pbtn{margin-left:auto}
+.pss col.c-no{width:6mm}.pss col.c-do{width:20mm}.pss col.c-wk{width:17mm}
+.pss td.no,.pss td.do,.pss td.wk{width:auto}
+.pref .panel{border:0;padding:0;background:none;border-radius:0;box-shadow:none}
+.pref .panel:has(.prog){order:2}.pref .panel:has(.mob){order:3}
+/* plan grid: fit 12 weeks on one landscape page */
+.pgrid tbody th{padding:.8mm 1.2mm}
+.pgrid tbody th b{font-size:11pt}
+.pgrid tbody th span,.pgrid tbody th em{display:inline;margin:0}
+.pgrid tbody th em::before{content:" · "}
+.pgrid td{padding:.7mm 1.1mm .9mm}
+.pgrid .c1{margin-bottom:.2mm}
+.pgrid .ct{line-height:1.15}
+.land .ph h1{font-size:17pt}
+.land .ppage{gap:2.5mm}
