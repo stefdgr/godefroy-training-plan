@@ -43,4 +43,4 @@
 
 ## Tools
 - Garmin Connect MCP (read-only): activities, HRV, sleep, RHR, zones. Lap data isn't available through it.
-- The source SWAP PDFs were uploaded in the claude.ai chat and are not in this repo.
+- Source plans (14 SWAP PDFs + 2 physio programs) are summarised in `docs/sources.md`. The PDFs and text extracts are in the claude.ai project files under `sources/`, not in this repo (public repo; SWAP plans are paid material and the physio PDFs hold personal details).
