@@ -79,7 +79,7 @@ def week_doc(r, DAYN, KIND_LABEL, fmt):
 def strength_doc():
     # Filled by print.js from the Strength tab, so it always matches what's on screen.
     return f'''<section class="pdoc" id="print-strength" aria-hidden="true">
-<div class="ppage">{_head("Strength sessions", "A Monday · B Wednesday (fixed) · C Friday (optional)", '<span class="pweeks">Week ____ to ____</span>')}
+<div class="ppage">{_head("Strength sessions", "A Monday · B Wednesday (fixed) · C Friday (optional)")}
 <div class="pstr" data-build="strength"></div>{_foot()}</div>
 <div class="ppage">{_head("Strength · reference", "Rules, progression and mobility")}
 <div class="pclone pref" data-clone-panels="#view-strength .panel:not(#sessions)"></div>{_foot()}</div>
