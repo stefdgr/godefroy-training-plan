@@ -22,6 +22,9 @@
 - Longest run: Bouillon recon, 6 h on the race course (~38–42 km), W26 Sat 8 May. Decided 16 Nov 2026: time-based recon instead of a 45–50 km Big Day in Flanders (more specific, less costly). Sunday after it defaults to a 2 h easy ride.
 - 10k tune-up race or solo time trial on Sun 14 Feb (W14), replacing the 20 km long run: 42:30 or faster puts sub-1:10 on track (decided 16 Nov 2026).
 - Downhill durability: the W23 (Flemish Ardennes 28 km) and W28 (27 km) long runs end with 6–8 fast, controlled descents. An Ardennes back-to-back in W24 is too far for Stef.
+- Trail block ramp: W21 and W25 Sundays default to an easy ride (W21 54 km, W25 55 km) to smooth the jump from the 16k block and give a lighter week before the recon.
+- Strength B from W19: step-downs every week (superset with calf raises), split squats 2 rounds. Stef keeps short ~20′ sessions on Mon/Wed/Fri; don't move them.
+- Stef keeps the flat speed sessions (600s/800s) in the trail block: variety prevents bore-out.
 - **Open:** the 16k block hasn't been checked against the SWAP half-marathon/marathon and 5k/10k plans yet.
 - Bad weather: easy ride → trainer at about 75% of the duration, or an easy run at half to two-thirds of the time (not next to a quality day or long run), or skip it. Intervals → ERG mode. Never turn a skipped ride into extra intensity.
 
