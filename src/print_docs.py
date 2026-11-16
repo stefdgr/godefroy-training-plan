@@ -93,5 +93,17 @@ def foot_doc():
 <div class="pclone pref" data-clone-panels="#view-foot .panel:not(#foot-session)"></div>{_foot()}</div>
 </section>'''
 
+def nutrition_doc():
+    cols = ["Session", "Time", "Carbs g", "g/h", "Fluid ml", "Sodium mg", "Products", "Gut 0–10", "Notes"]
+    rows = "".join("<tr>" + "<td></td>" * len(cols) + "</tr>" for _ in range(18))
+    return f'''<section class="pdoc" id="print-nutrition" aria-hidden="true">
+<div class="ppage">{_head("Nutrition · training", "Daily eating, around sessions, fuelling and gut training")}
+<div class="pclone pref pnut two" data-clone-panels="#view-nutrition .n-train"></div>{_foot()}</div>
+<div class="ppage">{_head("Nutrition · race day", "16k · 10k test · Godefroy 75")}
+<div class="pclone pref pnut" data-clone-panels="#view-nutrition .n-race"></div>{_foot()}</div>
+<div class="ppage">{_head("Fuel log", "Every run over 90′ and ride over 2 h. Gut score: 0 fine, 10 had to stop")}
+<table class="plog"><thead><tr>{"".join(f"<th>{c}</th>" for c in cols)}</tr></thead><tbody>{rows}</tbody></table>{_foot()}</div>
+</section>'''
+
 def build(rows, PHASES, DAYN, KIND_LABEL, fmt):
-    return "\n".join([plan_doc(rows, PHASES, DAYN, fmt)] + [week_doc(r, DAYN, KIND_LABEL, fmt) for r in rows] + [strength_doc(), foot_doc()])
+    return "\n".join([plan_doc(rows, PHASES, DAYN, fmt)] + [week_doc(r, DAYN, KIND_LABEL, fmt) for r in rows] + [strength_doc(), foot_doc(), nutrition_doc()])

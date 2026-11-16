@@ -42,6 +42,10 @@
 - **Foot tab** (16 Nov 2026): session F, ≈23′, barefoot, 3× a week in the evening (e.g. Tue/Thu/Sun, not the evening before the long run). Blocks: release (foam roll calves, which the physio advised, plus a lacrosse ball on the arch and heel), mobility, foot core, arch and calf, balance. Evidence: Taddei 2020 foot-core RCT in runners (3×/wk, 20–30′, injuries 33% → 14%), Kulig 2009 (tibialis posterior: resisted foot adduction, eccentric best), calf stretching for flat feet, Cooper 2020 bunionette review (wide toe box; no evidence that exercise fixes a bunionette). Not on the week cards yet.
 - **Next up:** stretching/ROM routine, plyometrics, isometrics.
 
+## Nutrition
+- **Nutrition tab** (16 Nov 2026, preview): guidelines only, no recipes. Daily carbs by training day (4–5 / 5–7 / 7–9 g/kg), protein 1.6–2.0 g/kg, fuelling during training (60–90 g/h; 90–100 g/h from W25), gut-training ladder to 90–100 g/h by the W26 recon, race-day plans for the 16k/10k test and Godefroy 75 (Thu+Fri carb load, 03:00–03:30 breakfast, 90 g/h from 30′), troubleshooting, checks (blood test, vitamin D, no NSAIDs). Print: training page, race-day page, fuel log sheet.
+- Built from the fuelling rules already on the page and SWAP's long-run fuelling notes; the rest is standard sports-nutrition guidance. Open: Godefroy aid-station menu and gap distances (no GPX yet).
+
 ## Rules on the page
 - Max 2 hard sessions a week (both sports). Easy = run HR < 143, ride < 75% FTP.
 - ★ sessions are never swapped. A missed session is dropped, not stacked.
