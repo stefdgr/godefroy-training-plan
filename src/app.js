@@ -1,5 +1,5 @@
 (function(){
-  var views={plan:document.getElementById("view-plan"),weeks:document.getElementById("view-weeks"),strength:document.getElementById("view-strength")};
+  var views={plan:document.getElementById("view-plan"),weeks:document.getElementById("view-weeks"),strength:document.getElementById("view-strength"),foot:document.getElementById("view-foot")};
   function route(){
     var h=location.hash.replace("#","")||"plan", v="plan", el=null;
     if(views[h]) v=h; else { el=document.getElementById(h); if(el){ for(var k in views){ if(views[k].contains(el)) v=k; } } }
@@ -62,7 +62,7 @@
   box.addEventListener("pointerleave",hide);
 })();
 (function(){
-  var btns=[].slice.call(document.querySelectorAll(".segb")), cards=[].slice.call(document.querySelectorAll(".sc"));
+  var btns=[].slice.call(document.querySelectorAll(".segb")), cards=[].slice.call(document.querySelectorAll("#sessions .sc"));
   if(!btns.length) return;
   function pick(L){ btns.forEach(function(b){b.setAttribute("aria-selected",b.dataset.s===L?"true":"false");});
     cards.forEach(function(c){c.hidden=(c.dataset.s!==L);}); }
