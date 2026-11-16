@@ -35,11 +35,12 @@
 
 ## Strength
 - Physio (bike fit by a Bora-Hansgrohe physio) screening: feet point outward; flat feet with the ankle rolling in; kink in the Achilles; shoulder blades lifting off the ribs; thoracic kyphosis; reduced ankle/knee/hip mobility; tight hamstrings, quads, adductors, glutes, iliopsoas, TFL, gastrocs and piriformis; hamstrings dominant over glutes; squat shifts away from the right side. Stef struggles to activate his right glute, his core is weak, and he has a history of adductor and hip flexor problems. Bunionettes on both feet, with pain under the 5th metatarsal head.
-- Equipment: dumbbells 2×5 kg and 1×10 kg, 20 kg kettlebell, mini/loop bands only (none long enough to anchor), power tower, foam roller, lacrosse ball, balance board, slant boards. No exercise ball.
+- Equipment: dumbbells 2×5 kg and 1×10 kg, 20 kg kettlebell, mini/loop bands and a long band, power tower, foam roller, lacrosse ball, balance board, slant boards. No exercise ball.
 - Principles: Kyle Long (Reddit): objectives first, start simple, progress monthly, 2 fixed sessions + 1 optional. Tough 21 (Jeff Browning): timed format; but skip its combination moves because the goal is control.
 - Sessions on the page: A Mon (fixed), B Wed (fixed), C Fri (optional, 40″/20″ circuit). All physio exercises included (clams merged into side plank + clam, banded bridge into bridge + knee opening; several adapted to the available equipment).
 - Lesson learned: don't swap exercises reactively one at a time. Rework a session as a whole against the findings and the equipment.
-- **Next up:** stretching/ROM routine, toe exercises (toe spreading, short foot, toe yoga, knee-to-wall), plyometrics, isometrics.
+- **Foot tab** (16 Nov 2026): session F, ≈23′, barefoot, 3× a week in the evening (e.g. Tue/Thu/Sun, not the evening before the long run). Blocks: release (foam roll calves, which the physio advised, plus a lacrosse ball on the arch and heel), mobility, foot core, arch and calf, balance. Evidence: Taddei 2020 foot-core RCT in runners (3×/wk, 20–30′, injuries 33% → 14%), Kulig 2009 (tibialis posterior: resisted foot adduction, eccentric best), calf stretching for flat feet, Cooper 2020 bunionette review (wide toe box; no evidence that exercise fixes a bunionette). Not on the week cards yet.
+- **Next up:** stretching/ROM routine, plyometrics, isometrics.
 
 ## Rules on the page
 - Max 2 hard sessions a week (both sports). Easy = run HR < 143, ride < 75% FTP.
