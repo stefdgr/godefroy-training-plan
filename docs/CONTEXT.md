@@ -19,7 +19,7 @@
 - Base W1–9 · 16k block W10–18 · trail block W19–30 (adapted from SWAP Champion 50k–50 mile, low end of the ranges, in km).
 - W19 is a recovery week after the 16k, with a weekend ride. W20 Sunday defaults to a ride (avoids a jump from 30 to 65 km).
 - Long runs in the 16k block (18–24 km) are deliberately above what a pure 16k plan needs, to bridge into the trail block.
-- Longest run: Bouillon recon 33–38 km (W26, Sat 8 May). **Open:** make it a 6 h time-based recon, or add a 45–50 km Big Day in W23–24. Stef wanted insight only; no change yet.
+- Longest run: Bouillon recon, 6 h on the race course (~38–42 km), W26 Sat 8 May. Decided 16 Nov 2026: time-based recon instead of a 45–50 km Big Day in Flanders (more specific, less costly). Sunday after it defaults to a 2 h easy ride.
 - **Open:** the 16k block hasn't been checked against the SWAP half-marathon/marathon and 5k/10k plans yet.
 - Bad weather: easy ride → trainer at about 75% of the duration, or an easy run at half to two-thirds of the time (not next to a quality day or long run), or skip it. Intervals → ERG mode. Never turn a skipped ride into extra intensity.
 
