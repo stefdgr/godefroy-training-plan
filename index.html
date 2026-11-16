@@ -2294,7 +2294,7 @@ ul.rules{grid-template-columns:1fr}
           });
         });
         var hd=q(".sch",sc), tag=q(".smeta .tag",sc), dur=q(".dur",sc), why=q(".why",sc), th="";
-        for(var i=1;i<=WK;i++) th+='<th class="wk">Date ___</th>';
+        for(var i=1;i<=WK;i++) th+='<th class="wk">Session '+i+'</th>';
         out.push('<div class="pss"><header><span class="sl">'+esc(q(".sl",hd).textContent)+'</span><span class="sn">'+esc(q("div b",hd).textContent)+'</span><span class="sf">'+esc(q(":scope>div:not(.smeta) span",hd).textContent)+'</span><span class="sm">'+esc(tag&&tag.textContent)+' · '+esc(dur&&dur.textContent)+'</span></header>'+
           '<table><colgroup><col class="c-no"><col><col class="c-do">'+Array(WK+1).join('<col class="c-wk">')+'</colgroup><thead><tr><th></th><th>Exercise</th><th>Dose</th>'+th+'</tr></thead><tbody>'+rows.join("")+'</tbody></table>'+
           (why?'<p class="why">'+esc(why.textContent)+'</p>':'')+'</div>');
