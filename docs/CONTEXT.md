@@ -20,6 +20,8 @@
 - W19 is a recovery week after the 16k, with a weekend ride. W20 Sunday defaults to a ride (avoids a jump from 30 to 65 km).
 - Long runs in the 16k block (18–24 km) are deliberately above what a pure 16k plan needs, to bridge into the trail block.
 - Longest run: Bouillon recon, 6 h on the race course (~38–42 km), W26 Sat 8 May. Decided 16 Nov 2026: time-based recon instead of a 45–50 km Big Day in Flanders (more specific, less costly). Sunday after it defaults to a 2 h easy ride.
+- 10k tune-up race or solo time trial on Sun 14 Feb (W14), replacing the 20 km long run: 42:30 or faster puts sub-1:10 on track (decided 16 Nov 2026).
+- Downhill durability: the W23 (Flemish Ardennes 28 km) and W28 (27 km) long runs end with 6–8 fast, controlled descents. An Ardennes back-to-back in W24 is too far for Stef.
 - **Open:** the 16k block hasn't been checked against the SWAP half-marathon/marathon and 5k/10k plans yet.
 - Bad weather: easy ride → trainer at about 75% of the duration, or an easy run at half to two-thirds of the time (not next to a quality day or long run), or skip it. Intervals → ERG mode. Never turn a skipped ride into extra intensity.
 
