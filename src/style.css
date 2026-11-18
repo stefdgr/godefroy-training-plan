@@ -217,6 +217,8 @@ ul.rules{grid-template-columns:1fr}
 .exs em{font:700 12px var(--body);font-style:normal;color:var(--ochre);width:14px}
 .en span{font-weight:600;font-size:14.5px}
 .en small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
+.exs li.later{opacity:.72}
+.en i.from{font:600 11px var(--body);font-style:normal;text-transform:uppercase;letter-spacing:.04em;color:var(--ochre);border:1px solid var(--ochre);border-radius:4px;padding:0 5px;margin-left:6px;white-space:nowrap}
 .ed{font-variant-numeric:tabular-nums;font-weight:600;font-size:14px;white-space:nowrap;text-align:right}
 .sc .why{border-top:0;margin-top:6px;padding-top:0}
 @media (max-width:560px){.blk2{grid-template-columns:1fr;gap:6px}.ed{white-space:normal}}
