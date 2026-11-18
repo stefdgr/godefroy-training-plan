@@ -287,7 +287,9 @@ ul.rules{grid-template-columns:1fr}
 .chips+.mac{margin-top:2px}
 .day.race .mac,.day.race .mac b{color:var(--race-ink);border-top-color:currentColor}
 .mac:hover b{text-decoration:underline}
-.today-card .mac{font-size:13px;margin-top:4px}
+/* macros only on the today card */
+.day .mac{display:none}
+.today-card .mac{display:flex;font-size:13px;margin-top:4px}
 /* ---------- print buttons (screen) ---------- */
 .pbtn{font:500 14px var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
 .pbtn:hover{border-color:var(--moss);color:var(--moss)}
@@ -364,9 +366,9 @@ ul.rules{grid-template-columns:1fr}
 .pweek thead th{font:600 6.8pt var(--body);text-transform:uppercase;letter-spacing:.04em;color:#5c6763;text-align:left;padding:0 1.5mm 1mm;border-bottom:1pt solid #18221f}
 .pweek thead th:nth-child(1){width:6mm}
 .pweek thead th:nth-child(2){width:13mm}
-.pweek thead th:nth-child(4){width:25mm}
+.pweek thead th:nth-child(4){width:19mm}
 .pweek thead th:nth-child(5){width:17mm}
-.pweek thead th:nth-child(6){width:38mm}
+.pweek thead th:nth-child(6){width:44mm}
 .pweek td{padding:2mm 1.5mm;border-bottom:.5pt solid #c9cec8;vertical-align:top}
 .pweek tr{break-inside:avoid}
 .pweek td.tk{border-left:2.4pt solid var(--kc);padding-left:1.6mm}
@@ -1430,7 +1432,7 @@ ul.rules{grid-template-columns:1fr}
 <div id="view-nutrition" class="view" role="tabpanel" aria-labelledby="tab-nutrition" hidden>
   <section class="panel n-train" id="nut-daily">
     <div class="panel-h"><h3>Daily eating <small>at 88 kg</small></h3><button type="button" class="pbtn" data-print="print-nutrition"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>Print nutrition</button></div>
-    <p class="note">Every day card shows that day's target. Carbs include what you eat during the session.</p>
+    <p class="note">The Today card on the overview shows that day's target. Carbs include what you eat during the session.</p>
     <table class="z prog"><thead><tr><th>Day</th><th>kcal</th><th>Carbs</th><th>Protein</th><th>Fat</th></tr></thead><tbody>
       <tr><td>Rest or strength only</td><td>2,800–2,900</td><td>340–360 g · 4 g/kg</td><td>160 g</td><td>90 g</td></tr>
       <tr><td>Easy run ≤ 60′, easy ride ≤ 90′</td><td>3,300–3,800</td><td>460–550 g · 5–6 g/kg</td><td>160 g</td><td>90–105 g</td></tr>
@@ -1602,840 +1604,840 @@ ul.rules{grid-template-columns:1fr}
 <footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w1" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 1 · 9 Nov – 15 Nov</h1><div class="psub"><span class="ptag">Intro</span> Settle in. This week is all easy.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>32 km</dd></div><div><dt>Longest</dt><dd>15 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>200–300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>9/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>10/11</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1. Finish with 6×20 s hill strides on your hill, jog down.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>11/11</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>12/11</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Z1 + 4×20 s flat strides.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">8 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>13/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">Or 30′ very easy spin.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>14/11</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Endurance ride 2 h</div><div class="sd">Z2 + 6×20 s seated sprints. Intro week, so nothing structured yet.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>15/11</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 15 km</div><div class="sd">Easy, trails or gravel if you can.</div></td>
-<td class="vol">15 km<div class="pmac"><b>4,100 kcal</b> C 610 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">15 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w2" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 2 · 16 Nov – 22 Nov</h1><div class="psub"><span class="ptag">Build</span> First hill session: power without much impact.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>36 km</dd></div><div><dt>Longest</dt><dd>17 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>300–400 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>16/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>17/11</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Hill session</div><div class="sd">2 km warm-up, 6×90 s uphill at 5k effort, then 6×45 s at 3k effort, jog down after each, 2 km cool-down.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>18/11</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90′</div><div class="sd">Z1–Z2, power under 75% FTP.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>19/11</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 5×20 s strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>20/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">Or 30′ very easy spin.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>21/11</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2 h · VO2</div><div class="sd">Includes 3 × (4×1′ hard / 1′ easy), 3′ between sets. Hard = 110–120% FTP.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>22/11</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 17 km</div><div class="sd">Easy over rolling terrain.</div></td>
-<td class="vol">17 km<div class="pmac"><b>4,300 kcal</b> C 650 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">17 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w3" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 3 · 23 Nov – 29 Nov</h1><div class="psub"><span class="ptag">Build</span> Threshold comes in. Stay controlled: smooth, not maximal.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>40 km</dd></div><div><dt>Longest</dt><dd>19 km</dd></div><div><dt>Bike</dt><dd>3.8 h</dd></div><div><dt>D+</dt><dd>300–400 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>23/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>24/11</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Threshold 5×5′</div><div class="sd">3 km warm-up, 5×5′ at threshold (HR 152–158) with 2′ jog, 2 km cool-down.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>25/11</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>26/11</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>27/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>28/11</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2–2.5 h · sweet spot</div><div class="sd">Includes 3×10′ at 88–93% FTP, 5′ easy between.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,400 kcal</b> C 660 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>29/11</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 19 km</div><div class="sd">Easy. Last 3 km steady (Z3) only if you feel great.</div></td>
-<td class="vol">19 km<div class="pmac"><b>4,500 kcal</b> C 680 · P 160 · F 125</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">19 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w4" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 4 · 30 Nov – 6 Dec</h1><div class="psub"><span class="ptag">Deload</span> Lower load so the first three weeks sink in.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>30 km</dd></div><div><dt>Longest</dt><dd>14 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>30/11</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>1/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 8×30 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>2/12</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75′</div><div class="sd">Z1.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>3/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">7 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>4/12</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>5/12</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Free ride 2 h</div><div class="sd">No structure. Optional 6×20 s sprints.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>6/12</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 14 km</div><div class="sd">Easy.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w5" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 5 · 7 Dec – 13 Dec</h1><div class="psub"><span class="ptag">Build</span> A fourth run comes in on Friday (or swap it for a spin).</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>45 km</dd></div><div><dt>Longest</dt><dd>18 km</dd></div><div><dt>Bike</dt><dd>3.8 h</dd></div><div><dt>D+</dt><dd>400–500 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>7/12</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>8/12</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">16×1′ fast / 1′ easy</div><div class="sd">2–3 km warm-up, 16×1′ at 5k effort / 1′ easy, 2 km steady, 2 km cool-down.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>9/12</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>10/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">8 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>11/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Or 45′ easy spin.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>12/12</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2–2.5 h · threshold</div><div class="sd">Includes 4×8′ at 95–100% FTP, 4′ easy between.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,400 kcal</b> C 660 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>13/12</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 18 km</div><div class="sd">Easy over hills.</div></td>
-<td class="vol">18 km<div class="pmac"><b>4,400 kcal</b> C 660 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">18 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w6" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 6 · 14 Dec – 20 Dec</h1><div class="psub"><span class="ptag">Build</span> Longest week of the base so far. Make Sunday hilly.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>48 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>4.4 h</dd></div><div><dt>D+</dt><dd>500–600 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>14/12</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>15/12</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Threshold 3×10′</div><div class="sd">3 km warm-up, 3×10′ at threshold with 2′ jog, 2 km cool-down.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>16/12</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90–105′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>17/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>18/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Or 45′ easy spin.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>19/12</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2.5–3 h · tempo</div><div class="sd">Includes 3×12′ tempo (76–87% FTP). Climbs welcome.</div></td>
-<td class="vol">2 h 45′<div class="pmac"><b>4,800 kcal</b> C 740 · P 160 · F 135</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 45′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>20/12</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 20 km</div><div class="sd">Hilly: Steenberg loops plus your hill.</div></td>
-<td class="vol">20 km<div class="pmac"><b>4,600 kcal</b> C 700 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">20 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w7" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 7 · 21 Dec – 27 Dec</h1><div class="psub"><span class="ptag">Deload</span> Christmas week. Easy and flexible; move days around freely.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>34 km</dd></div><div><dt>Longest</dt><dd>16 km</dd></div><div><dt>Bike</dt><dd>3.0 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>21/12</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>22/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">Z1 + 8×20 s strides.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>23/12</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75′</div><div class="sd">Z1.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>24/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Christmas Eve. Z1.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">8 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>25/12</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">Christmas Day.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>26/12</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Free ride 1.5–2 h</div><div class="sd">Easy.</div></td>
-<td class="vol">1 h 45′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 45′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>27/12</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 16 km</div><div class="sd">Easy.</div></td>
-<td class="vol">16 km<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">16 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w8" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 8 · 28 Dec – 3 Jan</h1><div class="psub"><span class="ptag">Ardennes camp</span> Trail camp, 28/12–1/1. Real terrain, no pressure: the hills do the work. Hike the steep bits and practise relaxed, quick downhills.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>51 km</dd></div><div><dt>Longest</dt><dd>19 km</dd></div><div><dt>Bike</dt><dd>2.2 h</dd></div><div><dt>D+</dt><dd>1,000–1,400 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Mon</b><span>28/12</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">At home in the morning before you leave. If you get the chance after arriving, run it on the trails there instead.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-camp"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-camp"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>29/12</span></td>
 <td class="ss"><div class="sk">Trail</div><div class="st">Hilly trail run 13 km</div><div class="sd">Easy/moderate, no repeats. Explore the area and let the climbs do the work: Z2, drifting into Z3 on the uphills.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Wed</b><span>30/12</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest or hike</div><div class="sd">Or a 1.5–2 h relaxed hike.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>31/12</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long trail 19 km</div><div class="sd">New Year&#x27;s Eve morning. Easy, power-hike the steep sections, strong downhills. Fuel 60–90 g/h.</div></td>
-<td class="vol">19 km<div class="pmac"><b>4,500 kcal</b> C 680 · P 160 · F 125</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">19 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>1/1</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">New Year&#x27;s Day: travel and party.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>2/1</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Endurance ride 2–2.5 h</div><div class="sd">Back home. Z2, no structure.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>3/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">Z1. Easy legs after the camp.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w9" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 9 · 4 Jan – 10 Jan</h1><div class="psub"><span class="ptag">Build</span> Last base week. Confirm the threshold pace before the 16k block.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>46 km</dd></div><div><dt>Longest</dt><dd>18 km</dd></div><div><dt>Bike</dt><dd>3.8 h</dd></div><div><dt>D+</dt><dd>400–500 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>4/1</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>5/1</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Threshold 5×6′</div><div class="sd">2 km warm-up, 5×6′ at threshold with 2′ jog, cool-down. Note your pace at HR 155.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>6/1</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>7/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>8/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Or 45′ easy spin.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>9/1</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2–2.5 h · VO2</div><div class="sd">Includes 5×4′ at 110–118% FTP, 4′ easy between.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,400 kcal</b> C 660 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>10/1</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 18 km</div><div class="sd">Easy.</div></td>
-<td class="vol">18 km<div class="pmac"><b>4,400 kcal</b> C 660 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">18 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w10" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 10 · 11 Jan – 17 Jan</h1><div class="psub"><span class="ptag">Build</span> Run speed takes priority. The bike gets at most one structured session a week, and only in weeks where Sunday is easy.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>48 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>11/1</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>12/1</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">6×1 km</div><div class="sd">3 km warm-up, 6×1 km at 10k effort, 2′ jog, 2 km cool-down.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>13/1</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>14/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>15/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">7 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>16/1</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2 h · sweet spot</div><div class="sd">Includes 3×12′ at 88–93% FTP.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>17/1</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 20 km</div><div class="sd">Easy.</div></td>
-<td class="vol">20 km<div class="pmac"><b>4,600 kcal</b> C 700 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">20 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w11" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 11 · 18 Jan – 24 Jan</h1><div class="psub"><span class="ptag">Build</span> Threshold plus a steady finish on Sunday. Both are hard days, so Saturday&#x27;s ride stays easy.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>50 km</dd></div><div><dt>Longest</dt><dd>21 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>18/1</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>19/1</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Threshold 3×10′</div><div class="sd">3 km warm-up, 3×10′ at threshold, 2′ jog, 2 km cool-down.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>20/1</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>21/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>22/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">7 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>23/1</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Endurance ride 2–2.5 h</div><div class="sd">Z2. Keep it easy.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>24/1</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 21 km · steady finish</div><div class="sd">17 km easy, last 4 km steady (Z3).</div></td>
-<td class="vol">21 km<div class="pmac"><b>4,600 kcal</b> C 700 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">21 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w12" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 12 · 25 Jan – 31 Jan</h1><div class="psub"><span class="ptag">Build</span> Mixed speed on Tuesday, hilly long run on Sunday.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>52 km</dd></div><div><dt>Longest</dt><dd>22 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>400 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>25/1</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>26/1</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">5 × (2′/1′/30″)</div><div class="sd">3 km warm-up, 5 sets of 2′ at 10k effort, 1′ at 5k, 30″ at 3k, with 1′ easy between reps and 2′ between sets, 3 km easy.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>27/1</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 90′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>28/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>29/1</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Z1.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">8 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bikeq"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>30/1</span></td>
 <td class="ss"><div class="sk">Bike quality</div><div class="st">Ride 2 h · threshold</div><div class="sd">Includes 4×8′ at 95–100% FTP.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>31/1</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 22 km</div><div class="sd">Easy, hilly (Steenberg).</div></td>
-<td class="vol">22 km<div class="pmac"><b>4,700 kcal</b> C 720 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">22 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w13" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 13 · 1 Feb – 7 Feb</h1><div class="psub"><span class="ptag">Deload</span> Recovery week.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>34 km</dd></div><div><dt>Longest</dt><dd>16 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>1/2</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>2/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">Z1 + 8×30 s hill strides.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>3/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 60–75′</div><div class="sd">Z1.</div></td>
-<td class="vol">1 h 10′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 10′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>4/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Z1.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">8 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>5/2</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>6/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Free ride 2 h</div><div class="sd">Easy.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>7/2</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 16 km</div><div class="sd">Easy + 6×20 s strides.</div></td>
-<td class="vol">16 km<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">16 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w14" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 14 · 8 Feb – 14 Feb</h1><div class="psub"><span class="ptag">Build</span> First session at race pace, then a 10k tune-up on Sunday to check the 16k goal.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>45 km</dd></div><div><dt>Longest</dt><dd>15 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>8/2</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>9/2</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">4×2 km at 16k pace</div><div class="sd">3 km warm-up, 4×2 km at 4:18–4:22, 2′ jog, 2 km cool-down.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>10/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>11/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>12/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">7 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>13/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Endurance ride 2–2.5 h</div><div class="sd">Z2.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-race"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-race"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>14/2</span></td>
 <td class="ss"><div class="sk">Race <b class="kst">★ key</b></div><div class="st">10k tune-up</div><div class="sd">3 km warm-up, 10k race or solo time trial, 2 km cool-down. 42:30 or faster puts sub-1:10 on track.</div></td>
-<td class="vol">15 km<div class="pmac"><b>4,100 kcal</b> C 610 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">15 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w15" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 15 · 15 Feb – 21 Feb</h1><div class="psub"><span class="ptag">Build</span> Speed on Tuesday, race pace inside the long run on Sunday.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>53 km</dd></div><div><dt>Longest</dt><dd>22 km</dd></div><div><dt>Bike</dt><dd>3.7 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>15/2</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>16/2</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">8×800 m</div><div class="sd">3 km warm-up, 8×800 m at 5k effort, 400 m jog, then 2 km steady, 2 km cool-down.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>17/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–90′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 25′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 25′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>18/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>19/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">7 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>20/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Endurance ride 2–2.5 h</div><div class="sd">Z2. Keep it easy.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>21/2</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 22 km · race pace</div><div class="sd">15 km easy, 2×3 km at 4:20 with 3′ jog, 1 km easy.</div></td>
-<td class="vol">22 km<div class="pmac"><b>4,700 kcal</b> C 720 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">22 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w16" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 16 · 22 Feb – 28 Feb</h1><div class="psub"><span class="ptag">Build</span> The key session of the block: 9 km at race pace.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>56 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>3.2 h</dd></div><div><dt>D+</dt><dd>300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>22/2</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>23/2</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">3×3 km at 16k pace</div><div class="sd">3 km warm-up, 3×3 km at 4:18–4:22, 3′ jog, 2 km cool-down.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>24/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>25/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">Z1 + 6×20 s hill strides.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>26/2</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Z1.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">8 km</td><td class="sx"><span class="pbox"></span><b class="sC">C</b><small>optional</small></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>27/2</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Endurance ride 2 h</div><div class="sd">Z2.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>28/2</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 24 km</div><div class="sd">Easy. This sets up the trail block.</div></td>
-<td class="vol">24 km<div class="pmac"><b>4,900 kcal</b> C 760 · P 160 · F 135</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">24 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w17" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 17 · 1 Mar – 7 Mar</h1><div class="psub"><span class="ptag">Sharpen</span> Less volume, same intensity. Strength drops to two light sessions.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>46 km</dd></div><div><dt>Longest</dt><dd>18 km</dd></div><div><dt>Bike</dt><dd>2.9 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>1/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>2/3</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">5×1 km + 4×200 m</div><div class="sd">3 km warm-up, 5×1 km at 10k effort with 2′ jog, 4×200 m fast, 2 km cool-down.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>3/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 60–75′</div><div class="sd">Z1.</div></td>
-<td class="vol">1 h 10′<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 10′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>4/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">Z1 + 6×20 s strides.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>5/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">7 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>6/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 1.5–2 h</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 45′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 45′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>7/3</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 18 km · race pace</div><div class="sd">12 km easy, 4 km at 4:20, 2 km easy.</div></td>
-<td class="vol">18 km<div class="pmac"><b>4,400 kcal</b> C 660 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">18 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w18" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 18 · 8 Mar – 14 Mar</h1><div class="psub"><span class="ptag">Race week</span> Dendermonde Loopt, Sunday 14 March. Target sub-1:10, which is 4:22/km.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>41 km incl. race</dd></div><div><dt>Longest</dt><dd>19 km</dd></div><div><dt>Bike</dt><dd>0.8 h</dd></div><div><dt>D+</dt><dd>— m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>8/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>9/3</span></td>
 <td class="ss"><div class="sk">Quality run</div><div class="st">Race-pace primer</div><div class="sd">3 km warm-up, 3×5′ at 4:20 with 2′ jog, 4×30 s hills, 2 km cool-down.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>10/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy spin 45–60′</div><div class="sd">With 4×20 s spin-ups.</div></td>
-<td class="vol">50′<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">50′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>11/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1 + 4×20 s strides.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">7 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Fri</b><span>12/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>13/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Shakeout 5 km</div><div class="sd">+ 4×20 s strides.</div></td>
-<td class="vol">5 km<div class="pmac"><b>3,900 kcal</b> C 620 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-race"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">5 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-race"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>14/3</span></td>
 <td class="ss"><div class="sk">Race <b class="kst">★ key</b></div><div class="st">DENDERMONDE LOOPT 16k</div><div class="sd">2–3 km warm-up. First 3 km at 4:24–4:26, settle at 4:20–4:22, last 4 km with whatever is left.</div></td>
-<td class="vol">19 km<div class="pmac"><b>4,500 kcal</b> C 680 · P 160 · F 125</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">19 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w19" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 19 · 15 Mar – 21 Mar</h1><div class="psub"><span class="ptag">Recovery</span> Recovery from the 16k: no intensity this week. Running comes back on Thursday; the weekend is one easy long run and one ride.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>30 km</dd></div><div><dt>Longest</dt><dd>16 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>15/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">Full rest.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Tue</b><span>16/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest or easy spin 45′</div><div class="sd">Very easy, only if your legs ask for it.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>17/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 60–90′</div><div class="sd">Z1. Light strength only.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>18/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 8 km</div><div class="sd">Z1, no strides.</div></td>
-<td class="vol">8 km<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">8 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>19/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1 + 4×20 s relaxed strides.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>20/3</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 16 km</div><div class="sd">Easy on trails. Stop at 12 km if the race is still in your legs.</div></td>
-<td class="vol">16 km<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">16 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>21/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 2–2.5 h</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w20" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 20 · 22 Mar – 28 Mar</h1><div class="psub"><span class="ptag">SWAP 2</span> From here the pattern is Saturday long run, Sunday second long run or long ride.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>52 km</dd></div><div><dt>Longest</dt><dd>22 km</dd></div><div><dt>Bike</dt><dd>4.2 h</dd></div><div><dt>D+</dt><dd>600 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>22/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>23/3</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">16×1′ + steady</div><div class="sd">3 km warm-up, 16×1′ at 5k effort / 1′ easy, 3 km steady (50k effort), 2 km cool-down.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>24/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Z2.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>25/3</span></td>
 <td class="ss"><div class="sk">Hill / hike</div><div class="st">Hill session 75′</div><div class="sd">Z2 repeats on the Steenberg or your hill. Run the runnable parts, power-hike the steep ones.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>26/3</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">+ 5×20 s strides.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>27/3</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 22 km</div><div class="sd">Easy, mostly Z1, trails.</div></td>
-<td class="vol">22 km<div class="pmac"><b>4,700 kcal</b> C 720 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">22 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>28/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 2–3 h</div><div class="sd">Z1–Z2. Or a very easy 13 km run if your legs feel fresh.</div></td>
-<td class="vol">2 h 30′<div class="pmac"><b>4,300 kcal</b> C 650 · P 160 · F 120</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">2 h 30′</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w21" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 21 · 29 Mar – 4 Apr</h1><div class="psub"><span class="ptag">SWAP 3</span> More structure in the speed work. The long run starts practising quick, relaxed downhills.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>54 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>3.9 h</dd></div><div><dt>D+</dt><dd>800 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>29/3</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>30/3</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">5 × (2′/1′/30″)</div><div class="sd">3 km warm-up, 5 sets of 2′ at 10k / 1′ at 5k / 30″ at 3k effort, 1′ easy between reps, 2′ between sets, 3 km easy/moderate.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>31/3</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Light progression in the last 20′.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>1/4</span></td>
 <td class="ss"><div class="sk">Hill / hike</div><div class="st">Hill session 75–90′</div><div class="sd">Z2 to low Z3 on the climbs.</div></td>
-<td class="vol">11 km<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">11 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>2/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>3/4</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 24 km</div><div class="sd">Easy/moderate, quick relaxed downhills, 5×45 s hills near the end.</div></td>
-<td class="vol">24 km<div class="pmac"><b>4,900 kcal</b> C 760 · P 160 · F 135</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">24 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>4/4</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 2–2.5 h</div><div class="sd">Z1–Z2. Or a 14 km progressive run if your legs feel fresh.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w22" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 22 · 5 Apr – 11 Apr</h1><div class="psub"><span class="ptag">SWAP 4</span> Uphill threshold, then a structured long run.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>64 km</dd></div><div><dt>Longest</dt><dd>21 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>800 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>5/4</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>6/4</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Uphill threshold</div><div class="sd">2 km warm-up, 6–8×2.5′ uphill at 1-hour effort, jog down, 2 km cool-down.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>7/4</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>8/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 12 km</div><div class="sd">+ 8×30 s hill strides.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>9/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>10/4</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 21 km · 1-hour effort</div><div class="sd">3 km easy, 5×1.6 km at 1-hour effort with 1.6 km float, rest easy.</div></td>
-<td class="vol">21 km<div class="pmac"><b>4,600 kcal</b> C 700 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">21 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>11/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 13 km</div><div class="sd">+ 6×20 s steep hills. Or a long ride.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w23" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 23 · 12 Apr – 18 Apr</h1><div class="psub"><span class="ptag">SWAP 5</span> Aerobic week. First Flemish Ardennes long run.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>72 km</dd></div><div><dt>Longest</dt><dd>28 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>1,000–1,200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>12/4</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>13/4</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">6–8×3′ + 4×30″</div><div class="sd">3 km warm-up, 6–8×3′ at 1-hour effort building toward 10k effort, 90 s easy, then 3′ easy, 4×30 s fast / 2′ easy, 2 km cool-down.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>14/4</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>15/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 12 km</div><div class="sd">+ 5×20 s hills.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>16/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Very easy.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>17/4</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Flemish Ardennes 28 km</div><div class="sd">Easy on real climbs, strong downhills, finish feeling good. In the last 30′, 6–8 descents fast but controlled. Race fuelling.</div></td>
-<td class="vol">28 km<div class="pmac"><b>5,300 kcal</b> C 830 · P 160 · F 145</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">28 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>18/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 13 km</div><div class="sd">Pure Z1 + 4×30 s hills. Or an easy ride.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w24" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 24 · 19 Apr – 25 Apr</h1><div class="psub"><span class="ptag">SWAP 6</span> First real back-to-back weekend. Keep Sunday as a run this week.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>76 km</dd></div><div><dt>Longest</dt><dd>28 km</dd></div><div><dt>Bike</dt><dd>1.7 h</dd></div><div><dt>D+</dt><dd>1,300 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>19/4</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>20/4</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">600s + 200s</div><div class="sd">3 km warm-up, 6–8×600 m at 10k effort building to 5k, 200 m jog, 400 m easy, 4×200 m fast / 200 m slow, 2 km cool-down.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>21/4</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>22/4</span></td>
 <td class="ss"><div class="sk">Hill / hike</div><div class="st">Hill session 75–105′</div><div class="sd">Z2, practise power-hiking steep sections.</div></td>
-<td class="vol">11 km<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">11 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>23/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>24/4</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 28 km</div><div class="sd">Easy/moderate + 5×45 s hills near the end.</div></td>
-<td class="vol">28 km<div class="pmac"><b>5,300 kcal</b> C 830 · P 160 · F 145</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">28 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>25/4</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 19 km</div><div class="sd">Easy with hills and strong downhills, on tired legs.</div></td>
-<td class="vol">19 km<div class="pmac"><b>4,500 kcal</b> C 680 · P 160 · F 125</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">19 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w25" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 25 · 26 Apr – 2 May</h1><div class="psub"><span class="ptag">SWAP 7</span> The Power Hour: 60′ moderate-hard inside the long run.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>55 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>3.7 h</dd></div><div><dt>D+</dt><dd>1,000 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>26/4</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>27/4</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Big uphill threshold</div><div class="sd">2 km warm-up, 8–10×2.5–3′ uphill at 1-hour effort, jog down, 2 km cool-down. Fuel it.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>28/4</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>29/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 12 km</div><div class="sd">+ 4×20 s hills.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>30/4</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>1/5</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 24 km · Power Hour</div><div class="sd">Includes 60′ moderate/hard on rolling terrain. Treat it as a race rehearsal: focus and race fuelling.</div></td>
-<td class="vol">24 km<div class="pmac"><b>4,900 kcal</b> C 760 · P 160 · F 135</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">24 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>2/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 2 h</div><div class="sd">Z1–Z2. Lighter week before the recon.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w26" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 26 · 3 May – 9 May</h1><div class="psub"><span class="ptag">SWAP 8 · Peak</span> Biggest week. Saturday is the Bouillon recon: 6 h on the race course, four weeks out.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>72 km</dd></div><div><dt>Longest</dt><dd>40 km</dd></div><div><dt>Bike</dt><dd>3.7 h</dd></div><div><dt>D+</dt><dd>1,800–2,000 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>3/5</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>4/5</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">800s + 200s</div><div class="sd">3 km warm-up, 6–8×800 m at 10k effort, 400 m jog, 4×200 m fast / 200 m slow, 2 km cool-down.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>5/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–120′</div><div class="sd">Very easy.</div></td>
-<td class="vol">1 h 40′<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 40′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-hill"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>6/5</span></td>
 <td class="ss"><div class="sk">Hill / hike</div><div class="st">Hill session 90–120′</div><div class="sd">Z2.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>7/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Very easy. Travel to Bouillon.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>8/5</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">BOUILLON RECON 6 h</div><div class="sd">6 h on the race course, roughly 38–42 km. Time counts, not distance. Easy, hike the steep climbs, strong downhills. Race kit, race breakfast, race fuelling (~90 g/h).</div></td>
-<td class="vol">40 km<div class="pmac"><b>6,300 kcal</b> C 1020 · P 160 · F 175</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">40 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>9/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 2 h</div><div class="sd">Z1. Or a very easy 10 km run if your legs feel fine.</div></td>
-<td class="vol">2 h<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">2 h</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w27" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 27 · 10 May – 16 May</h1><div class="psub"><span class="ptag">SWAP 9 · Simulation</span> Race simulation: everything exactly as on race day.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>56 km</dd></div><div><dt>Longest</dt><dd>24 km</dd></div><div><dt>Bike</dt><dd>3.5 h</dd></div><div><dt>D+</dt><dd>1,000 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>10/5</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>11/5</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">5′ reps + steady</div><div class="sd">3 km warm-up, 4–6×5′ at 1-hour effort / 90 s, 3 km steady (50k effort), 2 km cool-down.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>12/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 60–90′</div><div class="sd">Z1.</div></td>
-<td class="vol">1 h 15′<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 15′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>13/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 12 km</div><div class="sd">+ 4×30 s hills.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>14/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>15/5</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">RACE SIMULATION ~24 km</div><div class="sd">3 km easy, 16–20 km moderate to moderate/hard on hilly trail (Flemish Ardennes), 3 km easy. Race breakfast, kit, gels, poles if allowed.</div></td>
-<td class="vol">24 km<div class="pmac"><b>4,900 kcal</b> C 760 · P 160 · F 135</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">24 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>16/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 1.5–3 h</div><div class="sd">Z1–Z2. No run today.</div></td>
-<td class="vol">2 h 15′<div class="pmac"><b>4,200 kcal</b> C 630 · P 160 · F 115</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">2 h 15′</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w28" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 28 · 17 May – 23 May</h1><div class="psub"><span class="ptag">SWAP 10</span> Last big muscular stimulus before the taper.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>69 km</dd></div><div><dt>Longest</dt><dd>27 km</dd></div><div><dt>Bike</dt><dd>1.5 h</dd></div><div><dt>D+</dt><dd>1,200 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>17/5</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>18/5</span></td>
 <td class="ss"><div class="sk">Quality run <b class="kst">★ key</b></div><div class="st">Hills + moderate</div><div class="sd">3 km warm-up, 5×3′ uphill at 10k effort, jog down, then 15–20′ moderate (half-marathon effort) on tired legs, 2 km cool-down.</div></td>
-<td class="vol">14 km<div class="pmac"><b>4,000 kcal</b> C 590 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">14 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>19/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 75–105′</div><div class="sd">Z1–Z2.</div></td>
-<td class="vol">1 h 30′<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 30′</td><td class="sx"><span class="pbox"></span><b class="sB">B</b></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>20/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">+ 5×20 s strides.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>21/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>22/5</span></td>
 <td class="ss"><div class="sk">Long run <b class="kst">★ key</b></div><div class="st">Long run 27 km</div><div class="sd">Easy/moderate with climbing and strong downhills. In the last 30′: 4×1′ hills at 5k effort and 6–8 descents fast but controlled.</div></td>
-<td class="vol">27 km<div class="pmac"><b>5,200 kcal</b> C 820 · P 160 · F 145</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">27 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>23/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Run 12 km progressive</div><div class="sd">Easy into steady over rolling terrain. Or a long ride.</div></td>
-<td class="vol">12 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">12 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w29" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 29 · 24 May – 30 May</h1><div class="psub"><span class="ptag">SWAP 11 · Taper</span> Taper. If you feel flat on Tuesday, do 10 km easy instead of the session.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>58 km</dd></div><div><dt>Longest</dt><dd>20 km</dd></div><div><dt>Bike</dt><dd>1.2 h</dd></div><div><dt>D+</dt><dd>500 m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>24/5</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest + strength</div><div class="sd">No running or riding. 20′ strength session.</div></td>
-<td class="vol"><div class="pmac"><b>2,900 kcal</b> C 360 · P 160 · F 90</div></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"><span class="pbox"></span><b class="sA">A</b></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>25/5</span></td>
 <td class="ss"><div class="sk">Quality run</div><div class="st">2′ reps + steady</div><div class="sd">3 km warm-up, 6–8×2′ at 1-hour effort toward 10k / 1′ easy, 3 km steady, 2 km cool-down.</div></td>
-<td class="vol">13 km<div class="pmac"><b>3,900 kcal</b> C 570 · P 160 · F 110</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">13 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-bike"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>26/5</span></td>
 <td class="ss"><div class="sk">Easy ride</div><div class="st">Easy ride 60–75′</div><div class="sd">Z1.</div></td>
-<td class="vol">1 h 10′<div class="pmac"><b>3,500 kcal</b> C 500 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">1 h 10′</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Thu</b><span>27/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 9 km</div><div class="sd">+ 5×20 s hills.</div></td>
-<td class="vol">9 km<div class="pmac"><b>3,600 kcal</b> C 520 · P 160 · F 100</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">9 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>28/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 6 km</div><div class="sd">Z1.</div></td>
-<td class="vol">6 km<div class="pmac"><b>3,300 kcal</b> C 460 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">6 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-long"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>29/5</span></td>
 <td class="ss"><div class="sk">Long run</div><div class="st">Long run 20 km</div><div class="sd">Easy Z2, high-carb fuelling.</div></td>
-<td class="vol">20 km<div class="pmac"><b>4,600 kcal</b> C 700 · P 160 · F 130</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">20 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sun</b><span>30/5</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 10 km</div><div class="sd">+ 5×20 s hills.</div></td>
-<td class="vol">10 km<div class="pmac"><b>3,700 kcal</b> C 530 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol">10 km</td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>
 <div class="pkey"><span><span class="pbox"></span> done</span><span><b>★</b> key session, never swapped</span><span><b class="sA">A</b><b class="sB">B</b><b class="sC">C</b> strength (C optional)</span><span>Easy = run &lt; 143 bpm, ride &lt; 75% FTP</span></div><footer class="pf"><span></span><span class="pdate"></span></footer></div></section>
 <section class="pdoc" id="print-w30" aria-hidden="true"><div class="ppage">
 <header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>Week 30 · 31 May – 6 Jun</h1><div class="psub"><span class="ptag">Race week</span> Godefroy 75. Saturday 5 June, 06:00, Esplanade du Château, Bouillon.</div></div><div class="pr"><dl class="pstats"><div><dt>Run</dt><dd>28 km + race</dd></div><div><dt>Longest</dt><dd>75 km</dd></div><div><dt>Bike</dt><dd>0.0 h</dd></div><div><dt>D+</dt><dd>— m</dd></div></dl></div></header>
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Mon</b><span>31/5</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">Full rest.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-q"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Tue</b><span>1/6</span></td>
 <td class="ss"><div class="sk">Quality run</div><div class="st">Race primer</div><div class="sd">3 km warm-up, 3×5′ at 1-hour effort / 1′, 5′ easy, 5×30 s slight hills fast, 2 km cool-down.</div></td>
-<td class="vol">11 km<div class="pmac"><b>3,800 kcal</b> C 550 · P 160 · F 105</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">11 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Wed</b><span>2/6</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 7 km</div><div class="sd">Z1.</div></td>
-<td class="vol">7 km<div class="pmac"><b>3,400 kcal</b> C 480 · P 160 · F 95</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">7 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Thu</b><span>3/6</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Rest</div><div class="sd">Carb up from today.</div></td>
-<td class="vol"><div class="pmac"><b>4,500 kcal</b> C 800 · P 160 · F 70</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-easy"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Fri</b><span>4/6</span></td>
 <td class="ss"><div class="sk">Easy run</div><div class="st">Easy run 5 km</div><div class="sd">+ 4×30 s hills. Travel, bib pick-up, drop bag.</div></td>
-<td class="vol">5 km<div class="pmac"><b>4,500 kcal</b> C 800 · P 160 · F 70</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-race"><td class="tk"><span class="pbox"></span></td>
+<td class="vol">5 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-race"><td class="tk"><span class="pbox"></span></td>
 <td class="dy"><b>Sat</b><span>5/6</span></td>
 <td class="ss"><div class="sk">Race <b class="kst">★ key</b></div><div class="st">GODEFROY 75</div><div class="sd">75 km / 2,532 m D+. Finish strong: patient first half, hike the steep climbs, eat early and often.</div></td>
-<td class="vol">75 km<div class="pmac">90 g carbs/h</div></td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
+<td class="vol">75 km</td><td class="sx"></td><td class="nt"></td></tr><tr class="k-rest"><td class="tk"></td>
 <td class="dy"><b>Sun</b><span>6/6</span></td>
 <td class="ss"><div class="sk">Rest</div><div class="st">Celebrate</div><div class="sd">Eat, celebrate, walk a bit.</div></td>
-<td class="vol"><div class="pmac"><b>2,800 kcal</b> C 340 · P 160 · F 90</div></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
+<td class="vol"></td><td class="sx"></td><td class="nt"></td></tr></tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>

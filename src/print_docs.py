@@ -60,9 +60,6 @@ def week_doc(r, DAYN, KIND_LABEL, fmt):
     for k, (kind, title, detail, km, bike, s, key) in enumerate(w["days"]):
         dd = r["start"] + dt.timedelta(days=k)
         vol = " · ".join(x for x in (f"{km} km" if km else "", _bike(bike)) if x)
-        m = r.get("mac", [None]*7)[k]
-        vol += (f'<div class="pmac"><b>{m["kcal"]:,} kcal</b> C {m["c"]} · P {m["p"]} · F {m["f"]}</div>' if m
-                else '<div class="pmac">90 g carbs/h</div>')
         str_cell = (f'{BOX}<b class="s{s}">{s}</b>{"<small>optional</small>" if s == "C" else ""}' if s else "")
         trs.append(f'''<tr class="k-{kind}"><td class="tk">{BOX if kind != "rest" else ""}</td>
 <td class="dy"><b>{DAYN[k]}</b><span>{dd.day}/{dd.month}</span></td>
@@ -73,7 +70,7 @@ def week_doc(r, DAYN, KIND_LABEL, fmt):
              f'<div><dt>Bike</dt><dd>{r["bike"]/60:.1f} h</dd></div><div><dt>D+</dt><dd>{e(w["vert"])} m</dd></div></dl>')
     return f'''<section class="pdoc" id="print-w{r["n"]}" aria-hidden="true"><div class="ppage">
 {_head(f'Week {r["n"]} · {fmt(r["start"])} – {fmt(r["end"])}', f'<span class="ptag">{e(w["tag"])}</span> {e(w["focus"])}', stats)}
-<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume · food</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody>{"".join(trs)}</tbody></table>
+<table class="pweek"><thead><tr><th></th><th>Day</th><th>Session</th><th>Volume</th><th>Strength</th><th>Notes · HR · feel</th></tr></thead><tbody>{"".join(trs)}</tbody></table>
 <div class="pcols"><div><h2>Morning check</h2><div class="pclone" data-clone="#rules .rules li:nth-child(4)"></div>
 <div class="pclone" data-clone="#rules .rules li:nth-child(1)"></div></div>
 <div><h2>Zones</h2><div class="pclone pz small" data-clone="#zones .zgrid"></div></div></div>

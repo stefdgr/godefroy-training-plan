@@ -45,7 +45,7 @@
 ## Nutrition
 - **Nutrition tab** (18 Nov 2026): built from the "Nutrition deep dive" doc (17 Nov 2026), all 8 proposed changes applied. Daily eating table with kcal and macros by day type, around-session timing (dairy before long rides, optional collagen + vitamin C before strength/hill sessions), fuelling during training (60–90 g/h; 90–100 g/h from W25), gut training with one session a week at target dose from W19, race-day plans for the 10k/16k and Godefroy 75, troubleshooting, blood tests (Dec, mid-Mar, early May; ferritin > 50, vitamin D 75–125 nmol/L) and supplements. Print: training, race day, checks, fuel log.
 - **Daily calories** (Stef's corrected figures): ≈ 2,800 kcal without training, 3,600–3,800 on easy days, 5,000–5,500 on long days. Not 45 kcal/kg FFM as a baseline.
-- **Per-day macros on the day cards**, computed in `src/render.py` (`macros()`): kcal = 2,800 + 88 kcal/km run + 10 kcal/min ride (12 for bike quality) + 100 for strength A/B. Protein 160 g; fat 25% of kcal, min 90 g; carbs fill the rest (they include fuel during the session). Day before the 10k/16k: carbs ≥ 7 g/kg. W30 Thu + Fri: carb load 800 g, fat 70 g. Godefroy race day links to the race plan instead.
+- **Per-day macros on the today card only** (Overview; Stef 18 Nov 2026: not on every day of the plan), computed in `src/render.py` (`macros()`): kcal = 2,800 + 88 kcal/km run + 10 kcal/min ride (12 for bike quality) + 100 for strength A/B. Protein 160 g; fat 25% of kcal, min 90 g; carbs fill the rest (they include fuel during the session). Day before the 10k/16k: carbs ≥ 7 g/kg. W30 Thu + Fri: carb load 800 g, fat 70 g. Godefroy race day links to the race plan instead.
 - Open: Godefroy aid-station menu and gap distances (no GPX yet).
 
 ## Rules on the page

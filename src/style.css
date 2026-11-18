@@ -277,4 +277,6 @@ ul.rules{grid-template-columns:1fr}
 .chips+.mac{margin-top:2px}
 .day.race .mac,.day.race .mac b{color:var(--race-ink);border-top-color:currentColor}
 .mac:hover b{text-decoration:underline}
-.today-card .mac{font-size:13px;margin-top:4px}
+/* macros only on the today card */
+.day .mac{display:none}
+.today-card .mac{display:flex;font-size:13px;margin-top:4px}
