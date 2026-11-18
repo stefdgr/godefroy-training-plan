@@ -68,7 +68,7 @@
   window.addEventListener("beforeprint",function(){
     if(root.classList.contains("printing")) return;
     var v=qa(".view").filter(function(x){return !x.hidden;})[0], id=v&&v.id;
-    choose({"view-strength":"print-strength","view-weeks":"print-plan","view-foot":"print-foot"}[id]||"current-week");
+    choose({"view-strength":"print-strength","view-weeks":"print-plan","view-foot":"print-foot","view-nutrition":"print-nutrition"}[id]||"current-week");
   });
   window.addEventListener("afterprint",reset);
 })();

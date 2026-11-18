@@ -1,5 +1,5 @@
 (function(){
-  var views={plan:document.getElementById("view-plan"),weeks:document.getElementById("view-weeks"),strength:document.getElementById("view-strength"),foot:document.getElementById("view-foot")};
+  var views={plan:document.getElementById("view-plan"),weeks:document.getElementById("view-weeks"),strength:document.getElementById("view-strength"),foot:document.getElementById("view-foot"),nutrition:document.getElementById("view-nutrition")};
   function route(){
     var h=location.hash.replace("#","")||"plan", v="plan", el=null;
     if(views[h]) v=h; else { el=document.getElementById(h); if(el){ for(var k in views){ if(views[k].contains(el)) v=k; } } }
