@@ -28,6 +28,30 @@ for i, w in enumerate(WEEKS):
         new.append(tuple(t))
     w["days"]=new
 
+# ---------- daily macros (88 kg) ----------
+# kcal = 2,800 base + run ~88 kcal/km + ride ~10 kcal/min (12 for bike quality) + 100 per fixed strength session.
+# Protein fixed at 160 g; fat 25% of kcal, never under 90 g; carbs fill the rest (they include fuel taken during the session).
+KG = 88
+def macros(day, nxt, wk):
+    kind, title, detail, km, bike, s, key = day
+    if kind == "race" and km > 40: return None  # Godefroy itself: race-day plan
+    kcal = 2800 + 88*km + bike*(12 if kind == "bikeq" else 10) + (100 if s in ("A","B") else 0)
+    kcal = int(round(kcal, -2))
+    p = 160
+    f = max(90, kcal*0.25/9)
+    c = (kcal - p*4 - f*9)/4
+    if wk == 30 and nxt and nxt[0] == "race" or (wk == 30 and kind == "rest" and "Carb up" in detail):
+        c, f = 800, 70                    # carb load Thu + Fri: 9 g/kg, less fat
+        kcal = int(round(c*4 + p*4 + f*9, -2))
+    elif nxt and nxt[0] == "race":
+        c = max(c, 7*KG); kcal = int(round(c*4 + p*4 + f*9, -2))   # day before the 10k / 16k
+    return dict(kcal=kcal, c=int(round(c, -1)), p=p, f=int(5*round(f/5)))
+
+def mac_html(m):
+    if not m: return '<a class="mac" href="#nut-ultra">Race-day plan · 90 g carbs/h</a>'
+    return (f'<a class="mac" href="#nut-daily" title="Carbs include what you eat during the session">'
+            f'<b>{m["kcal"]:,} kcal</b><span>C {m["c"]}</span><span>P {m["p"]}</span><span>F {m["f"]}</span></a>')
+
 rows = []
 for i, w in enumerate(WEEKS):
     s = START + dt.timedelta(weeks=i)
@@ -36,6 +60,10 @@ for i, w in enumerate(WEEKS):
     long_ = max((x[3] for x in w["days"] if x[0] in ("long","race")), default=0)
     hard = sum(1 for x in w["days"] if x[0] in ("q","bikeq") or (x[0]=="long" and x[6] and ("pace" in x[1] or "Power" in x[1] or "SIM" in x[1] or "steady" in x[1])))
     rows.append(dict(n=i+1, start=s, end=s+dt.timedelta(days=6), run=run, bike=bike, long=long_, w=w, hard=hard))
+
+_all=[x for rr in rows for x in rr["w"]["days"]]
+for gi,x in enumerate(_all):
+    rows[gi//7].setdefault("mac",[]).append(macros(x, _all[gi+1] if gi+1<len(_all) else None, gi//7+1))
 
 assert rows[17]["end"] == dt.date(2027,3,14), rows[17]["end"]
 assert rows[29]["start"] + dt.timedelta(days=5) == dt.date(2027,6,5)
@@ -77,12 +105,13 @@ for r in rows:
     days=[]
     for k,(kind,title,detail,km,bike,s,key) in enumerate(w["days"]):
         dd = r["start"]+dt.timedelta(days=k)
+        mac = mac_html(r["mac"][k])
         chips = ""
         if s: chips += f'<a class="chip str{" opt" if s=="C" else ""}" href="#strength">Strength {s}{" · optional" if s=="C" else ""}</a>'
         if key: chips += '<span class="chip key" title="Key session: don\'t swap">★ key</span>'
         days.append(f'''<li class="day {kind}" data-date="{dd.isoformat()}">
 <div class="dh"><b>{DAYN[k]}</b> <span>{dd.day}/{dd.month}</span><em>{KIND_LABEL[kind]}</em></div>
-<div class="dt">{e(title)}</div>{f'<div class="dd">{e(detail)}</div>' if detail else ''}{f'<div class="chips">{chips}</div>' if chips else ''}</li>''')
+<div class="dt">{e(title)}</div>{f'<div class="dd">{e(detail)}</div>' if detail else ''}{f'<div class="chips">{chips}</div>' if chips else ''}{mac}</li>''')
     tagcls = w["tag"].split()[0].lower().replace("→","")
     run_txt = f'{r["run"]} km' if r["n"]!=30 else '28 km + race'
     if r["n"]==18: run_txt = f'{r["run"]} km incl. race'
@@ -99,3 +128,5 @@ prints = print_docs.build(rows, PHASES, DAYN, KIND_LABEL, fmt)
 page = body.replace("%%CSS%%", css).replace("%%CHART%%", chart).replace("%%WEEKS%%", "\n".join(cards)).replace("%%JS%%", js).replace("%%PRINT%%", prints).replace("%%PRINT_ICON%%", PRINT_ICON)
 open(os.path.join(HERE,"..","index.html"),"w").write(page)
 for r in rows: print(r["n"], r["start"], r["run"], round(r["bike"]/60,1), r["long"], r["hard"])
+if "--macros" in sys.argv:
+    for gi,x in enumerate(_all): print(f"W{gi//7+1} {DAYN[gi%7]} {x[0]:6} {x[1][:28]:28} {rows[gi//7]['mac'][gi%7]}")

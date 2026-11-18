@@ -271,3 +271,10 @@ ul.rules{grid-template-columns:1fr}
 :root{--paper:#eceeea}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#eceeea}}
 :root[data-theme="dark"]{--paper:#eceeea}
+/* daily macros on day cards */
+.mac{display:flex;flex-wrap:wrap;gap:1px 7px;margin-top:auto;padding-top:4px;border-top:1px dashed rgba(24,34,31,.15);font:500 11px var(--body);color:var(--muted);text-decoration:none;font-variant-numeric:tabular-nums}
+.mac b{color:var(--ink);font-weight:600;flex-basis:100%}
+.chips+.mac{margin-top:2px}
+.day.race .mac,.day.race .mac b{color:var(--race-ink);border-top-color:currentColor}
+.mac:hover b{text-decoration:underline}
+.today-card .mac{font-size:13px;margin-top:4px}
