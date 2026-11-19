@@ -38,20 +38,24 @@
   // PREVIEW: last night's recovery numbers. Fixed Garmin snapshot; later fetched live.
   (function(){
     var box=document.getElementById("rec"); if(!box) return;
+    var DAYC={easy:"#3f7f5b",long:"#2f6a4a",hill:"#2f6a4a",q:"#c2482a",bike:"#2f5d86",bikeq:"#2f5d86",rest:"#6b7570",race:"#18221f"};
+    var tcEl=document.getElementById("today-card"), kc=null;
+    if(tcEl) for(var kk in DAYC){ if(tcEl.classList.contains(kk)) kc=DAYC[kk]; }
+    if(kc) box.style.setProperty("--day",kc);
     var I={sleep:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
       hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
       rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
     var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
-      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],floor:63,pill:"Unbalanced",sub:"7-day avg 59 · balanced from 63 (dashed)",st:"warn"},
+      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],range:[63,81],pill:"Unbalanced",sub:"7-day avg 59 · dashed = balanced range 63–81",st:"warn"},
       {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35<br>Deep 1 h 25 · REM 1 h 33",st:"ok"},
       {k:"rhr",n:"Rest HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
-    function spark(x){ var a=x.d, ex=x.floor?[x.floor]:[], lo=Math.min.apply(0,a.concat(ex)), hi=Math.max.apply(0,a.concat(ex)), r, w=120, h=34;
+    function spark(x){ var a=x.d, ex=x.range||[], lo=Math.min.apply(0,a.concat(ex)), hi=Math.max.apply(0,a.concat(ex)), r, w=120, h=34;
       if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
       var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
       var pts=a.map(function(v,i){ return (i*w/(a.length-1)).toFixed(1)+","+Y(v); });
       var last=pts[pts.length-1].split(","), id="g"+x.k;
-      return '<div class="rspw">'+(x.floor?'<span class="flbl" style="top:'+(Y(x.floor)/h*100).toFixed(1)+'%">'+x.floor+'</span>':'')+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
-        (x.floor?'<line class="floor" x1="0" x2="'+w+'" y1="'+Y(x.floor)+'" y2="'+Y(x.floor)+'"/>':'')+
+      return '<div class="rspw">'+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
+        (x.range?x.range.map(function(v){return '<line class="floor" x1="0" x2="'+w+'" y1="'+Y(v)+'" y2="'+Y(v)+'"/>';}).join(''):'')+
         '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
         '</svg></div>'; }
     box.innerHTML=R.map(function(x){

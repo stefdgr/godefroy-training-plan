@@ -316,9 +316,9 @@ ul.rules{grid-template-columns:1fr}
 /* PREVIEW: recovery strip under the Today card */
 .rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .rt{--c:#2f6a4a;--t:#e6f1ea;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--t),#fff 70%);border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;display:flex;flex-direction:column;gap:6px;color:var(--c);box-shadow:0 2px 8px rgba(24,34,31,.06)}
-.rt::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--line)}
-.rt.warn::before,.rt.bad::before{background:var(--s)}
-.rt{--c:#7d8a84;--t:#f3f4f1;--s:#56625c}
+.rt::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--day)}
+.rec{--day:#3f7f5b}
+.rt{--c:var(--day);--t:#f3f4f1;--s:var(--day)}
 .rt.warn{--s:var(--ochre)}.rt.bad{--s:var(--rust)}
 .rh{display:flex;align-items:center;gap:6px;min-width:0}
 .ri{flex:none;width:24px;height:24px;border-radius:7px;background:#e6e9e4;display:grid;place-items:center}
@@ -347,5 +347,12 @@ ul.rules{grid-template-columns:1fr}
   .rpill{font-size:10.5px;padding:2px 6px}.rt.sleep .rn,.rt.rhr .rn{font-size:11px}}
 @media (min-width:760px){.rsp{height:44px}}
 .rt.warn .rv b,.rt.bad .rv b{color:var(--s)}
-.rsp .floor{stroke:#9aa39e;stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+.rv b{color:var(--day)}
+.rspw .dot{background:var(--day);box-shadow:0 0 0 4px color-mix(in srgb,var(--day) 22%,transparent)}
+.rt.warn .rspw .dot{background:var(--ochre);box-shadow:0 0 0 4px color-mix(in srgb,var(--ochre) 25%,transparent)}
+.ri{background:color-mix(in srgb,var(--day) 12%,#fff)}.ri svg{stroke:var(--day)}.rt.sleep .ri svg,.rt.rhr .ri svg{fill:var(--day)}
+.rt{color:var(--day)}.rsp polyline{stroke:var(--day)}
+.rpill{background:color-mix(in srgb,var(--day) 10%,#fff);color:var(--day)}.rt.warn .rpill{background:color-mix(in srgb,var(--ochre) 14%,#fff);color:var(--ochre)}
+.rt.hrv .rsp{height:54px}
+.rsp .floor{stroke:color-mix(in srgb,var(--day) 55%,#fff);stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
 .flbl{display:none}
