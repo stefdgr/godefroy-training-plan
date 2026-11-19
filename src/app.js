@@ -35,17 +35,18 @@
       tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
     } else tc.hidden=true;
   }
-  // PREVIEW: last night's recovery numbers. Sample data; later from Garmin.
+  // PREVIEW: last night's recovery numbers. Fixed Garmin snapshot; later fetched live.
   (function(){
     var box=document.getElementById("rec"); if(!box) return;
     var I={sleep:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
       hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
       rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
-    var R=[
-      {k:"sleep",n:"Sleep",v:82,u:"/100",d:[74,81,68,77,85,79,82],pill:"Good",sub:"7 h 32 · deep 1 h 41",st:"ok",ring:82},
-      {k:"hrv",n:"HRV",v:58,u:"ms",d:[52,55,49,54,57,53,58],band:[48,60],pill:"Balanced",sub:"7-day avg 54 ms",st:"ok"},
-      {k:"rhr",n:"Resting HR",v:49,u:"bpm",d:[46,46,47,45,48,47,49],band:[44,47],pill:"▲ 3",sub:"Baseline 46 bpm",st:"warn"}];
-    function spark(x){ var a=x.d, lo=Math.min.apply(0,a.concat(x.band||[])), hi=Math.max.apply(0,a.concat(x.band||[])), r=(hi-lo)||1, w=120, h=34;
+    var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
+      {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35 · deep 1 h 25",st:"ok"},
+      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],band:[63,81],pill:"Unbalanced",sub:"Avg 59 · range 63–81",st:"warn"},
+      {k:"rhr",n:"Rest HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
+    function spark(x){ var a=x.d, lo=Math.min.apply(0,a.concat(x.band||[])), hi=Math.max.apply(0,a.concat(x.band||[])), r, w=120, h=34;
+      if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
       var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
       var pts=a.map(function(v,i){ return (i*w/(a.length-1)).toFixed(1)+","+Y(v); });
       var last=pts[pts.length-1].split(","), id="g"+x.k;
@@ -53,12 +54,11 @@
         (x.band?'<rect class="band" x="0" width="'+w+'" y="'+Y(x.band[1])+'" height="'+(Y(x.band[0])-Y(x.band[1])).toFixed(1)+'"/>':'')+
         '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
         '</svg></div>'; }
-    function ring(v){ var C=2*Math.PI*26; return '<svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="'+(C*v/100).toFixed(1)+' '+C.toFixed(1)+'"/></svg>'; }
     box.innerHTML=R.map(function(x){
       return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
-        '<div class="rbody"><div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+(x.ring?ring(x.ring):'')+'</div>'+
+        '<div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+
         spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }).join("")+
-      '<div class="rsrc">Last night · last 7 days · sample data</div>';
+      '<div class="rsrc">Last night · 7 days · Garmin snapshot 19 Nov</div>';
   })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
