@@ -280,10 +280,11 @@ ul.rules{grid-template-columns:1fr}
 /* macros only on the today card */
 .day .mac{display:none}
 /* Today card: dark hero card, accent colour by session type; macros as a split bar */
-.today-card.day{--acc:#8cc79a;background:var(--ink);color:var(--paper);border:0;border-left:6px solid var(--acc);border-radius:10px;padding:18px 20px 20px;gap:8px;box-shadow:0 8px 24px rgba(24,34,31,.22)}
+.today-card.day{--acc:#8cc79a;background:linear-gradient(135deg,#3f7f5b,#336d4e);color:var(--paper);border:0;border-left:6px solid var(--acc);border-radius:10px;padding:18px 20px 20px;gap:8px;box-shadow:0 6px 18px rgba(47,106,74,.25)}
 .today-card.q{--acc:#e0775a}.today-card.long,.today-card.hill{--acc:#6fbf8e}.today-card.bike{--acc:#8fb8de}.today-card.bikeq{--acc:#6f9fd0}.today-card.rest{--acc:#a9b1ac}.today-card.race{--acc:var(--rust)}
-.today-card.day .tl-label{color:var(--acc);font-size:13px}
-.today-card.day .dh,.today-card.day .dh span,.today-card.day .dh em,.today-card.day .dd{color:#c4ccc7;opacity:1}
+.today-card.day .tl-label{color:var(--paper);opacity:.85;font-size:13px}
+.today-card.day.race{background:var(--ink)}
+.today-card.day .dh,.today-card.day .dh span,.today-card.day .dh em,.today-card.day .dd{color:#dce8e0;opacity:1}
 .today-card.day .dh b{color:var(--paper)}
 .today-card.day .dt{font-size:34px;color:var(--paper)}
 .today-card.day .dd{font-size:15px}
