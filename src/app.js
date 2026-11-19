@@ -33,7 +33,26 @@
       var kind=td.className.replace("day","").replace("today","").trim();
       tc.className="today-card day "+kind;
       tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
+      eaten(tc);
     } else tc.hidden=true;
+  }
+  // PREVIEW: eaten vs target on the Today card. Sample numbers; later read from the nutrition sheet.
+  function eaten(tc){
+    var m=tc.querySelector(".mac"); if(!m||!m.querySelector(".mk")) return;
+    var num=function(q){ return +m.querySelector(q+" b").textContent.replace(/[^0-9]/g,""); };
+    var T={k:num(".mk"),c:num(".mm.c"),p:num(".mm.p"),f:num(".mm.f")};
+    var E={k:0,c:Math.round(T.c*.52),p:Math.round(T.p*.68),f:Math.round(T.f*.61)};
+    E.k=E.c*4+E.p*4+E.f*9;
+    var row=function(k,name){ var pct=Math.min(100,Math.round(E[k]/T[k]*100));
+      return '<div class="er '+k+'"><span class="en">'+name+'</span><span class="eb"><i style="width:'+pct+'%"></i></span>'+
+        '<span class="ev"><b>'+E[k]+'</b> / '+T[k]+' g</span></div>'; };
+    var left=T.k-E.k, pk=Math.min(100,Math.round(E.k/T.k*100));
+    m.className="mac eat"; m.removeAttribute("title");
+    m.innerHTML='<span class="ek"><b>'+E.k.toLocaleString("en")+'</b> / '+T.k.toLocaleString("en")+' kcal</span>'+
+      '<span class="el">'+left.toLocaleString("en")+' left</span>'+
+      '<span class="eb ekb"><i style="width:'+pk+'%"></i></span>'+
+      row("c","Carbs")+row("p","Protein")+row("f","Fat")+
+      '<span class="es">Eaten so far · updated 12:40 · sample data</span>';
   }
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
