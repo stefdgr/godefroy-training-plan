@@ -35,6 +35,20 @@
       tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
     } else tc.hidden=true;
   }
+  // PREVIEW: last night's recovery numbers. Sample data; later from Garmin.
+  (function(){
+    var box=document.getElementById("rec"); if(!box) return;
+    var R=[
+      {n:"Sleep score",v:82,u:"",d:[74,81,68,77,85,79,82],note:"Good · 7 h 32",st:"ok"},
+      {n:"HRV",v:58,u:"ms",d:[52,55,49,54,57,53,58],note:"7-day 54 · balanced",st:"ok"},
+      {n:"Resting HR",v:49,u:"bpm",d:[46,46,47,45,48,47,49],note:"+3 vs baseline 46",st:"warn"}];
+    function spark(a){ var mn=Math.min.apply(0,a), mx=Math.max.apply(0,a), r=(mx-mn)||1, w=100, h=26;
+      var pts=a.map(function(v,i){ return [(i*w/(a.length-1)).toFixed(1),(h-3-(v-mn)/r*(h-6)).toFixed(1)]; });
+      return '<svg class="rsp" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts.map(function(p){return p.join(",");}).join(" ")+'"/>'+
+        '<circle cx="'+pts[pts.length-1][0]+'" cy="'+pts[pts.length-1][1]+'" r="2.6"/></svg>'; }
+    box.innerHTML=R.map(function(x){ return '<div class="rt '+x.st+'"><div class="rn">'+x.n+'</div><div class="rv"><b>'+x.v+'</b>'+(x.u?' '+x.u:'')+'</div>'+spark(x.d)+'<div class="rnote">'+x.note+'</div></div>'; }).join("")+
+      '<div class="rsrc">Last night · Garmin · sample data</div>';
+  })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
   route();
