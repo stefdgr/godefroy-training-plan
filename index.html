@@ -334,19 +334,17 @@ ul.rules{grid-template-columns:1fr}
 .rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .rt{--c:#2f6a4a;--t:#e6f1ea;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--t),#fff 70%);border:1px solid color-mix(in srgb,var(--c) 22%,transparent);border-radius:12px;padding:12px 14px 10px;display:flex;flex-direction:column;gap:6px;color:var(--c);box-shadow:0 3px 10px color-mix(in srgb,var(--c) 12%,transparent)}
 .rt::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--c)}
-.rt.sleep{--c:#4b4fa8;--t:#e9e9f8}
-.rt.hrv{--c:#1f8a7a;--t:#e2f3ef}
-.rt.rhr{--c:#d0573a;--t:#fbe9e2}
+.rt{--c:#2f5d86;--t:#e7eef5;--s:#2f8a4f}
+.rt.warn{--s:#b07d16}.rt.bad{--s:#c2482a}
 .rh{display:flex;align-items:center;gap:6px;min-width:0}
 .ri{flex:none;width:24px;height:24px;border-radius:7px;background:var(--c);display:grid;place-items:center}
 .ri svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .rt.sleep .ri svg,.rt.rhr .ri svg{fill:#fff;stroke-width:0}
 .rn{font:600 12px var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rpill{margin-left:auto;flex:none;font:600 11px var(--body);padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);white-space:nowrap}
-.rt.warn .rpill{background:#b07d16;color:#fff}
+.rpill{margin-left:auto;flex:none;font:600 11px var(--body);padding:2px 8px;border-radius:999px;background:var(--s);color:#fff;white-space:nowrap}
 .rbody{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .rv{display:flex;align-items:baseline;gap:3px}
-.rv b{font:700 44px/.95 var(--display);color:var(--c);letter-spacing:-.01em}
+.rv b{font:700 44px/.95 var(--display);color:var(--s);letter-spacing:-.01em}
 .rv span{font:600 13px var(--body);color:var(--muted)}
 .ring{width:52px;height:52px;flex:none;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:7;stroke-linecap:round}
@@ -355,7 +353,7 @@ ul.rules{grid-template-columns:1fr}
 .rspw{position:relative;margin-right:5px}
 .rsp{width:100%;height:36px;overflow:visible;display:block}
 .rsp polyline{vector-effect:non-scaling-stroke}
-.rspw .dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
+.rspw .dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--s);box-shadow:0 0 0 4px color-mix(in srgb,var(--s) 25%,transparent)}
 .rsp polyline{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
 .rsp .band{fill:currentColor;opacity:.08}
 .rsub{font:500 12px/1.3 var(--body);color:var(--muted)}
