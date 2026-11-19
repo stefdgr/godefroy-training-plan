@@ -47,6 +47,10 @@ h1{font-size:clamp(40px,6vw,64px);font-weight:700;line-height:.95;text-transform
 h3{font-size:24px;font-weight:600;text-transform:uppercase}
 h4{font-size:17px;font-weight:600;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .kicker{font:600 13px var(--body);color:var(--moss);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.brand{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.count{display:grid;justify-items:end;text-align:right;line-height:1.1}
+.count b{font:700 clamp(28px,4vw,40px)/.95 var(--display);color:var(--moss);text-transform:uppercase}
+.count span{font:600 12px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
 .lede{max-width:68ch;color:var(--muted);margin:10px 0 0}
 .note{color:var(--muted);font-size:13px;margin:8px 0 0;max-width:80ch}
 
@@ -518,8 +522,10 @@ ul.rules{grid-template-columns:1fr}
 <div class="wrap">
 
 <header class="top">
-  <div class="kicker">Draft v4 · 30 weeks · 9 Nov 2026 → 5 Jun 2027</div>
-  <h1>G75</h1>
+  <div class="brand">
+    <h1>G75</h1>
+    <div class="count" id="count" hidden><b id="count-days"></b><span id="count-sub"></span></div>
+  </div>
   <nav class="tabs" role="tablist" aria-label="Views">
     <a href="#plan" role="tab" id="tab-plan" aria-controls="view-plan">Overview</a>
     <a href="#weeks" role="tab" id="tab-weeks" aria-controls="view-weeks">All weeks</a>
@@ -2605,6 +2611,19 @@ ul.rules{grid-template-columns:1fr}
     location.hash=order[i];
     var tab=document.getElementById("tab-"+order[i]); if(tab) tab.scrollIntoView({block:"nearest",inline:"nearest"});
   },{passive:true});
+})();
+
+// Header countdown to race day
+(function(){
+  var el=document.getElementById('count');if(!el)return;
+  var t=new Date();t.setHours(0,0,0,0);
+  var race=new Date(2027,5,5),start=new Date(2026,10,9);
+  var days=Math.round((race-t)/864e5);if(days<0)return;
+  var wk=Math.floor((t-start)/(7*864e5))+1;
+  document.getElementById('count-days').textContent=days===0?'Race day':days+(days===1?' day':' days');
+  document.getElementById('count-sub').textContent='to Godefroy'+(wk>=1&&wk<=30?' · week '+wk+' of 30':'');
+  if(days===0)document.getElementById('count-sub').textContent='Godefroy 75';
+  el.hidden=false;
 })();
 (function(){
   // Any element with data-print="<pdoc id>" prints only that layout.
