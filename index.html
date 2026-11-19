@@ -333,8 +333,9 @@ ul.rules{grid-template-columns:1fr}
 /* PREVIEW: recovery strip under the Today card */
 .rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .rt{--c:#2f6a4a;--t:#e6f1ea;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--t),#fff 70%);border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;display:flex;flex-direction:column;gap:6px;color:var(--c);box-shadow:0 2px 8px rgba(24,34,31,.06)}
-.rt::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--s)}
-.rt{--c:#7d8a84;--t:#f3f4f1;--s:var(--moss)}
+.rt::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--line)}
+.rt.warn::before,.rt.bad::before{background:var(--s)}
+.rt{--c:#7d8a84;--t:#f3f4f1;--s:#56625c}
 .rt.warn{--s:var(--ochre)}.rt.bad{--s:var(--rust)}
 .rh{display:flex;align-items:center;gap:6px;min-width:0}
 .ri{flex:none;width:24px;height:24px;border-radius:7px;background:#e6e9e4;display:grid;place-items:center}
@@ -344,7 +345,7 @@ ul.rules{grid-template-columns:1fr}
 .rpill{margin-left:auto;flex:none;font:600 11px var(--body);padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--s) 13%,#fff);color:var(--s);white-space:nowrap}
 .rbody{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .rv{display:flex;align-items:baseline;gap:3px}
-.rv b{font:700 44px/.95 var(--display);color:var(--s);letter-spacing:-.01em}
+.rv b{font:700 44px/.95 var(--display);color:var(--ink);letter-spacing:-.01em}
 .rv span{font:600 13px var(--body);color:var(--muted)}
 .ring{width:52px;height:52px;flex:none;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:7;stroke-linecap:round}
@@ -355,10 +356,6 @@ ul.rules{grid-template-columns:1fr}
 .rsp polyline{vector-effect:non-scaling-stroke}
 .rspw .dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--s);box-shadow:0 0 0 4px color-mix(in srgb,var(--s) 25%,transparent)}
 .rsp polyline{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-.rsp .band{fill:var(--moss);opacity:.09}
-.rsp .bedge{stroke:var(--moss);stroke-opacity:.55;stroke-width:1.2;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
-.rspw.hasband{margin-top:4px}
-.blbl{position:absolute;left:4px;margin-top:3px;font:600 10.5px var(--body);color:var(--moss);letter-spacing:.02em;pointer-events:none}
 .rsp polyline{stroke:#56625c}
 .rsub{font:500 12px/1.3 var(--body);color:var(--muted)}
 .rsrc{grid-column:1/-1;font-size:11px;color:var(--muted);text-align:right;margin-top:-4px}
@@ -366,7 +363,9 @@ ul.rules{grid-template-columns:1fr}
  .rv b{font-size:38px}.rt{padding:11px 12px 9px}
   .rpill{font-size:10.5px;padding:2px 6px}.rt.sleep .rn,.rt.rhr .rn{font-size:11px}}
 @media (min-width:760px){.rsp{height:44px}}
-.rt.hrv .rsp{height:60px}
+.rt.warn .rv b,.rt.bad .rv b{color:var(--s)}
+.rsp .floor{stroke:#9aa39e;stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+.flbl{display:none}
 /* ---------- print buttons (screen) ---------- */
 .pbtn{font:500 14px var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
 .pbtn:hover{border-color:var(--moss);color:var(--moss)}
@@ -2586,17 +2585,16 @@ ul.rules{grid-template-columns:1fr}
       hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
       rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
     var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
-      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],band:[63,81],pill:"Unbalanced",sub:"7-day avg 59 · below balanced range",st:"warn"},
+      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],floor:63,pill:"Unbalanced",sub:"7-day avg 59 · dashed line = bottom of balanced range (63–81)",st:"warn"},
       {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35<br>Deep 1 h 25 · REM 1 h 33",st:"ok"},
       {k:"rhr",n:"Rest HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
-    function spark(x){ var a=x.d, lo=Math.min.apply(0,a.concat(x.band||[])), hi=Math.max.apply(0,a.concat(x.band||[])), r, w=120, h=34;
+    function spark(x){ var a=x.d, ex=x.floor?[x.floor]:[], lo=Math.min.apply(0,a.concat(ex)), hi=Math.max.apply(0,a.concat(ex)), r, w=120, h=34;
       if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
       var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
       var pts=a.map(function(v,i){ return (i*w/(a.length-1)).toFixed(1)+","+Y(v); });
       var last=pts[pts.length-1].split(","), id="g"+x.k;
-      return '<div class="rspw'+(x.band?' hasband':'')+'">'+(x.band?'<span class="blbl" style="top:'+(Y(x.band[1])/h*100).toFixed(1)+'%">Balanced '+x.band[0]+'–'+x.band[1]+'</span>':'')+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
-        (x.band?'<rect class="band" x="0" width="'+w+'" y="'+Y(x.band[1])+'" height="'+(Y(x.band[0])-Y(x.band[1])).toFixed(1)+'"/>'+
-          '<line class="bedge" x1="0" x2="'+w+'" y1="'+Y(x.band[0])+'" y2="'+Y(x.band[0])+'"/><line class="bedge" x1="0" x2="'+w+'" y1="'+Y(x.band[1])+'" y2="'+Y(x.band[1])+'"/>':'')+
+      return '<div class="rspw">'+(x.floor?'<span class="flbl" style="top:'+(Y(x.floor)/h*100).toFixed(1)+'%">'+x.floor+'</span>':'')+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
+        (x.floor?'<line class="floor" x1="0" x2="'+w+'" y1="'+Y(x.floor)+'" y2="'+Y(x.floor)+'"/>':'')+
         '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
         '</svg></div>'; }
     box.innerHTML=R.map(function(x){

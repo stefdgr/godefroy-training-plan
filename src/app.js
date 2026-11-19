@@ -42,17 +42,16 @@
       hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
       rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
     var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
-      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],band:[63,81],pill:"Unbalanced",sub:"7-day avg 59 · below balanced range",st:"warn"},
+      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],floor:63,pill:"Unbalanced",sub:"7-day avg 59 · dashed line = bottom of balanced range (63–81)",st:"warn"},
       {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35<br>Deep 1 h 25 · REM 1 h 33",st:"ok"},
       {k:"rhr",n:"Rest HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
-    function spark(x){ var a=x.d, lo=Math.min.apply(0,a.concat(x.band||[])), hi=Math.max.apply(0,a.concat(x.band||[])), r, w=120, h=34;
+    function spark(x){ var a=x.d, ex=x.floor?[x.floor]:[], lo=Math.min.apply(0,a.concat(ex)), hi=Math.max.apply(0,a.concat(ex)), r, w=120, h=34;
       if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
       var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
       var pts=a.map(function(v,i){ return (i*w/(a.length-1)).toFixed(1)+","+Y(v); });
       var last=pts[pts.length-1].split(","), id="g"+x.k;
-      return '<div class="rspw'+(x.band?' hasband':'')+'">'+(x.band?'<span class="blbl" style="top:'+(Y(x.band[1])/h*100).toFixed(1)+'%">Balanced '+x.band[0]+'–'+x.band[1]+'</span>':'')+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
-        (x.band?'<rect class="band" x="0" width="'+w+'" y="'+Y(x.band[1])+'" height="'+(Y(x.band[0])-Y(x.band[1])).toFixed(1)+'"/>'+
-          '<line class="bedge" x1="0" x2="'+w+'" y1="'+Y(x.band[0])+'" y2="'+Y(x.band[0])+'"/><line class="bedge" x1="0" x2="'+w+'" y1="'+Y(x.band[1])+'" y2="'+Y(x.band[1])+'"/>':'')+
+      return '<div class="rspw">'+(x.floor?'<span class="flbl" style="top:'+(Y(x.floor)/h*100).toFixed(1)+'%">'+x.floor+'</span>':'')+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
+        (x.floor?'<line class="floor" x1="0" x2="'+w+'" y1="'+Y(x.floor)+'" y2="'+Y(x.floor)+'"/>':'')+
         '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
         '</svg></div>'; }
     box.innerHTML=R.map(function(x){
