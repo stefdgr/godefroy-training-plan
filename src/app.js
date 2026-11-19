@@ -14,6 +14,7 @@
   weeks.forEach(function(w,i){ if(iso>=w.dataset.start && iso<=w.dataset.end){ w.classList.add("current"); ci=i; } });
   if(ci<0 && weeks.length && iso<weeks[0].dataset.start) ci=0;
   var t=document.querySelector('#weeklist .day[data-date="'+iso+'"]'); if(t) t.classList.add("today");
+  [].forEach.call(document.querySelectorAll("#weeklist .day[data-date]"),function(n){ if(n.dataset.date<iso) n.classList.add("past"); });
 
   function cloneWeek(w){ var c=w.cloneNode(true); c.removeAttribute("id"); c.classList.remove("current");
     [].forEach.call(c.querySelectorAll("[id]"),function(n){n.removeAttribute("id");}); return c; }

@@ -112,7 +112,11 @@ main{display:grid;gap:14px}
 .day.bikeq{background:var(--bikeq-bg);border-top-color:var(--steel)}
 .day.race{background:var(--race-bg);color:var(--race-ink)}
 .day.race .dh em,.day.race .dd{color:var(--race-ink);opacity:.8}
-.day.today{outline:2px solid var(--ink);outline-offset:1px}
+.day.today{box-shadow:0 0 0 1px rgba(47,106,74,.35),0 4px 12px rgba(24,34,31,.12)}
+.day.today .dh::after{content:"Today";order:1;font:600 10px var(--body);text-transform:uppercase;letter-spacing:.06em;background:var(--moss);color:var(--paper);padding:2px 7px;border-radius:999px;align-self:center}
+.day.today .dh em{order:2}
+.day.past{opacity:.5}
+@media print{.day.past{opacity:1}}
 .dh{display:flex;flex-wrap:wrap;gap:4px;align-items:baseline;font-size:12px}
 .dh b{font-weight:600}.dh span{color:var(--muted)}.day.race .dh span{color:var(--race-ink)}
 .dh em{font-style:normal;color:var(--muted);margin-left:auto;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
