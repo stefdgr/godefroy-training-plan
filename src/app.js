@@ -38,16 +38,27 @@
   // PREVIEW: last night's recovery numbers. Sample data; later from Garmin.
   (function(){
     var box=document.getElementById("rec"); if(!box) return;
+    var I={sleep:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+      hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
+      rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
     var R=[
-      {n:"Sleep score",v:82,u:"",d:[74,81,68,77,85,79,82],note:"Good · 7 h 32",st:"ok"},
-      {n:"HRV",v:58,u:"ms",d:[52,55,49,54,57,53,58],note:"7-day 54 · balanced",st:"ok"},
-      {n:"Resting HR",v:49,u:"bpm",d:[46,46,47,45,48,47,49],note:"+3 vs baseline 46",st:"warn"}];
-    function spark(a){ var mn=Math.min.apply(0,a), mx=Math.max.apply(0,a), r=(mx-mn)||1, w=100, h=26;
-      var pts=a.map(function(v,i){ return [(i*w/(a.length-1)).toFixed(1),(h-3-(v-mn)/r*(h-6)).toFixed(1)]; });
-      return '<svg class="rsp" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts.map(function(p){return p.join(",");}).join(" ")+'"/>'+
-        '<circle cx="'+pts[pts.length-1][0]+'" cy="'+pts[pts.length-1][1]+'" r="2.6"/></svg>'; }
-    box.innerHTML=R.map(function(x){ return '<div class="rt '+x.st+'"><div class="rn">'+x.n+'</div><div class="rv"><b>'+x.v+'</b>'+(x.u?' '+x.u:'')+'</div>'+spark(x.d)+'<div class="rnote">'+x.note+'</div></div>'; }).join("")+
-      '<div class="rsrc">Last night · Garmin · sample data</div>';
+      {k:"sleep",n:"Sleep",v:82,u:"/100",d:[74,81,68,77,85,79,82],pill:"Good",sub:"7 h 32 · deep 1 h 41",st:"ok",ring:82},
+      {k:"hrv",n:"HRV",v:58,u:"ms",d:[52,55,49,54,57,53,58],band:[48,60],pill:"Balanced",sub:"7-day avg 54 ms",st:"ok"},
+      {k:"rhr",n:"Resting HR",v:49,u:"bpm",d:[46,46,47,45,48,47,49],band:[44,47],pill:"▲ 3",sub:"Baseline 46 bpm",st:"warn"}];
+    function spark(x){ var a=x.d, lo=Math.min.apply(0,a.concat(x.band||[])), hi=Math.max.apply(0,a.concat(x.band||[])), r=(hi-lo)||1, w=120, h=34;
+      var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
+      var pts=a.map(function(v,i){ return (i*w/(a.length-1)).toFixed(1)+","+Y(v); });
+      var last=pts[pts.length-1].split(","), id="g"+x.k;
+      return '<div class="rspw"><span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
+        (x.band?'<rect class="band" x="0" width="'+w+'" y="'+Y(x.band[1])+'" height="'+(Y(x.band[0])-Y(x.band[1])).toFixed(1)+'"/>':'')+
+        '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
+        '</svg></div>'; }
+    function ring(v){ var C=2*Math.PI*26; return '<svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="'+(C*v/100).toFixed(1)+' '+C.toFixed(1)+'"/></svg>'; }
+    box.innerHTML=R.map(function(x){
+      return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
+        '<div class="rbody"><div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+(x.ring?ring(x.ring):'')+'</div>'+
+        spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }).join("")+
+      '<div class="rsrc">Last night · last 7 days · sample data</div>';
   })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
