@@ -49,8 +49,11 @@ def macros(day, nxt, wk):
 
 def mac_html(m):
     if not m: return '<a class="mac" href="#nut-ultra">Race-day plan · 90 g carbs/h</a>'
+    ck, pk, fk = m["c"]*4, m["p"]*4, m["f"]*9
     return (f'<a class="mac" href="#nut-daily" title="Carbs include what you eat during the session">'
-            f'<b>{m["kcal"]:,} kcal</b><span>C {m["c"]}</span><span>P {m["p"]}</span><span>F {m["f"]}</span></a>')
+            f'<span class="mk"><b>{m["kcal"]:,}</b> kcal</span>'
+            f'<span class="mbar" aria-hidden="true"><i class="c" style="flex:{ck}"></i><i class="p" style="flex:{pk}"></i><i class="f" style="flex:{fk}"></i></span>'
+            f'<span class="mm c"><b>{m["c"]}</b> g carbs</span><span class="mm p"><b>{m["p"]}</b> g protein</span><span class="mm f"><b>{m["f"]}</b> g fat</span></a>')
 
 rows = []
 for i, w in enumerate(WEEKS):
