@@ -2642,7 +2642,7 @@ ul.rules{grid-template-columns:1fr}
     var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
       {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],range:[63,81],pill:"Unbalanced",sub:"7-day avg 59",st:"warn"},
       {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35<br>Deep 1 h 25 · REM 1 h 33",st:"ok"},
-      {k:"rhr",n:"Rest HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
+      {k:"rhr",n:"Resting HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
     function spark(x){ var a=x.d, ex=x.range||[], lo=Math.min.apply(0,a.concat(ex)), hi=Math.max.apply(0,a.concat(ex)), r, w=120, h=34;
       if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
       var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
@@ -2685,24 +2685,11 @@ ul.rules{grid-template-columns:1fr}
         '<div class="hst"><i></i>'+t.stx+'</div>'+
         '<div class="rv"><b>'+t.v+'</b><span>'+t.u+'</span></div><div class="rsub hsub">'+t.sub+'</div>'+zb+
         '<svg class="hch" viewBox="0 0 '+cw+' '+ch+'" aria-hidden="true"><path class="hband" d="'+band+'"/>'+dots+'</svg><div class="rsub">Last 4 weeks</div></div>'; }
-    var hd=function(k,n,st,stx){return '<div class="rt '+k+' '+st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[k]+'</svg></span><span class="rn">'+n+'</span></div><div class="hst"><i></i>'+stx+'</div>';};
-    // Sleep: last night's stages as one bar, then 4 weeks of scores as columns (last = last night).
-    function sleepTile(t){
-      var S=[["deep","Deep",85],["light","Light",277],["rem","REM",93],["awake","Awake",8]], tot=S.reduce(function(p,c){return p+c[2];},0);
-      var fm=function(m){return Math.floor(m/60)?Math.floor(m/60)+' h '+String(m%60).padStart(2,'0'):m+' min';};
-      var bar='<div class="stg">'+S.map(function(x){return '<i class="'+x[0]+'" style="flex:'+x[2]+'"></i>';}).join('')+'</div>'+
-        '<div class="stl">'+S.filter(function(x){return x[0]!=="awake";}).map(function(x){return '<span class="'+x[0]+'"><i></i>'+x[1]+' <b>'+fm(x[2])+'</b></span>';}).join('')+'</div>';
-      var cols='<div class="scol">'+t.d.map(function(v,i){var c=t.c[i];return '<i class="'+(c==="l"?"poor":c==="u"?"fair":v>=90?"exc":"good")+(i===t.d.length-1?" now":"")+'" style="height:'+Math.max(8,(v-30)/70*100).toFixed(0)+'%"></i>';}).join('')+'</div>';
-      return hd("sleep","Sleep score",t.st,t.stx)+'<div class="rv"><b>'+t.v+'</b><span>/100 · 7 h 35 asleep</span></div>'+bar+cols+'<div class="rsub">Last 4 weeks</div></div>'; }
-    // Resting HR: deviation from your 4-week average, one cell per day, plus the range.
-    function rhrTile(t){
-      var mn=Math.min.apply(0,t.d),mx=Math.max.apply(0,t.d);
-      var cells='<div class="dev">'+t.d.map(function(v,i){var dv=v-ra,c=dv>5?"hi":dv>2?"el":dv<-2?"lo":"ok";
-        return '<i class="'+c+(i===t.d.length-1?" now":"")+'" style="--h:'+Math.min(100,Math.abs(dv)/6*100).toFixed(0)+'%;--up:'+(dv>=0?1:0)+'"></i>';}).join('')+'</div>';
-      var dv=Math.round((t.v-ra)*10)/10;
-      return hd("rhr","Resting HR",t.st,t.stx)+'<div class="rv"><b>'+t.v+'</b><span>bpm · '+(dv>0?'+':dv<0?'−':'±')+Math.abs(dv).toFixed(1).replace('.0','')+' vs avg</span></div>'+
-        '<div class="rsub">4-week avg '+ra.toFixed(1)+' · range '+mn+'–'+mx+'</div>'+cells+'<div class="rsub">Last 4 weeks · vs 4-week avg</div></div>'; }
-    box.innerHTML=gTile(T[0])+sleepTile(T[1])+rhrTile(T[2])+
+    function sTile(x){
+      return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
+        '<div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+
+        spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }
+    box.innerHTML=gTile(T[0])+sTile(R[1])+sTile(R[2])+
       '<div class="rsrc">Garmin snapshot 19 Nov</div>';
   })();
   var btn=document.getElementById("today-btn");
