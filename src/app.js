@@ -110,7 +110,7 @@
   var days=Math.round((race-t)/864e5);if(days<0)return;
   var wk=Math.floor((t-start)/(7*864e5))+1;
   document.getElementById('count-days').textContent=days===0?'Race day':days+(days===1?' day':' days');
-  document.getElementById('count-sub').textContent='to Godefroy'+(wk>=1&&wk<=30?' · week '+wk+' of 30':'');
+  document.getElementById('count-sub').textContent=wk>=1&&wk<=30?'Week '+wk+' of 30':'';
   if(days===0)document.getElementById('count-sub').textContent='Godefroy 75';
   el.hidden=false;
 })();
