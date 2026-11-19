@@ -35,6 +35,65 @@
       tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
     } else tc.hidden=true;
   }
+  // PREVIEW: last night's recovery numbers. Fixed Garmin snapshot; later fetched live.
+  (function(){
+    var box=document.getElementById("rec"); if(!box) return;
+    var I={sleep:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+      hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
+      rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
+    var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
+      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],range:[63,81],pill:"Unbalanced",sub:"7-day avg 59",st:"warn"},
+      {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35<br>Deep 1 h 25 · REM 1 h 33",st:"ok"},
+      {k:"rhr",n:"Resting HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
+    function spark(x){ var a=x.d, ex=x.range||[], lo=Math.min.apply(0,a.concat(ex)), hi=Math.max.apply(0,a.concat(ex)), r, w=120, h=34;
+      if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
+      var Y=function(v){return (h-4-(v-lo)/r*(h-8)).toFixed(1);};
+      var pts=a.map(function(v,i){ return (i*w/(a.length-1)).toFixed(1)+","+Y(v); });
+      var last=pts[pts.length-1].split(","), id="g"+x.k;
+      return '<div class="rspw">'+'<span class="dot" style="left:100%;top:'+(last[1]/h*100).toFixed(1)+'%"></span><svg class="rsp" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'+
+        (x.range?x.range.map(function(v){return '<line class="floor" x1="0" x2="'+w+'" y1="'+Y(v)+'" y2="'+Y(v)+'"/>';}).join(''):'')+
+        '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
+        '</svg></div>'; }
+    // Garmin-style tiles: status, headline number, zone bar with marker, 4-week dot history over the normal band.
+    // Snapshot from Garmin, 23 Oct - 19 Nov 2026. Dot shapes: b = normal (circle), u = off (square), l = low/poor (triangle).
+    var rhr=[43,46,42,43,42,44,43,47,45,43,42,40,40,41,41,42,43,38,37,40,42,44,43,43,44,43,44,42];
+    var ra=Math.round(rhr.reduce(function(p,c){return p+c;},0)/rhr.length*10)/10;
+    var T=[
+      {k:"hrv",n:"HRV status",st:"warn",stx:"Unbalanced",v:59,u:"ms",sub:"7-day avg · last night 63",
+        sc:[45,95],z:[[45,58,"low"],[58,63,"unb"],[63,81,"bal"],[81,95,"unb"]],
+        d:[69,63,62,63,63,62,61,58,61,63,63,63,63,63,66,67,64,67,68,70,71,70,69,70,65,62,60,59],
+        c:"bulullllUUUUUUbbbbbbbbbbbuuu".toLowerCase(),
+        bl:[65,66,66,65,65,65,65,65,64,64,64,64,64,64,63,63,63,63,63,63,63,63,63,63,63,63,63,63],
+        bh:[78,78,78,78,78,78,77,77,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,80,81,81,81],yl:[50,85]},
+      {k:"sleep",n:"Sleep score",st:"ok",stx:"Good",v:87,u:"/100",sub:"7 h 35 · deep 1 h 25 · REM 1 h 33",
+        sc:[40,100],z:[[40,60,"low"],[60,80,"unb"],[80,90,"bal"],[90,100,"exc"]],
+        d:[88,43,85,86,89,82,84,80,88,89,95,94,90,83,99,88,70,96,100,90,93,84,87,86,79,89,83,87],
+        c:"blbbbbbbbbbbbbbbubbbbbbbubbb",bl:80,bh:100,yl:[40,100]},
+      {k:"rhr",n:"Resting HR",st:"ok",stx:"Normal",v:42,u:"bpm",sub:"4-week avg "+Math.round(ra),
+        sc:[34,54],z:[[34,ra+2,"bal"],[ra+2,ra+5,"unb"],[ra+5,54,"low"]],
+        d:rhr,c:rhr.map(function(v){return v>ra+5?"l":v>ra+2?"u":"b";}).join(""),bl:ra-2,bh:ra+2,yl:[34,50]}];
+    function gTile(t){
+      var lo=t.sc[0],hi=t.sc[1],P=function(v){return ((Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*100).toFixed(1);};
+      var zb='<div class="hz">'+t.z.map(function(z){return '<i class="z '+z[2]+'" style="left:'+P(z[0])+'%;width:'+(P(z[1])-P(z[0])).toFixed(1)+'%"></i>';}).join('')+
+        '<span class="hm" style="left:'+P(t.v)+'%"></span></div>';
+      var cw=280,ch=56,ylo=t.yl[0],yhi=t.yl[1],n=t.d.length,X=function(i){return 6+i*(cw-12)/(n-1);},Y=function(v){return ch-4-(Math.max(ylo,Math.min(yhi,v))-ylo)/(yhi-ylo)*(ch-8);};
+      var BL=function(i){return typeof t.bl==="number"?t.bl:t.bl[i];},BH=function(i){return typeof t.bh==="number"?t.bh:t.bh[i];};
+      var band='M'+t.d.map(function(v,i){return X(i).toFixed(1)+','+Y(BH(i)).toFixed(1);}).join(' L')+' L'+t.d.map(function(v,i){var j=n-1-i;return X(j).toFixed(1)+','+Y(BL(j)).toFixed(1);}).join(' L')+'Z';
+      var dots=t.d.map(function(v,i){var c=t.c[i],x=X(i),y=Y(v);
+        if(c==="b") return '<circle class="db" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="2.6"/>';
+        if(c==="u") return '<rect class="du" x="'+(x-2.4).toFixed(1)+'" y="'+(y-2.4).toFixed(1)+'" width="4.8" height="4.8"/>';
+        return '<path class="dl" d="M'+x.toFixed(1)+','+(y-3).toFixed(1)+' l3,5.4 h-6z"/>';}).join('');
+      return '<div class="rt '+t.k+' '+t.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[t.k]+'</svg></span><span class="rn">'+t.n+'</span></div>'+
+        '<div class="hst"><i></i>'+t.stx+'</div>'+
+        '<div class="rv"><b>'+t.v+'</b><span>'+t.u+'</span></div><div class="rsub hsub">'+t.sub+'</div>'+zb+
+        '<svg class="hch" viewBox="0 0 '+cw+' '+ch+'" aria-hidden="true"><path class="hband" d="'+band+'"/>'+dots+'</svg><div class="rsub">Last 4 weeks</div></div>'; }
+    function sTile(x){
+      return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
+        '<div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+
+        spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }
+    box.innerHTML=gTile(T[0])+sTile(R[1])+sTile(R[2])+
+      '<div class="rsrc">Garmin snapshot 19 Nov</div>';
+  })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
   route();
