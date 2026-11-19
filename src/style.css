@@ -365,3 +365,16 @@ ul.rules{grid-template-columns:1fr}
 .today-card.day.long,.today-card.day.hill{background:linear-gradient(135deg,#356f50,#2a5c42)}
 .today-card.q{--acc:#f0a68d}.today-card.bike,.today-card.bikeq{--acc:#a9cbea}.today-card.rest{--acc:#c9cfcb}
 .today-card.day .chip.str.opt{color:#f6dc9a;border-color:#f6dc9a}
+
+/* HRV tile, Garmin-style */
+.hst{display:flex;align-items:center;gap:8px;font:600 22px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--ink);margin:2px 0 4px}
+.hst i{width:14px;height:14px;border-radius:2px;background:#9aa39e}
+.rt.warn .hst i{background:var(--ochre)}.rt.bad .hst i{background:var(--rust)}
+.hsub{margin-top:-2px}
+.hz{position:relative;height:8px;margin:10px 0 6px}
+.hz .z{position:absolute;top:0;bottom:0;border-radius:4px;border:1.5px solid var(--card)}
+.hz .low{background:#c98a76}.hz .unb{background:#d9b05c}.hz .bal{background:#6b7772}
+.hm{position:absolute;top:-5px;bottom:-5px;width:4px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--card)}
+.hch{width:100%;height:auto;max-height:80px;display:block;margin-top:6px}
+.hband{fill:#e3e6e2}
+.hch .db{fill:#56625c}.hch .du{fill:#c9952e}.hch .dl{fill:#b9644b}

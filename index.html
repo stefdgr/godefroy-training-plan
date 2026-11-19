@@ -382,6 +382,19 @@ ul.rules{grid-template-columns:1fr}
 .today-card.day.long,.today-card.day.hill{background:linear-gradient(135deg,#356f50,#2a5c42)}
 .today-card.q{--acc:#f0a68d}.today-card.bike,.today-card.bikeq{--acc:#a9cbea}.today-card.rest{--acc:#c9cfcb}
 .today-card.day .chip.str.opt{color:#f6dc9a;border-color:#f6dc9a}
+
+/* HRV tile, Garmin-style */
+.hst{display:flex;align-items:center;gap:8px;font:600 22px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--ink);margin:2px 0 4px}
+.hst i{width:14px;height:14px;border-radius:2px;background:#9aa39e}
+.rt.warn .hst i{background:var(--ochre)}.rt.bad .hst i{background:var(--rust)}
+.hsub{margin-top:-2px}
+.hz{position:relative;height:8px;margin:10px 0 6px}
+.hz .z{position:absolute;top:0;bottom:0;border-radius:4px;border:1.5px solid var(--card)}
+.hz .low{background:#c98a76}.hz .unb{background:#d9b05c}.hz .bal{background:#6b7772}
+.hm{position:absolute;top:-5px;bottom:-5px;width:4px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--card)}
+.hch{width:100%;height:auto;max-height:80px;display:block;margin-top:6px}
+.hband{fill:#e3e6e2}
+.hch .db{fill:#56625c}.hch .du{fill:#c9952e}.hch .dl{fill:#b9644b}
 /* ---------- print buttons (screen) ---------- */
 .pbtn{font:500 14px var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
 .pbtn:hover{border-color:var(--moss);color:var(--moss)}
@@ -2613,7 +2626,28 @@ ul.rules{grid-template-columns:1fr}
         (x.range?x.range.map(function(v){return '<line class="floor" x1="0" x2="'+w+'" y1="'+Y(v)+'" y2="'+Y(v)+'"/>';}).join(''):'')+
         '<polygon fill="url(#'+id+')" points="0,'+h+' '+pts.join(" ")+' '+w+','+h+'"/><polyline points="'+pts.join(" ")+'"/>'+
         '</svg></div>'; }
-    box.innerHTML=R.map(function(x){
+    // HRV in Garmin style: 7-day average, zone bar, 4-week history (weekly avg, coloured by status) over the balanced band.
+    var H={avg:59,last:63,low:58,bal:[63,81],st:"Unbalanced",
+      w:[69,63,62,63,63,62,61,58,61,63,63,63,63,63,66,67,64,67,68,70,71,70,69,70,65,62,60,59],
+      s:"BULULLLLUUUUUUBBBBBBBBBBBUUU",
+      bl:[65,66,66,65,65,65,65,65,64,64,64,64,64,64,63,63,63,63,63,63,63,63,63,63,63,63,63,63],
+      bh:[78,78,78,78,78,78,77,77,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,80,81,81,81]};
+    function hrvTile(){
+      var lo=45,hi=95,P=function(v){return ((Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*100).toFixed(1)+"%";};
+      var zb='<div class="hz"><i class="z low" style="left:0;width:'+P(H.low)+'"></i><i class="z unb" style="left:'+P(H.low)+';width:calc('+P(H.bal[0])+' - '+P(H.low)+')"></i>'+
+        '<i class="z bal" style="left:'+P(H.bal[0])+';width:calc('+P(H.bal[1])+' - '+P(H.bal[0])+')"></i><i class="z unb" style="left:'+P(H.bal[1])+';right:0"></i>'+
+        '<span class="hm" style="left:'+P(H.avg)+'"></span></div>';
+      var cw=280,ch=56,ylo=50,yhi=85,n=H.w.length,X=function(i){return (6+i*(cw-12)/(n-1)).toFixed(1);},Y=function(v){return (ch-4-(v-ylo)/(yhi-ylo)*(ch-8)).toFixed(1);};
+      var band='M'+H.bh.map(function(v,i){return X(i)+','+Y(v);}).join(' L')+' L'+H.bl.map(function(v,i){return X(n-1-i)+','+Y(H.bl[n-1-i]);}).join(' L')+'Z';
+      var dots=H.w.map(function(v,i){var c=H.s[i],x=X(i),y=Y(v);
+        if(c==="B") return '<circle class="db" cx="'+x+'" cy="'+y+'" r="2.6"/>';
+        if(c==="U") return '<rect class="du" x="'+(x-2.4)+'" y="'+(y-2.4)+'" width="4.8" height="4.8"/>';
+        return '<path class="dl" d="M'+x+','+(y-3)+' l3,5.4 h-6z"/>';}).join('');
+      return '<div class="rt hrv warn"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I.hrv+'</svg></span><span class="rn">HRV status</span></div>'+
+        '<div class="hst"><i></i>'+H.st+'</div>'+
+        '<div class="rv"><b>'+H.avg+'</b><span>ms</span></div><div class="rsub hsub">7-day avg · last night '+H.last+'</div>'+zb+
+        '<svg class="hch" viewBox="0 0 '+cw+' '+ch+'" aria-hidden="true"><path class="hband" d="'+band+'"/>'+dots+'</svg><div class="rsub">Last 4 weeks</div></div>'; }
+    box.innerHTML=hrvTile()+R.filter(function(x){return x.k!=="hrv";}).map(function(x){
       return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
         '<div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+
         spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }).join("")+
