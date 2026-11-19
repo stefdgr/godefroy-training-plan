@@ -312,19 +312,3 @@ ul.rules{grid-template-columns:1fr}
   .today-card.day>*{grid-column:1}
   .today-card.day .mac{grid-column:2;grid-row:1/span 6;align-self:center;margin:0;padding:0 0 0 24px;border-top:0;border-left:1px solid rgba(244,245,242,.16)}}
   .today-card.day.race .mac{border-left-color:rgba(244,245,242,.16)}
-
-/* PREVIEW: eaten vs target on the Today card */
-.today-card .mac.eat{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px 12px;max-width:440px}
-.today-card .mac.eat .ek{grid-column:1/3;font:600 14px var(--display);text-transform:uppercase;letter-spacing:.04em;color:#c4ccc7}
-.today-card .mac.eat .ek b{font:600 40px/1 var(--display);color:var(--paper);margin-right:4px}
-.today-card .mac.eat .el{grid-column:3;justify-self:end;align-self:end;font:600 13px var(--body);color:var(--paper);background:rgba(244,245,242,.14);padding:3px 9px;border-radius:999px;white-space:nowrap}
-.today-card .eb{display:block;height:10px;border-radius:5px;background:rgba(244,245,242,.16);overflow:hidden}
-.today-card .eb i{display:block;height:100%;border-radius:5px}
-.today-card .ekb{grid-column:1/-1;height:12px;margin-bottom:4px}
-.today-card .ekb i{background:var(--paper)}
-.today-card .er{display:contents}
-.today-card .en{font:500 13px var(--body);color:#dce8e0;min-width:58px}
-.today-card .ev{font:500 12px var(--body);color:#c4ccc7;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-.today-card .ev b{font:600 20px/1 var(--display);color:var(--paper)}
-.today-card .er.c i{background:#e8b64c}.today-card .er.p i{background:#7fb8e0}.today-card .er.f i{background:#e0775a}
-.today-card .es{grid-column:1/-1;font:500 11px var(--body);color:#b7c4bc;opacity:.85;margin-top:2px}
