@@ -42,8 +42,8 @@
       hrv:'<path d="M2 12h4l2-5 4 10 3-7 2 2h5"/>',
       rhr:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
     var R=[ // Garmin, nights of 13-19 Nov 2026 (snapshot)
-      {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35 · deep 1 h 25",st:"ok"},
-      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],band:[63,81],pill:"Unbalanced",sub:"Avg 59 · range 63–81",st:"warn"},
+      {k:"hrv",n:"HRV",v:63,u:"ms",d:[58,63,56,52,65,59,63],band:[63,81],pill:"Unbalanced",sub:"7-day avg 59 · balanced range 63–81",st:"warn"},
+      {k:"sleep",n:"Sleep",v:87,u:"/100",d:[84,87,86,79,89,83,87],pill:"Good",sub:"7 h 35<br>Deep 1 h 25 · REM 1 h 33",st:"ok"},
       {k:"rhr",n:"Rest HR",v:42,u:"bpm",d:[44,43,43,44,43,44,42],pill:"Normal",sub:"7-day avg 43",st:"ok"}];
     function spark(x){ var a=x.d, lo=Math.min.apply(0,a.concat(x.band||[])), hi=Math.max.apply(0,a.concat(x.band||[])), r, w=120, h=34;
       if(hi-lo<8){var m=(hi+lo)/2; lo=m-4; hi=m+4;} r=hi-lo;
