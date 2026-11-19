@@ -38,7 +38,7 @@
   // PREVIEW: last night's recovery numbers. Fixed Garmin snapshot; later fetched live.
   (function(){
     var box=document.getElementById("rec"); if(!box) return;
-    var DAYC={easy:"#3f7f5b",long:"#2f6a4a",hill:"#2f6a4a",q:"#c2482a",bike:"#2f5d86",bikeq:"#2f5d86",rest:"#6b7570",race:"#18221f"};
+    var DAYC={easy:"#3f7f5b",long:"#2f6a4a",hill:"#2f6a4a",q:"#a84f37",bike:"#2f5d86",bikeq:"#2f5d86",rest:"#5d6662",race:"#18221f"};
     var tcEl=document.getElementById("today-card"), kc=null;
     if(tcEl) for(var kk in DAYC){ if(tcEl.classList.contains(kk)) kc=DAYC[kk]; }
     if(kc) box.style.setProperty("--day",kc);
