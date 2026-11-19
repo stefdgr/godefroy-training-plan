@@ -279,4 +279,31 @@ ul.rules{grid-template-columns:1fr}
 .mac:hover b{text-decoration:underline}
 /* macros only on the today card */
 .day .mac{display:none}
-.today-card .mac{display:flex;font-size:13px;margin-top:4px}
+/* Today card: dark hero card, accent colour by session type; macros as a split bar */
+.today-card.day{--acc:#8cc79a;background:var(--ink);color:var(--paper);border:0;border-left:6px solid var(--acc);border-radius:10px;padding:18px 20px 20px;gap:8px;box-shadow:0 8px 24px rgba(24,34,31,.22)}
+.today-card.q{--acc:#e0775a}.today-card.long,.today-card.hill{--acc:#6fbf8e}.today-card.bike{--acc:#8fb8de}.today-card.bikeq{--acc:#6f9fd0}.today-card.rest{--acc:#a9b1ac}.today-card.race{--acc:var(--rust)}
+.today-card.day .tl-label{color:var(--acc);font-size:13px}
+.today-card.day .dh,.today-card.day .dh span,.today-card.day .dh em,.today-card.day .dd{color:#c4ccc7;opacity:1}
+.today-card.day .dh b{color:var(--paper)}
+.today-card.day .dt{font-size:34px;color:var(--paper)}
+.today-card.day .dd{font-size:15px}
+.today-card.day .chip.key{background:var(--paper);color:var(--ink)}
+.today-card .mac{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 22px;margin-top:8px;padding-top:14px;border-top:1px solid rgba(244,245,242,.16);color:#c4ccc7;font:500 12px var(--body)}
+.today-card .mac b{flex-basis:auto}
+.today-card.day.race .mac{border-top-color:rgba(244,245,242,.16);color:#c4ccc7}
+.today-card .mk{grid-column:1/-1;font:600 15px var(--display);text-transform:uppercase;letter-spacing:.04em}
+.today-card .mk b{font:600 40px/1 var(--display);color:var(--paper);letter-spacing:.01em;margin-right:4px}
+.today-card .mbar{grid-column:1/-1;display:flex;gap:3px;height:10px;width:100%;max-width:440px}
+.today-card .mbar i{border-radius:3px}
+.today-card .mbar .c,.today-card .mm.c::before{background:#e8b64c}
+.today-card .mbar .p,.today-card .mm.p::before{background:#7fb8e0}
+.today-card .mbar .f,.today-card .mm.f::before{background:#e0775a}
+.today-card .mm{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
+.today-card .mm::before{content:"";width:9px;height:9px;border-radius:2px;align-self:center}
+.today-card .mm b{font:600 24px/1 var(--display);color:var(--paper)}
+.today-card .mac:hover .mk{text-decoration:none}
+.today-card .mac:hover{color:var(--paper)}
+@media (min-width:760px){.today-card.day{display:grid;grid-template-columns:minmax(0,1fr) 340px;column-gap:28px;align-content:start}
+  .today-card.day>*{grid-column:1}
+  .today-card.day .mac{grid-column:2;grid-row:1/span 6;align-self:center;margin:0;padding:0 0 0 24px;border-top:0;border-left:1px solid rgba(244,245,242,.16)}}
+  .today-card.day.race .mac{border-left-color:rgba(244,245,242,.16)}

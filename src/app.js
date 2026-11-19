@@ -70,3 +70,33 @@
   var map=["A","A","B","B","C","C","A"]; // Sun..Sat -> next session
   pick(map[new Date().getDay()]);
 })();
+
+// Installable app: offline copy via the service worker, and a fresh "today" when the app is reopened on a new day.
+(function(){
+  if("serviceWorker" in navigator && window.isSecureContext){
+    window.addEventListener("load",function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+  }
+  var day=new Date().toDateString();
+  document.addEventListener("visibilitychange",function(){
+    if(document.visibilityState==="visible" && new Date().toDateString()!==day) location.reload();
+  });
+})();
+
+// Swipe left/right to move between the tabs on a phone. Ignored on things that scroll sideways (chart, tables, tab bar).
+(function(){
+  var order=["plan","weeks","strength","foot","nutrition"], x0=0, y0=0, t0=0, on=false;
+  function scrollsX(n){ for(;n&&n!==document.body;n=n.parentElement){ if(n.scrollWidth>n.clientWidth+2){ var o=getComputedStyle(n).overflowX; if(o==="auto"||o==="scroll") return true; } } return false; }
+  document.addEventListener("touchstart",function(e){
+    var p=e.touches[0]; on=e.touches.length===1 && p.clientX>24 && p.clientX<innerWidth-24 && !scrollsX(e.target);
+    x0=p.clientX; y0=p.clientY; t0=Date.now();
+  },{passive:true});
+  document.addEventListener("touchend",function(e){
+    if(!on) return; on=false;
+    var p=e.changedTouches[0], dx=p.clientX-x0, dy=p.clientY-y0;
+    if(Math.abs(dx)<70 || Math.abs(dx)<2*Math.abs(dy) || Date.now()-t0>700) return;
+    var cur=order.filter(function(k){ return !document.getElementById("view-"+k).hidden; })[0], i=order.indexOf(cur)+(dx<0?1:-1);
+    if(i<0||i>=order.length) return;
+    location.hash=order[i];
+    var tab=document.getElementById("tab-"+order[i]); if(tab) tab.scrollIntoView({block:"nearest",inline:"nearest"});
+  },{passive:true});
+})();

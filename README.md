@@ -8,7 +8,8 @@ Training plan for Trail Godefroy Bouillon 75 km (5 June 2027), with the Dendermo
 - `src/plan_data.py`: the 30 weeks, day by day.
 - `src/body.html`: page structure, overview panels, zones and the strength tab.
 - `src/style.css`, `src/app.js`: styling and behaviour (tabs, current week, chart hover).
-- `src/render.py`: builds `index.html` from the files above.
+- `src/render.py`: builds `index.html` from the files above, and `sw.js` from `src/sw.js`.
+- `manifest.webmanifest`, `icons/`, `sw.js`: make the site installable on a phone (home-screen app, works offline). `icons/*.png` are rendered from `icons/icon.svg` and `icons/icon-maskable.svg`.
 - `docs/CONTEXT.md`: athlete profile, decisions and open items. `docs/sources.md`: summaries of the SWAP and physio source plans.
 
 ## Updating
