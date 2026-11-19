@@ -12,7 +12,7 @@ def _bike(m):
     return f"{h} h {mm:02d}′" if h and mm else (f"{h} h" if h else f"{mm}′")
 
 def _head(title, sub, right=""):
-    return (f'<header class="ph"><div><div class="pk">Road to Godefroy 75</div><h1>{title}</h1>'
+    return (f'<header class="ph"><div><div class="pk">G75</div><h1>{title}</h1>'
             f'<div class="psub">{sub}</div></div><div class="pr">{right}</div></header>')
 
 def _foot(extra=""):
