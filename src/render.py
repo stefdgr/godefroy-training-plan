@@ -127,6 +127,10 @@ js = open(os.path.join(HERE,"app.js")).read() + open(os.path.join(HERE,"print.js
 prints = print_docs.build(rows, PHASES, DAYN, KIND_LABEL, fmt)
 page = body.replace("%%CSS%%", css).replace("%%CHART%%", chart).replace("%%WEEKS%%", "\n".join(cards)).replace("%%JS%%", js).replace("%%PRINT%%", prints).replace("%%PRINT_ICON%%", PRINT_ICON)
 open(os.path.join(HERE,"..","index.html"),"w").write(page)
+# Service worker: a new version string on every build makes installed copies pick up the new page.
+import hashlib
+sw = open(os.path.join(HERE,"sw.js")).read().replace("%%VERSION%%", hashlib.sha1(page.encode()).hexdigest()[:10])
+open(os.path.join(HERE,"..","sw.js"),"w").write(sw)
 for r in rows: print(r["n"], r["start"], r["run"], round(r["bike"]/60,1), r["long"], r["hard"])
 if "--macros" in sys.argv:
     for gi,x in enumerate(_all): print(f"W{gi//7+1} {DAYN[gi%7]} {x[0]:6} {x[1][:28]:28} {rows[gi//7]['mac'][gi%7]}")

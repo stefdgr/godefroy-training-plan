@@ -54,5 +54,6 @@
 - Morning HRV check: Balanced = train as planned; one low night or RHR +3 = low end of the reps; LOW status, RHR +5 or sleep < 70 = quality becomes easy. The day after a night out is always easy.
 
 ## Tools
+- The site is an installable app (PWA, 19 Nov 2026): add to home screen for full-screen use; it works offline from the last copy it loaded and reloads when reopened on a new day. Phase 2 (push notifications: morning session/macros, strength reminders) needs a scheduled Cloudflare Worker and web push; VAPID keys go in Worker secrets, never in this public repo.
 - Garmin Connect MCP (read-only): activities, HRV, sleep, RHR, zones. Lap data isn't available through it.
 - Source plans (14 SWAP PDFs + 2 physio programs) are summarised in `docs/sources.md`. The PDFs and text extracts are in the claude.ai project files under `sources/`, not in this repo (public repo; SWAP plans are paid material and the physio PDFs hold personal details).

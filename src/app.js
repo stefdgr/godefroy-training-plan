@@ -70,3 +70,14 @@
   var map=["A","A","B","B","C","C","A"]; // Sun..Sat -> next session
   pick(map[new Date().getDay()]);
 })();
+
+// Installable app: offline copy via the service worker, and a fresh "today" when the app is reopened on a new day.
+(function(){
+  if("serviceWorker" in navigator && window.isSecureContext){
+    window.addEventListener("load",function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+  }
+  var day=new Date().toDateString();
+  document.addEventListener("visibilitychange",function(){
+    if(document.visibilityState==="visible" && new Date().toDateString()!==day) location.reload();
+  });
+})();
