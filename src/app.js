@@ -173,3 +173,16 @@
     var tab=document.getElementById("tab-"+order[i]); if(tab) tab.scrollIntoView({block:"nearest",inline:"nearest"});
   },{passive:true});
 })();
+
+// Header countdown to race day
+(function(){
+  var el=document.getElementById('count');if(!el)return;
+  var t=new Date();t.setHours(0,0,0,0);
+  var race=new Date(2027,5,5),start=new Date(2026,10,9);
+  var days=Math.round((race-t)/864e5);if(days<0)return;
+  var wk=Math.floor((t-start)/(7*864e5))+1;
+  document.getElementById('count-days').textContent=days===0?'Race day':days+(days===1?' day':' days');
+  document.getElementById('count-sub').textContent=wk>=1&&wk<=30?'Week '+wk+' of 30':'';
+  if(days===0)document.getElementById('count-sub').textContent='Godefroy 75';
+  el.hidden=false;
+})();

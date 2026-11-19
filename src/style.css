@@ -30,6 +30,10 @@ h1{font-size:clamp(40px,6vw,64px);font-weight:700;line-height:.95;text-transform
 h3{font-size:24px;font-weight:600;text-transform:uppercase}
 h4{font-size:17px;font-weight:600;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .kicker{font:600 13px var(--body);color:var(--moss);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.brand{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.count{display:grid;justify-items:end;text-align:right;line-height:1.1}
+.count b{font:700 clamp(28px,4vw,40px)/.95 var(--display);color:var(--moss);text-transform:uppercase}
+.count span{font:600 12px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
 .lede{max-width:68ch;color:var(--muted);margin:10px 0 0}
 .note{color:var(--muted);font-size:13px;margin:8px 0 0;max-width:80ch}
 
