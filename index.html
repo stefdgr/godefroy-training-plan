@@ -405,6 +405,9 @@ ul.rules{grid-template-columns:1fr}
 .hyp .deep{fill:#3d4844}.hyp .light{fill:#b9c1bc}.hyp .rem{fill:#7d8a84}.hyp .awake{fill:#d9b05c}
 .hyt{display:flex;justify-content:space-between;font:500 11px var(--body);color:var(--muted);margin:3px 0 8px}
 .stl .awake i{background:#d9b05c}
+.rt.sleep .stl{flex-wrap:nowrap;justify-content:space-between;gap:6px;font-size:11.5px;white-space:nowrap}
+@media (max-width:359px){.rt.sleep .stl{flex-wrap:wrap}}
+.rt.sleep .stl span{gap:4px}.rt.sleep .stl i{width:7px;height:7px}
 /* Sleep tile: stage bar + score columns */
 .stg{display:flex;gap:2px;height:14px;border-radius:4px;overflow:hidden;margin-top:8px}
 .stg i{display:block}
