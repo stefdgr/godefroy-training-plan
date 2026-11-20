@@ -20,7 +20,7 @@ self.addEventListener("fetch", function (e) {
 
   // The plan page: network first so edits show up, cached copy when offline.
   if (req.mode === "navigate") {
-    e.respondWith(fetch(req).then(function (res) {
+    e.respondWith(fetch(req, { cache: "no-store" }).then(function (res) {
       var copy = res.clone();
       caches.open(CACHE).then(function (c) { c.put("./", copy); });
       return res;

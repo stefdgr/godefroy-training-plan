@@ -133,12 +133,20 @@
 
 // Installable app: offline copy via the service worker, and a fresh "today" when the app is reopened on a new day.
 (function(){
+  var reg=null;
   if("serviceWorker" in navigator && window.isSecureContext){
-    window.addEventListener("load",function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+    var had=!!navigator.serviceWorker.controller;
+    window.addEventListener("load",function(){
+      navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(function(r){ reg=r; r.update(); }).catch(function(){});
+    });
+    // A new deploy ships a new service worker; reload once it takes over.
+    navigator.serviceWorker.addEventListener("controllerchange",function(){ if(had) location.reload(); had=true; });
   }
   var day=new Date().toDateString();
   document.addEventListener("visibilitychange",function(){
-    if(document.visibilityState==="visible" && new Date().toDateString()!==day) location.reload();
+    if(document.visibilityState!=="visible") return;
+    if(new Date().toDateString()!==day){ location.reload(); return; }
+    if(reg) reg.update().catch(function(){});
   });
 })();
 
