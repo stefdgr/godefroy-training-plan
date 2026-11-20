@@ -124,8 +124,14 @@
         '<div class="hst"><i></i>'+(c==="b"?"Normal":c==="u"?"Elevated":"High")+'</div>'+
         '<div class="rv"><b>'+v+'</b><span>bpm</span></div><div class="rsub hsub">7-day baseline '+Math.round(b)+' · '+(dl>=0?'+':'−')+Math.abs(dl)+' bpm</div>'+zb+
         '<svg class="hch rch" viewBox="0 0 '+cw+' '+(ch+12)+'" aria-hidden="true"><line class="bl" x1="0" x2="'+cw+'" y1="'+Y(b).toFixed(1)+'" y2="'+Y(b).toFixed(1)+'"/>'+dots+'</svg><div class="rsub">Last 7 days</div></div>'; }
-    box.innerHTML=gTile(T[0])+slTile(SL)+rTile(RH)+
-      '';
+    box.innerHTML=gTile(T[0])+slTile(SL)+rTile(RH);
+    // Compact layout: status next to the title, number and sub line on one row, no chart captions.
+    [].forEach.call(box.querySelectorAll(".rt"),function(t){
+      var h=t.querySelector(".hst"),rv=t.querySelector(".rv"),sb=t.querySelector(".hsub"),last=t.lastElementChild;
+      if(h) t.querySelector(".rh").appendChild(h);
+      if(rv&&sb){var row=document.createElement("div");row.className="rrow";rv.parentNode.insertBefore(row,rv);row.appendChild(rv);row.appendChild(sb);}
+      if(last&&last.className==="rsub") t.removeChild(last);
+    });
   })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
