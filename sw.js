@@ -1,5 +1,5 @@
 // Service worker source. render.py writes it to /sw.js with a new VERSION on every build.
-var VERSION = "ae4b0ef2cb";
+var VERSION = "ba8cd5b1b5";
 var CACHE = "plan-" + VERSION;
 var FONTS = "fonts-v1";
 var CORE = ["./", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
@@ -20,7 +20,7 @@ self.addEventListener("fetch", function (e) {
 
   // The plan page: network first so edits show up, cached copy when offline.
   if (req.mode === "navigate") {
-    e.respondWith(fetch(req).then(function (res) {
+    e.respondWith(fetch(req, { cache: "no-store" }).then(function (res) {
       var copy = res.clone();
       caches.open(CACHE).then(function (c) { c.put("./", copy); });
       return res;
