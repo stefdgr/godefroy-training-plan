@@ -400,6 +400,9 @@ ul.rules{grid-template-columns:1fr}
 .hband{fill:#e3e6e2}
 .hch .db{fill:#56625c}.hch .du{fill:#c9952e}.hch .dl{fill:#b9644b}
 
+/* RHR tile: baseline bar + 7-day dots */
+.rzl{position:relative;height:14px;font:500 11px var(--body);color:var(--muted);margin-bottom:2px}.rzl span{position:absolute;transform:translateX(-50%)}
+.rch{max-height:none}.rch .bl{stroke:#9aa39e;stroke-dasharray:3 3;stroke-width:1}.rch text{font:500 10px var(--body);fill:var(--muted)}
 /* Sleep tile: hypnogram */
 .hyp{width:100%;height:auto;max-height:72px;display:block;margin-top:10px;border-bottom:1px solid var(--line)}
 .hyp .deep{fill:#3d4844}.hyp .light{fill:#b9c1bc}.hyp .rem{fill:#7d8a84}.hyp .awake{fill:#d9b05c}
@@ -2712,7 +2715,25 @@ ul.rules{grid-template-columns:1fr}
         '<svg class="hyp" viewBox="0 0 '+cw+' '+ch+'" aria-hidden="true">'+bars+'</svg>'+
         '<div class="hyt"><span>'+x.t0+'</span><span>'+x.t1+'</span></div>'+
         '<div class="stl">'+x.leg.map(function(l){return '<span class="'+l[0]+'"><i></i>'+l[1]+' <b>'+l[2]+'</b></span>';}).join('')+'</div></div>'; }
-    box.innerHTML=gTile(T[0])+slTile(SL)+sTile(R[2])+
+    // RHR vs 7-day baseline (mean of the 7 days before). +3 = elevated, +5 = high. Garmin, 7-20 Nov 2026.
+    var RH={d:[42,43,38,37,40,42,44,43,43,44,43,44,42,41],dw:"SSMTWTF"};
+    function rTile(x){
+      var d=x.d,n=d.length,bl=function(i){var s=0;for(var k=i-7;k<i;k++)s+=d[k];return s/7;},
+        st=function(v,b){return v-b>=5?"l":v-b>=3?"u":"b";},
+        v=d[n-1],b=bl(n-1),c=st(v,b),lo=b-6,hi=b+8,
+        P=function(q){return ((Math.max(lo,Math.min(hi,q))-lo)/(hi-lo)*100).toFixed(1);},
+        zb='<div class="hz">'+[[lo,b+3,"bal"],[b+3,b+5,"unb"],[b+5,hi,"low"]].map(function(z){return '<i class="z '+z[2]+'" style="left:'+P(z[0])+'%;width:'+(P(z[1])-P(z[0])).toFixed(1)+'%"></i>';}).join('')+
+          '<span class="hm" style="left:'+P(v)+'%"></span></div><div class="rzl"><span style="left:'+P(b)+'%">'+Math.round(b)+'</span><span style="left:'+P(b+3)+'%">+3</span><span style="left:'+P(b+5)+'%">+5</span></div>',
+        cw=280,ch=44,X=function(k){return 10+k*(cw-20)/6;},Y=function(q){return ch-5-(q-(b-5))/10*(ch-10);},dots='';
+      for(var k=0;k<7;k++){var j=n-7+k,q=d[j],cc=st(q,bl(j)),xx=X(k).toFixed(1),y=Y(q);
+        dots+=cc==="b"?'<circle class="db" cx="'+xx+'" cy="'+y.toFixed(1)+'" r="3"/>':cc==="u"?'<rect class="du" x="'+(X(k)-2.8).toFixed(1)+'" y="'+(y-2.8).toFixed(1)+'" width="5.6" height="5.6"/>':'<path class="dl" d="M'+xx+','+(y-3.4).toFixed(1)+' l3.4,6 h-6.8z"/>';
+        dots+='<text x="'+xx+'" y="'+(ch+12)+'" text-anchor="middle">'+x.dw[k]+'</text>';}
+      var dl=Math.round(v-b);
+      return '<div class="rt rhr '+(c==="b"?"ok":c==="u"?"warn":"bad")+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I.rhr+'</svg></span><span class="rn">Resting HR</span></div>'+
+        '<div class="hst"><i></i>'+(c==="b"?"Normal":c==="u"?"Elevated":"High")+'</div>'+
+        '<div class="rv"><b>'+v+'</b><span>bpm</span></div><div class="rsub hsub">7-day baseline '+Math.round(b)+' · '+(dl>=0?'+':'−')+Math.abs(dl)+' bpm</div>'+zb+
+        '<svg class="hch rch" viewBox="0 0 '+cw+' '+(ch+16)+'" aria-hidden="true"><line class="bl" x1="0" x2="'+cw+'" y1="'+Y(b).toFixed(1)+'" y2="'+Y(b).toFixed(1)+'"/>'+dots+'</svg><div class="rsub">Last 7 days</div></div>'; }
+    box.innerHTML=gTile(T[0])+slTile(SL)+rTile(RH)+
       '<div class="rsrc">Garmin snapshot 19–20 Nov</div>';
   })();
   var btn=document.getElementById("today-btn");

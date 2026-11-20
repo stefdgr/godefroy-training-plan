@@ -383,6 +383,9 @@ ul.rules{grid-template-columns:1fr}
 .hband{fill:#e3e6e2}
 .hch .db{fill:#56625c}.hch .du{fill:#c9952e}.hch .dl{fill:#b9644b}
 
+/* RHR tile: baseline bar + 7-day dots */
+.rzl{position:relative;height:14px;font:500 11px var(--body);color:var(--muted);margin-bottom:2px}.rzl span{position:absolute;transform:translateX(-50%)}
+.rch{max-height:none}.rch .bl{stroke:#9aa39e;stroke-dasharray:3 3;stroke-width:1}.rch text{font:500 10px var(--body);fill:var(--muted)}
 /* Sleep tile: hypnogram */
 .hyp{width:100%;height:auto;max-height:72px;display:block;margin-top:10px;border-bottom:1px solid var(--line)}
 .hyp .deep{fill:#3d4844}.hyp .light{fill:#b9c1bc}.hyp .rem{fill:#7d8a84}.hyp .awake{fill:#d9b05c}
