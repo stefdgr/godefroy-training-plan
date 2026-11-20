@@ -91,8 +91,23 @@
       return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
         '<div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+
         spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }
-    box.innerHTML=gTile(T[0])+sTile(R[1])+sTile(R[2])+
-      '<div class="rsrc">Garmin snapshot 19 Nov</div>';
+    var SL={v:91,stx:"Excellent",dur:"7 h 25",t0:"23:39",t1:"07:12",
+      leg:[["deep","Deep","1 h 41"],["light","Light","4 h 14"],["rem","REM","1 h 31"],["awake","Awake","7 min"]],
+      seg:[["light",0,41],["deep",41,82],["light",82,91],["deep",91,98],["light",98,109],["deep",109,114],["light",114,126],
+        ["deep",126,155],["light",155,186],["deep",186,213],["light",213,245],["rem",245,258],["light",258,278],
+        ["rem",278,313],["light",313,391],["rem",391,433],["awake",433,437],["light",437,453]]};
+    function slTile(x){
+      var cw=280,ch=60,tot=x.seg[x.seg.length-1][2],H={deep:.32,light:.58,rem:.82,awake:1};
+      var bars=x.seg.map(function(g){var x0=g[1]/tot*cw,w=Math.max(1.2,(g[2]-g[1])/tot*cw-.8),h=H[g[0]]*(ch-2);
+        return '<rect class="'+g[0]+'" x="'+x0.toFixed(1)+'" y="'+(ch-h).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="1.5"/>';}).join('');
+      return '<div class="rt sleep ok"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I.sleep+'</svg></span><span class="rn">Sleep score</span></div>'+
+        '<div class="hst"><i></i>'+x.stx+'</div>'+
+        '<div class="rv"><b>'+x.v+'</b><span>/100</span></div><div class="rsub hsub">'+x.dur+' asleep</div>'+
+        '<svg class="hyp" viewBox="0 0 '+cw+' '+ch+'" aria-hidden="true">'+bars+'</svg>'+
+        '<div class="hyt"><span>'+x.t0+'</span><span>'+x.t1+'</span></div>'+
+        '<div class="stl">'+x.leg.map(function(l){return '<span class="'+l[0]+'"><i></i>'+l[1]+' <b>'+l[2]+'</b></span>';}).join('')+'</div></div>'; }
+    box.innerHTML=gTile(T[0])+slTile(SL)+sTile(R[2])+
+      '<div class="rsrc">Garmin snapshot 19–20 Nov</div>';
   })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }
