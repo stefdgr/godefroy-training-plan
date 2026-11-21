@@ -76,7 +76,7 @@
       var lo=t.sc[0],hi=t.sc[1],P=function(v){return ((Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*100).toFixed(1);};
       var zb='<div class="hz">'+t.z.map(function(z){return '<i class="z '+z[2]+'" style="left:'+P(z[0])+'%;width:'+(P(z[1])-P(z[0])).toFixed(1)+'%"></i>';}).join('')+
         '<span class="hm" style="left:'+P(t.v)+'%"></span></div>';
-      var cw=280,ch=56,ylo=t.yl[0],yhi=t.yl[1],n=t.d.length,X=function(i){return 6+i*(cw-12)/(n-1);},Y=function(v){return ch-4-(Math.max(ylo,Math.min(yhi,v))-ylo)/(yhi-ylo)*(ch-8);};
+      var cw=280,ch=34,ylo=t.yl[0],yhi=t.yl[1],n=t.d.length,X=function(i){return 6+i*(cw-12)/(n-1);},Y=function(v){return ch-4-(Math.max(ylo,Math.min(yhi,v))-ylo)/(yhi-ylo)*(ch-8);};
       var BL=function(i){return typeof t.bl==="number"?t.bl:t.bl[i];},BH=function(i){return typeof t.bh==="number"?t.bh:t.bh[i];};
       var band='M'+t.d.map(function(v,i){return X(i).toFixed(1)+','+Y(BH(i)).toFixed(1);}).join(' L')+' L'+t.d.map(function(v,i){var j=n-1-i;return X(j).toFixed(1)+','+Y(BL(j)).toFixed(1);}).join(' L')+'Z';
       var dots=t.d.map(function(v,i){var c=t.c[i],x=X(i),y=Y(v);
@@ -91,8 +91,47 @@
       return '<div class="rt '+x.k+' '+x.st+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I[x.k]+'</svg></span><span class="rn">'+x.n+'</span><span class="rpill">'+x.pill+'</span></div>'+
         '<div class="rv"><b>'+x.v+'</b><span>'+x.u+'</span></div>'+
         spark(x)+'<div class="rsub">'+x.sub+'</div></div>'; }
-    box.innerHTML=gTile(T[0])+sTile(R[1])+sTile(R[2])+
-      '<div class="rsrc">Garmin snapshot 19 Nov</div>';
+    var SL={v:91,stx:"Excellent",dur:"7 h 25",t0:"23:39",t1:"07:12",
+      leg:[["deep","Deep","1 h 41"],["light","Light","4 h 14"],["rem","REM","1 h 31"],["awake","Awake","7 min"]],
+      seg:[["light",0,41],["deep",41,82],["light",82,91],["deep",91,98],["light",98,109],["deep",109,114],["light",114,126],
+        ["deep",126,155],["light",155,186],["deep",186,213],["light",213,245],["rem",245,258],["light",258,278],
+        ["rem",278,313],["light",313,391],["rem",391,433],["awake",433,437],["light",437,453]]};
+    function slTile(x){
+      var cw=280,ch=36,tot=x.seg[x.seg.length-1][2],H={deep:.32,light:.58,rem:.82,awake:1};
+      var bars=x.seg.map(function(g){var x0=g[1]/tot*cw,w=Math.max(1.2,(g[2]-g[1])/tot*cw-.8),h=H[g[0]]*(ch-2);
+        return '<rect class="'+g[0]+'" x="'+x0.toFixed(1)+'" y="'+(ch-h).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="1.5"/>';}).join('');
+      return '<div class="rt sleep ok"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I.sleep+'</svg></span><span class="rn">Sleep score</span></div>'+
+        '<div class="hst"><i></i>'+x.stx+'</div>'+
+        '<div class="rv"><b>'+x.v+'</b><span>/100</span></div><div class="rsub hsub">'+x.dur+' asleep</div>'+
+        '<svg class="hyp" viewBox="0 0 '+cw+' '+ch+'" aria-hidden="true">'+bars+'</svg>'+
+        '<div class="hyt"><span>'+x.t0+'</span><span>'+x.t1+'</span></div>'+
+        '<div class="stl">'+x.leg.map(function(l){return '<span class="'+l[0]+'"><i></i>'+l[1]+' <b>'+l[2]+'</b></span>';}).join('')+'</div></div>'; }
+    // RHR vs 7-day baseline (mean of the 7 days before). +3 = elevated, +5 = high. Garmin, 7-20 Nov 2026.
+    var RH={d:[42,43,38,37,40,42,44,43,43,44,43,44,42,41],dw:"SSMTWTF"};
+    function rTile(x){
+      var d=x.d,n=d.length,bl=function(i){var s=0;for(var k=i-7;k<i;k++)s+=d[k];return s/7;},
+        st=function(v,b){return v-b>=5?"l":v-b>=3?"u":"b";},
+        v=d[n-1],b=bl(n-1),c=st(v,b),lo=b-6,hi=b+8,
+        P=function(q){return ((Math.max(lo,Math.min(hi,q))-lo)/(hi-lo)*100).toFixed(1);},
+        zb='<div class="hz">'+[[lo,b+3,"bal"],[b+3,b+5,"unb"],[b+5,hi,"low"]].map(function(z){return '<i class="z '+z[2]+'" style="left:'+P(z[0])+'%;width:'+(P(z[1])-P(z[0])).toFixed(1)+'%"></i>';}).join('')+
+          '<span class="hm" style="left:'+P(v)+'%"></span></div><div class="rzl"><span style="left:'+P(b)+'%">'+Math.round(b)+'</span><span style="left:'+P(b+3)+'%">+3</span><span style="left:'+P(b+5)+'%">+5</span></div>',
+        cw=280,ch=24,X=function(k){return 10+k*(cw-20)/6;},Y=function(q){return ch-5-(q-(b-5))/10*(ch-10);},dots='';
+      for(var k=0;k<7;k++){var j=n-7+k,q=d[j],cc=st(q,bl(j)),xx=X(k).toFixed(1),y=Y(q);
+        dots+=cc==="b"?'<circle class="db" cx="'+xx+'" cy="'+y.toFixed(1)+'" r="3"/>':cc==="u"?'<rect class="du" x="'+(X(k)-2.8).toFixed(1)+'" y="'+(y-2.8).toFixed(1)+'" width="5.6" height="5.6"/>':'<path class="dl" d="M'+xx+','+(y-3.4).toFixed(1)+' l3.4,6 h-6.8z"/>';
+        dots+='<text x="'+xx+'" y="'+(ch+10)+'" text-anchor="middle">'+x.dw[k]+'</text>';}
+      var dl=Math.round(v-b);
+      return '<div class="rt rhr '+(c==="b"?"ok":c==="u"?"warn":"bad")+'"><div class="rh"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true">'+I.rhr+'</svg></span><span class="rn">Resting HR</span></div>'+
+        '<div class="hst"><i></i>'+(c==="b"?"Normal":c==="u"?"Elevated":"High")+'</div>'+
+        '<div class="rv"><b>'+v+'</b><span>bpm</span></div><div class="rsub hsub">7-day baseline '+Math.round(b)+' · '+(dl>=0?'+':'−')+Math.abs(dl)+' bpm</div>'+zb+
+        '<svg class="hch rch" viewBox="0 0 '+cw+' '+(ch+12)+'" aria-hidden="true"><line class="bl" x1="0" x2="'+cw+'" y1="'+Y(b).toFixed(1)+'" y2="'+Y(b).toFixed(1)+'"/>'+dots+'</svg><div class="rsub">Last 7 days</div></div>'; }
+    box.innerHTML=gTile(T[0])+slTile(SL)+rTile(RH);
+    // Compact layout: status next to the title, number and sub line on one row, no chart captions.
+    [].forEach.call(box.querySelectorAll(".rt"),function(t){
+      var h=t.querySelector(".hst"),rv=t.querySelector(".rv"),sb=t.querySelector(".hsub"),last=t.lastElementChild;
+      if(h) t.querySelector(".rh").appendChild(h);
+      if(rv&&sb){var row=document.createElement("div");row.className="rrow";rv.parentNode.insertBefore(row,rv);row.appendChild(rv);row.appendChild(sb);}
+      if(last&&last.className==="rsub") t.removeChild(last);
+    });
   })();
   var btn=document.getElementById("today-btn");
   if(btn){ if(ci<0){btn.hidden=true;} btn.addEventListener("click",function(){ weeks[ci].scrollIntoView({block:"start"}); }); }

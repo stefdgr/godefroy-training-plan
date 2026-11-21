@@ -383,6 +383,28 @@ ul.rules{grid-template-columns:1fr}
 .hband{fill:#e3e6e2}
 .hch .db{fill:#56625c}.hch .du{fill:#c9952e}.hch .dl{fill:#b9644b}
 
+/* RHR tile: baseline bar + 7-day dots */
+.rzl{position:relative;height:14px;font:500 11px var(--body);color:var(--muted);margin-bottom:2px}.rzl span{position:absolute;transform:translateX(-50%)}
+.rch{max-height:none}.rch .bl{stroke:#9aa39e;stroke-dasharray:3 3;stroke-width:1}.rch text{font:500 8px var(--body);fill:var(--muted)}
+/* Sleep tile: hypnogram */
+.hyp{width:100%;height:auto;max-height:72px;display:block;margin-top:10px;border-bottom:1px solid var(--line)}
+.hyp .deep{fill:#3d4844}.hyp .light{fill:#b9c1bc}.hyp .rem{fill:#7d8a84}.hyp .awake{fill:#d9b05c}
+.hyt{display:flex;justify-content:space-between;font:500 11px var(--body);color:var(--muted);margin:3px 0 8px}
+.stl .awake i{background:#d9b05c}
+/* Compact recovery tiles (20 Nov): status beside the title, number + sub on one row */
+.rec .rt{padding:12px 14px;gap:8px}
+.rec .ri{width:22px;height:22px;border-radius:6px}.rec .ri svg{width:13px;height:13px}
+.rec .rn{font-size:11px}
+.rec .rh .hst{margin:0 0 0 auto;font-size:14px;gap:6px;white-space:nowrap}.rec .hst i{width:9px;height:9px}
+.rec .rrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.rec .rv b{font-size:34px}.rec .rv span{font-size:12px}
+.rec .rsub{font-size:11.5px}.rec .hsub{margin:0}
+.rec .hz{height:6px;margin:2px 0 0}
+.rec .hch{margin-top:0}.rec .hyp{margin-top:0}.rec .hyt{margin:-4px 0 0;font-size:10px}
+.rec .rzl{height:12px;font-size:10px;margin:-4px 0 0}
+.rt.sleep .stl{flex-wrap:nowrap;justify-content:space-between;gap:6px;font-size:11.5px;white-space:nowrap}
+@media (max-width:359px){.rt.sleep .stl{flex-wrap:wrap}}
+.rt.sleep .stl span{gap:4px}.rt.sleep .stl i{width:7px;height:7px}
 /* Sleep tile: stage bar + score columns */
 .stg{display:flex;gap:2px;height:14px;border-radius:4px;overflow:hidden;margin-top:8px}
 .stg i{display:block}
