@@ -44,8 +44,9 @@ async function kvPut(env, k, v, ttl) {
 }
 
 async function recovery(request, env, ctx) {
-  if (!env.APP_KEY || request.headers.get("x-key") !== env.APP_KEY) return json({ error: "unauthorized" }, 401);
-  if (!env.GARMIN_EMAIL || !env.GARMIN_PASSWORD) return json({ error: "garmin login not configured" }, 503);
+  const missing = ["APP_KEY", "GARMIN_EMAIL", "GARMIN_PASSWORD"].filter(k => !env[k]);
+  if (missing.length) return json({ error: "not set in Cloudflare: " + missing.join(", ") }, 503);
+  if ((request.headers.get("x-key") || "").trim() !== String(env.APP_KEY).trim()) return json({ error: "key not accepted" }, 401);
   const cached = await kvGet(env, "data");
   if (cached && Date.now() - Date.parse(cached.updated) < DATA_TTL * 1000) return json(cached);
   try {

@@ -2,6 +2,7 @@
   "name": "godefroy-training-plan",
   "compatibility_date": "2026-11-01",
   "main": "worker/index.js",
+  "keep_vars": true,
   "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
   "kv_namespaces": [{ "binding": "KV", "id": "408497de967e4419af6561e184b0c7ad" }],
   "previews": {}

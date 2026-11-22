@@ -116,7 +116,7 @@
       }).then(function(x){
         if(x.updated){ render(x); try{ localStorage.setItem(DATA,JSON.stringify(x)); }catch(e){} return; }
         if(box.querySelector(".rt")) return;   // keep the last good numbers
-        var m=x.http===401?"key not accepted":x.http===503?"Garmin login not set up":x.error||("error "+x.http);
+        var m=x.error||(x.http===401?"key not accepted":"error "+x.http);
         box.innerHTML='<div class="rsrc rerr">Recovery data unavailable: '+String(m).replace(/[<&]/g,"")+'</div>'; box.hidden=false;
       }).catch(function(){});
     }
