@@ -17,6 +17,8 @@ self.addEventListener("activate", function (e) {
 self.addEventListener("fetch", function (e) {
   var req = e.request, url = new URL(req.url);
   if (req.method !== "GET") return;
+  // Live data (recovery tiles): always straight to the network.
+  if (url.origin === self.location.origin && url.pathname.indexOf("/api/") === 0) return;
 
   // The plan page: network first so edits show up, cached copy when offline.
   if (req.mode === "navigate") {
