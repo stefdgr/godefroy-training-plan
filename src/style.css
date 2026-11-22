@@ -392,6 +392,7 @@ ul.rules{grid-template-columns:1fr}
 .hyt{display:flex;justify-content:space-between;font:500 11px var(--body);color:var(--muted);margin:3px 0 8px}
 .stl .awake i{background:#d9b05c}
 .rec[hidden]{display:none}
+.rec .rerr{text-align:left;margin:0;font-size:12px}
 /* Compact recovery tiles (20 Nov): status beside the title, number + sub on one row */
 .rec .rt{padding:12px 14px;gap:8px}
 .rec .ri{width:22px;height:22px;border-radius:6px}.rec .ri svg{width:13px;height:13px}

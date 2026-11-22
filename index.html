@@ -409,6 +409,7 @@ ul.rules{grid-template-columns:1fr}
 .hyt{display:flex;justify-content:space-between;font:500 11px var(--body);color:var(--muted);margin:3px 0 8px}
 .stl .awake i{background:#d9b05c}
 .rec[hidden]{display:none}
+.rec .rerr{text-align:left;margin:0;font-size:12px}
 /* Compact recovery tiles (20 Nov): status beside the title, number + sub on one row */
 .rec .rt{padding:12px 14px;gap:8px}
 .rec .ri{width:22px;height:22px;border-radius:6px}.rec .ri svg{width:13px;height:13px}
@@ -2732,9 +2733,13 @@ ul.rules{grid-template-columns:1fr}
     var last=0;
     function load(){
       last=Date.now();
-      fetch("/api/recovery",{headers:{"X-Key":key},cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(x){
-        if(!x||x.error&&!x.updated) return;
-        render(x); try{ localStorage.setItem(DATA,JSON.stringify(x)); }catch(e){}
+      fetch("/api/recovery",{headers:{"X-Key":key},cache:"no-store"}).then(function(r){
+        return r.json().catch(function(){return {};}).then(function(x){x.http=r.status;return x;});
+      }).then(function(x){
+        if(x.updated){ render(x); try{ localStorage.setItem(DATA,JSON.stringify(x)); }catch(e){} return; }
+        if(box.querySelector(".rt")) return;   // keep the last good numbers
+        var m=x.http===401?"key not accepted":x.http===503?"Garmin login not set up":x.error||("error "+x.http);
+        box.innerHTML='<div class="rsrc rerr">Recovery data unavailable: '+String(m).replace(/[<&]/g,"")+'</div>'; box.hidden=false;
       }).catch(function(){});
     }
     load();
