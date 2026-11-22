@@ -109,16 +109,17 @@
     }
     try{ var c=JSON.parse(localStorage.getItem(DATA)||"null"); if(c) render(c); }catch(e){}
     var last=0;
+    function msg(t){ if(box.querySelector(".rt")) return; box.innerHTML='<div class="rsrc rerr">'+t+'</div>'; box.hidden=false; }
     function load(){
       last=Date.now();
+      msg("Loading recovery data…");
       fetch("/api/recovery",{headers:{"X-Key":key},cache:"no-store"}).then(function(r){
         return r.json().catch(function(){return {};}).then(function(x){x.http=r.status;return x;});
       }).then(function(x){
         if(x.updated){ render(x); try{ localStorage.setItem(DATA,JSON.stringify(x)); }catch(e){} return; }
-        if(box.querySelector(".rt")) return;   // keep the last good numbers
         var m=x.error||(x.http===401?"key not accepted":"error "+x.http);
-        box.innerHTML='<div class="rsrc rerr">Recovery data unavailable: '+String(m).replace(/[<&]/g,"")+'</div>'; box.hidden=false;
-      }).catch(function(){});
+        msg("Recovery data unavailable: "+String(m).replace(/[<&]/g,""));   // keeps the last good numbers if shown
+      }).catch(function(e){ msg("Recovery data unavailable: no connection to the server"); });
     }
     load();
     document.addEventListener("visibilitychange",function(){ if(document.visibilityState==="visible"&&Date.now()-last>60000) load(); });
