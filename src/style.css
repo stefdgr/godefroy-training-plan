@@ -391,6 +391,7 @@ ul.rules{grid-template-columns:1fr}
 .hyp .deep{fill:#3d4844}.hyp .light{fill:#b9c1bc}.hyp .rem{fill:#7d8a84}.hyp .awake{fill:#d9b05c}
 .hyt{display:flex;justify-content:space-between;font:500 11px var(--body);color:var(--muted);margin:3px 0 8px}
 .stl .awake i{background:#d9b05c}
+.rec[hidden]{display:none}
 /* Compact recovery tiles (20 Nov): status beside the title, number + sub on one row */
 .rec .rt{padding:12px 14px;gap:8px}
 .rec .ri{width:22px;height:22px;border-radius:6px}.rec .ri svg{width:13px;height:13px}
