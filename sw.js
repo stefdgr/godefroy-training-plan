@@ -1,5 +1,5 @@
 // Service worker source. render.py writes it to /sw.js with a new VERSION on every build.
-var VERSION = "af7b5bb035";
+var VERSION = "169066071b";
 var CACHE = "plan-" + VERSION;
 var FONTS = "fonts-v1";
 var CORE = ["./", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];

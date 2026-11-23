@@ -34,6 +34,14 @@
       tc.className="today-card day "+kind;
       tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
     } else tc.hidden=true;
+    // Tomorrow: compact strip at the bottom of the Today card (may fall in next week)
+    var tm=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1),
+      tiso=tm.getFullYear()+"-"+String(tm.getMonth()+1).padStart(2,"0")+"-"+String(tm.getDate()).padStart(2,"0"),
+      tn=document.querySelector('#weeklist .day[data-date="'+tiso+'"]');
+    if(tn&&!tc.hidden){ var q=function(s){var n=tn.querySelector(s);return n?n.innerHTML:"";},
+        tkind=tn.className.replace(/\b(day|today|past)\b/g,"").trim(), key=tn.querySelector(".chip.key")?'<span class="chip key">★ key</span>':"";
+      tc.insertAdjacentHTML("beforeend",'<div class="tmrw '+tkind+'"><div class="tw-h"><span class="tl-label">Tomorrow</span>'+q(".dh")+'</div>'+
+        '<div class="tw-t">'+q(".dt")+key+'</div>'+(tn.querySelector(".dd")?'<div class="tw-d">'+q(".dd")+'</div>':"")+'</div>'); }
   }
   // Recovery tiles: live Garmin data from /api/recovery (the Worker). Hidden unless this
   // device has the private key (open the site once with ?key=...). Last result is kept
