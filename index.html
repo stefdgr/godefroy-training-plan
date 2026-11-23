@@ -443,6 +443,20 @@ ul.rules{grid-template-columns:1fr}
 .dev i.el::after{background:#d9b05c}.dev i.hi::after{background:#c98a76}.dev i.lo::after{background:#7d8a84}
 .dev i.now::after{background:var(--ink)}
 .devax{display:flex;justify-content:space-between;font:500 10.5px var(--body);color:#8a948f;margin-top:2px}
+
+/* Tomorrow: lighter preview under the Today card, accent by session type */
+.tmrw-card.day{--acc:#6aa57a;border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:10px;padding:12px 16px 14px;gap:5px;box-shadow:0 2px 8px rgba(24,34,31,.06)}
+.tmrw-card.q{--acc:var(--rust)}.tmrw-card.long,.tmrw-card.hill{--acc:var(--moss)}.tmrw-card.bike{--acc:#7ea6cc}.tmrw-card.bikeq{--acc:var(--steel)}.tmrw-card.rest{--acc:#a9b1ac}.tmrw-card.race{--acc:var(--race-ink)}
+.tmrw-card .tl-label{font:600 12px var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.tmrw-card.race .tl-label{color:var(--race-ink)}
+.tmrw-card .dh{font-size:13px}
+.tmrw-card .dt{font:600 20px/1.15 var(--display);text-transform:uppercase}
+.tmrw-card .dd{font-size:14px;max-width:75ch}
+.tmrw-card .mac{display:none}
+.tmrw-card .chips{margin-top:2px}
+.tmrw-card[hidden]{display:none}
+@media (min-width:760px){.tmrw-card.day{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:18px;align-items:baseline}
+  .tmrw-card.day>*{grid-column:2}.tmrw-card.day .tl-label{grid-column:1;grid-row:1/span 4}}
 /* ---------- print buttons (screen) ---------- */
 .pbtn{font:500 14px var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
 .pbtn:hover{border-color:var(--moss);color:var(--moss)}
@@ -649,6 +663,7 @@ ul.rules{grid-template-columns:1fr}
 <div id="view-plan" class="view" role="tabpanel" aria-labelledby="tab-plan">
   <section class="today-wrap" id="now" aria-label="Today and this week">
     <div class="today-card" id="today-card"></div>
+    <div class="tmrw-card" id="tmrw-card" hidden></div>
     <div class="rec" id="rec" aria-label="Recovery"></div>
     <div class="cw-head"><h3 id="cw-title">This week</h3><a href="#weeks" class="jump-link" id="cw-all">All weeks →</a></div>
     <div id="cw-slot"></div>
@@ -2656,6 +2671,12 @@ ul.rules{grid-template-columns:1fr}
       tc.className="today-card day "+kind;
       tc.innerHTML='<div class="tl-label">Today</div>'+td.innerHTML;
     } else tc.hidden=true;
+    // Tomorrow: lighter preview card under Today (may fall in next week)
+    var tm=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1),
+      tiso=tm.getFullYear()+"-"+String(tm.getMonth()+1).padStart(2,"0")+"-"+String(tm.getDate()).padStart(2,"0"),
+      tn=document.querySelector('#weeklist .day[data-date="'+tiso+'"]'), tk=document.getElementById("tmrw-card");
+    if(tn&&tk){ tk.className="tmrw-card day "+tn.className.replace(/\b(day|today|past)\b/g,"").trim();
+      tk.innerHTML='<div class="tl-label">Tomorrow</div>'+tn.innerHTML; tk.hidden=false; }
   }
   // Recovery tiles: live Garmin data from /api/recovery (the Worker). Hidden unless this
   // device has the private key (open the site once with ?key=...). Last result is kept
