@@ -219,3 +219,13 @@
   if(days===0)document.getElementById('count-sub').textContent='Godefroy 75';
   el.hidden=false;
 })();
+(function(){
+  var b=document.getElementById("totop"); if(!b) return;
+  var on=false;
+  function check(){ var s=window.scrollY>window.innerHeight*0.8; if(s!==on){ on=s; b.classList.toggle("show",s); } }
+  window.addEventListener("scroll",check,{passive:true}); window.addEventListener("resize",check); check();
+  b.addEventListener("click",function(){
+    var rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({top:0,behavior:rm?"auto":"smooth"}); b.blur();
+  });
+})();
